@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { rutasChecklist, rutasFaqs } from '../data/rutas';
+import { CART_URL_RUTAS, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = rutasChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_RUTAS).length;
+const meta = pageMeta('/frances-vs-portugues/');
+const jsonLd = [faqPage(rutasFaqs), itemList('Equipo que cambia entre el Camino Francés y el Portugués', rutasChecklist)];
+const label = 'Añadir el kit de ruta al carrito de Amazon';
+const note = `Añade ${inKit} artículos que cambian según la ruta. El equipo base está en la guía de la mochila.`;
+const rows: [string, string, string][] = [
+  ['Inicio clásico', 'Saint-Jean-Pied-de-Port (Francia)', 'Lisboa u Oporto (Portugal)'],
+  ['Distancia total', 'Unos 770 km', 'Unos 620 km desde Lisboa; unos 240 km desde Oporto'],
+  ['Últimos 100 km (Compostela)', 'Desde Sarria, unos 115 km', 'Desde Tui, unos 115 km'],
+  ['Etapas habituales', 'Algo más de 30 desde Saint-Jean; 5-6 desde Sarria', '10-12 desde Oporto; 5-6 desde Tui'],
+  ['Dificultad', 'Media-alta: Pirineos, O Cebreiro y la Meseta', 'Media-baja: menos desnivel; más asfalto y adoquín'],
+  ['Paisaje', 'Pirineos, viñedos de La Rioja, Meseta, montes de León y Galicia', 'Ríos, pueblos, viñedos y, por la costa, el Atlántico'],
+  ['Ambiente', 'El más concurrido; mucha vida de albergue', 'Más tranquilo, sobre todo antes de Tui'],
+  ['Albergues y servicios', 'La red más densa del Camino', 'Buena red, con tramos de menos opciones'],
+  ['Clima típico', 'Calor y sol en la Meseta en verano; frío en puertos', 'Más suave; lluvia atlántica frecuente'],
+  ['Para quién', 'Tienes más de un mes o quieres la experiencia clásica', 'Tienes una o dos semanas o prefieres menos gente'],
+];
+---
+<Base title="Camino Francés vs Portugués: comparativa y cuál elegir (2026)" description="Camino Francés o Portugués: comparativa de distancia, etapas, dificultad, paisaje, albergues y ambiente en una tabla, y qué equipo cambia en cada ruta." jsonLd={jsonLd} crumb="Francés vs Portugués">
+  <Hero eyebrow="Francés vs Portugués" title="Camino Francés vs Portugués: diferencias y cuál elegir" highlight="cuál elegir" updated={meta.modified}>
+    <p>El <strong>Camino Francés</strong> es la ruta clásica: más larga, con más peregrinos y servicios y paisajes muy variados. El <strong>Camino Portugués</strong> es más corto y tranquilo, con menos desnivel, más asfalto y la opción de caminar junto al mar.</p>
+    <p>Aquí tienes la tabla comparativa, cómo elegir según tus días y gustos, y el equipo que cambia en cada ruta.</p>
+    <KitButton slot="side" url={CART_URL_RUTAS} label={label} title="Kit según la ruta" note={note} />
+  </Hero>
+
+  <section class="block" id="comparativa">
+    <div class="wrap">
+      <span class="eyebrow">Tabla comparativa</span>
+      <h2>Camino Francés vs Portugués: tabla comparativa</h2>
+      <p class="lead">La diferencia principal entre el Camino Francés y el Portugués es la distancia y el ambiente: el Francés suma unos 770 km desde Saint-Jean y es el más concurrido; el Portugués suma unos 240 km desde Oporto y es más tranquilo.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Camino Francés</th><th scope="col">Camino Portugués</th></tr></thead>
+          <tbody>{rows.map(([c, f, p]) => <tr><th scope="row">{c}</th><td>{f}</td><td>{p}</td></tr>)}</tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem;font-size:.92rem">Las distancias son aproximadas y cambian según la variante y la guía. Para la Compostela hay que caminar al menos los últimos 100 km; consulta los requisitos en la <a href="https://oficinadelperegrino.com/" rel="noopener" target="_blank">Oficina del Peregrino</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="cual-elegir">
+    <div class="narrow prose">
+      <span class="eyebrow">Decisión</span>
+      <h2>¿Qué Camino elegir: Francés o Portugués?</h2>
+      <p>Elige el Camino Francés si tienes tiempo y buscas la experiencia clásica con mucho ambiente, y el Portugués si tienes menos días, prefieres menos gente o un clima más suave.</p>
+      <ul>
+        <li><strong>Tienes una semana:</strong> Francés desde Sarria o Portugués desde Tui (unos 115 km cada uno).</li>
+        <li><strong>Tienes dos semanas:</strong> Portugués desde Oporto, por el interior o por la costa.</li>
+        <li><strong>Tienes un mes o más:</strong> Francés completo o Portugués desde Lisboa.</li>
+        <li><strong>Primer Camino y quieres compañía:</strong> el Francés, con la red de albergues más densa.</li>
+        <li><strong>Buscas tranquilidad o mar:</strong> el Portugués, mejor su variante de la costa.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="dificultad">
+    <div class="narrow prose">
+      <span class="eyebrow">Terreno</span>
+      <h2>Dificultad y terreno de cada ruta</h2>
+      <p>El Camino Francés completo es más exigente por su longitud y sus puertos de montaña, mientras que el Portugués tiene menos desnivel pero más kilómetros de asfalto y adoquín, que cansan los pies.</p>
+      <ul>
+        <li><strong>Francés:</strong> subida a los Pirineos (en invierno solo por Valcarlos), la Meseta llana y sin sombra, y la subida a O Cebreiro antes de Galicia.</li>
+        <li><strong>Portugués:</strong> tramos largos de carretera y adoquín en Portugal y subidas moderadas como la de Labruja, entre Ponte de Lima y Rubiães.</li>
+      </ul>
+      <p>Calzado amortiguado y ya probado es clave en ambos: lee la <a href="/calzado/">guía de calzado</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="albergues-y-ambiente">
+    <div class="narrow prose">
+      <span class="eyebrow">Ambiente</span>
+      <h2>Albergues, servicios y ambiente</h2>
+      <p>El Camino Francés es la ruta con más peregrinos según las estadísticas de la <a href="https://oficinadelperegrino.com/estadisticas/" rel="noopener" target="_blank">Oficina del Peregrino</a> y la que más albergues y servicios tiene, y el Portugués es la segunda ruta más transitada.</p>
+      <ul>
+        <li>En el Francés encontrarás albergue en casi cada pueblo; en temporada alta, se llenan desde Sarria.</li>
+        <li>En el Portugués hay buena red desde Tui, pero antes de la frontera conviene planificar etapas.</li>
+        <li>Qué llevar para dormir en cualquiera de los dos: <a href="/kit-de-albergue/">kit de albergue</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="clima">
+    <div class="narrow prose">
+      <span class="eyebrow">Clima</span>
+      <h2>Clima y mejor época para cada Camino</h2>
+      <p>El Portugués tiene un clima más suave por la influencia atlántica, mientras que el Francés pasa por la Meseta, con calor intenso en verano y frío en invierno.</p>
+      <ul>
+        <li>Primavera y otoño son buenas épocas para ambos.</li>
+        <li>En verano, el Francés exige salir muy temprano: lee el <a href="/camino-en-verano/">Camino en verano</a>.</li>
+        <li>En invierno, el Portugués por la costa es más amable; si haces el Francés, lee el <a href="/camino-en-invierno/">Camino en invierno</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="equipo">
+    <div class="wrap">
+      <span class="eyebrow">Equipo</span>
+      <h2>Qué equipo cambia según la ruta ({total} artículos)</h2>
+      <p class="lead">El equipo es casi el mismo en el Francés y el Portugués; lo que cambia es el cuidado de los pies por el asfalto en el Portugués y la protección solar en la Meseta del Francés.</p>
+      <Checklist checklist={rutasChecklist} cartUrl={CART_URL_RUTAS} />
+      <p style="margin-top:1.5rem">El resto del equipo está en la <a href="/mochila-del-camino/">checklist de la mochila del Camino</a> y en el <a href="/botiquin-y-ampollas/">botiquín</a>. Si vas con niños o en bicicleta, mira <a href="/camino-en-bici-y-con-ninos/">Camino en bici y con niños</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="frances-vs-portugues" withMochila />
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={rutasFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>
