@@ -1,5 +1,6 @@
 ---
-import { checklist } from '../data/checklist';
+import type { Group } from '../data/checklist';
+const { checklist } = Astro.props as { checklist: Group[] };
 import { amazon } from '../data/site';
 let n = 0;
 ---

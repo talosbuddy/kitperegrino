@@ -24,7 +24,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntit
   </ul>
 
   <h2>Checklist de la mochila del Camino ({total} artículos)</h2>
-  <Checklist />
+  <Checklist checklist={checklist} />
   <p>Todo lo demás para la noche (candado, pinzas, tapones de repuesto) está en <a href="/kit-de-albergue/">Kit de albergue</a>.</p>
   <KitButton />
 
@@ -37,5 +37,5 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntit
 
   <h2>Adapta la mochila a tu Camino</h2>
   <GuideLinks />
-  <Faq />
+  <Faq faqs={faqs} />
 </Base>

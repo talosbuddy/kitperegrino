@@ -1,7 +1,8 @@
 ---
 import { CART_URL } from '../data/site';
+const { url = CART_URL, label = 'Añadir el kit básico al carrito de Amazon' } = Astro.props as { url?: string; label?: string };
 ---
-<p class="kit"><a class="btn" href={CART_URL} rel="sponsored nofollow noopener" target="_blank">🛒 Añadir el kit básico al carrito de Amazon</a></p>
+<p class="kit"><a class="btn" href={url} rel="sponsored nofollow noopener" target="_blank">🛒 {label}</a></p>
 <style>
   .kit { text-align: center; margin: 1.5rem 0; }
   .btn { display: inline-block; background: #f0a020; color: #111; font-weight: 700; padding: .9rem 1.4rem; border-radius: .6rem; text-decoration: none; }

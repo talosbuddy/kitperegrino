@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { calzadoChecklist, calzadoFaqs } from '../data/calzado';
+import { CART_URL_CALZADO } from '../data/site';
+const total = calzadoChecklist.reduce((s, g) => s + g.items.length, 0);
+const jsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: calzadoFaqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<Base title="Calzado para el Camino de Santiago: botas o zapatillas y cómo evitar ampollas" description="Qué calzado llevar al Camino de Santiago: botas o zapatillas, qué talla elegir, calcetines contra las ampollas y el kit de cuidado de pies. Añade el kit al carrito en un clic." jsonLd={jsonLd}>
+  <h1>Calzado para el Camino de Santiago: botas o zapatillas, calcetines y cuidado de pies</h1>
+  <p>El calzado decide tu Camino más que ninguna otra cosa de la mochila. Muchos abandonos por lesión empiezan en los pies: ampollas, uñas negras o tendinitis. La buena noticia es que casi todo se previene con <strong>un calzado ya usado, media talla más grande, buenos calcetines y dos minutos de cuidado cada mañana</strong>.</p>
+  <p>Esta guía responde a la pregunta de siempre, ¿botas o zapatillas para el Camino de Santiago?, y reúne los {total} artículos que de verdad marcan la diferencia. La lista completa del resto del equipo está en <a href="/mochila-del-camino/">qué llevar en la mochila del Camino</a>.</p>
+  <KitButton url={CART_URL_CALZADO} label="Añadir el kit de cuidado de pies al carrito de Amazon" />
+  <p><small><em>El botón añade los 6 artículos de cuidado (sin talla). Las zapatillas, los calcetines, los cordones y las plantillas tienes que elegirlos en su ficha, según tu talla y tu color.</em></small></p>
+
+  <h2>¿Botas o zapatillas para el Camino de Santiago?</h2>
+  <ul>
+    <li><strong>Zapatillas de senderismo o de trail:</strong> son la mejor opción para la mayoría de los peregrinos entre abril y octubre. Pesan menos, transpiran mejor y en pistas y asfalto no necesitas más.</li>
+    <li><strong>Botas de caña media:</strong> para invierno, barro, nieve en O Cebreiro o tobillos con lesiones previas. Más en <a href="/camino-en-invierno/">Camino en invierno</a>.</li>
+    <li><strong>¿Impermeable?</strong> En Galicia y fuera del verano, sí. En agosto por la Meseta, mejor una zapatilla transpirable. Más en <a href="/camino-en-verano/">Camino en verano</a>.</li>
+  </ul>
+
+  <h2>Cómo acertar con la talla</h2>
+  <ul>
+    <li><strong>Media talla o una más</strong> de la habitual: el pie se hincha con los días.</li>
+    <li>Pruébatelas <strong>por la tarde y con el calcetín del Camino</strong>.</li>
+    <li>En las bajadas, los dedos no deben tocar la puntera.</li>
+    <li><strong>Nunca las estrenes en ruta:</strong> antes de salir, haz 50-100 km con ellas y con la mochila cargada.</li>
+  </ul>
+
+  <h2>Checklist de calzado para el Camino ({total} artículos)</h2>
+  <Checklist checklist={calzadoChecklist} />
+  <KitButton url={CART_URL_CALZADO} label="Añadir el kit de cuidado de pies al carrito de Amazon" />
+
+  <h2>Rutina diaria de pies del peregrino</h2>
+  <ol>
+    <li><strong>Por la mañana:</strong> barra antifricción, calcetines limpios y secos, y esparadrapo en los puntos que ya te avisaron.</li>
+    <li><strong>Cada 2 horas:</strong> descálzate 10 minutos, airea los pies y cambia de calcetín si están húmedos.</li>
+    <li><strong>Al llegar:</strong> ducha, revisa los pies, ponte chanclas y echa polvos dentro del calzado.</li>
+  </ol>
+  <p>Si te sale una ampolla, en <a href="/botiquin-y-ampollas/">Botiquín y ampollas</a> te explicamos cómo tratarla sin infectarla.</p>
+
+  <h2>Más guías para preparar tu Camino</h2>
+  <p><a href="/mochila-del-camino/">Qué llevar en la mochila del Camino de Santiago</a>: la checklist completa.</p>
+  <GuideLinks />
+  <Faq faqs={calzadoFaqs} />
+</Base>
