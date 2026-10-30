@@ -11,7 +11,7 @@ export const guides = [
   { slug: 'frances-vs-portugues', title: 'Camino Francés vs Portugués', desc: 'Qué cambia en la mochila según la ruta.' },
   { slug: 'camino-en-bici-y-con-ninos', title: 'Camino en bici y con niños', desc: 'Alforjas, kit de reparación y equipo infantil.' },
 ] as const;
-export const PUBLISHED = new Set<string>(['calzado', 'botiquin-y-ampollas', 'camino-en-invierno']);
+export const PUBLISHED = new Set<string>(['calzado', 'botiquin-y-ampollas', 'camino-en-invierno', 'kit-de-albergue']);
 export const CART_URL_CALZADO = 'https://www.amazon.es/gp/aws/cart/add.html?ASIN.1=B00TTX0KV8&Quantity.1=1&ASIN.2=B07T2724KV&Quantity.2=1&ASIN.3=B00TPLYV2S&Quantity.3=1&ASIN.4=B00J5G51E0&Quantity.4=1&ASIN.5=B0D44WM77X&Quantity.5=1&ASIN.6=B01MQQS5US&Quantity.6=1&tag=XXXX-21';
 export const cartAsins = (url: string) => [...url.matchAll(/ASIN\.\d+=([A-Z0-9]{10})/g)].map(m => m[1]);
 export const CART_URL_BOTIQUIN = 'https://www.amazon.es/gp/aws/cart/add.html?ASIN.1=B076C1QQCQ&Quantity.1=1&ASIN.2=B07T2724KV&Quantity.2=1&ASIN.3=B00TPLYV2S&Quantity.3=1&ASIN.4=B0CVBBRNP5&Quantity.4=1&ASIN.5=B00J9FNRWU&Quantity.5=1&ASIN.6=B01LCU4AYI&Quantity.6=1&ASIN.7=B09VL8MN14&Quantity.7=1&ASIN.8=B00U8QYLTC&Quantity.8=1&ASIN.9=B09KS31HTX&Quantity.9=1&ASIN.10=B00BJP2JFE&Quantity.10=1&ASIN.11=B0DW4H1RSC&Quantity.11=1&ASIN.12=B09V35NLJG&Quantity.12=1&ASIN.13=B0CBN94LFB&Quantity.13=1&tag=XXXX-21';
@@ -20,6 +20,8 @@ export const PAGES = [
   { path: '/calzado/', name: 'Calzado', title: 'Calzado para el Camino de Santiago', summary: 'Botas o zapatillas, cómo acertar con la talla, calcetines contra las ampollas y kit de cuidado de pies.', published: '2026-10-30', modified: '2026-10-30' },
   { path: '/botiquin-y-ampollas/', name: 'Botiquín y ampollas', title: 'Botiquín para el Camino de Santiago', summary: 'Qué llevar en el botiquín del peregrino, cómo curar una ampolla paso a paso y cuándo usar aguja e hilo, Compeed o tirita.', published: '2026-10-30', modified: '2026-10-30' },
   { path: '/camino-en-invierno/', name: 'Camino en invierno', title: 'Camino de Santiago en invierno', summary: 'Qué llevar al Camino de Santiago entre noviembre y marzo: ropa por capas, luz, albergues abiertos, rutas recomendadas y kit de invierno en un clic.', published: '2026-10-30', modified: '2026-10-30' },
+  { path: '/kit-de-albergue/', name: 'Kit de albergue', title: 'Kit de albergue del Camino de Santiago', summary: 'Qué llevar al albergue del Camino: saco sábana, tapones, chanclas, toalla, candado y cómo evitar las chinches; kit en un clic.', published: '2026-10-30', modified: '2026-10-30' },
 ] as const;
 export const CART_URL_INVIERNO = 'https://www.amazon.es/gp/aws/cart/add.html?ASIN.1=B0BLVT2Y9N&Quantity.1=1&ASIN.2=B07WHGS5CZ&Quantity.2=1&ASIN.3=B01ERA6NF4&Quantity.3=1&ASIN.4=B0BK98QDGP&Quantity.4=1&ASIN.5=B09C5FKFVD&Quantity.5=1&ASIN.6=B07PNL5STG&Quantity.6=1&ASIN.7=B01M19HAEB&Quantity.7=1&tag=XXXX-21';
+export const CART_URL_ALBERGUE = 'https://www.amazon.es/gp/aws/cart/add.html?ASIN.1=B0744L2QJZ&Quantity.1=1&ASIN.2=B00AQTSIZ4&Quantity.2=1&ASIN.3=B09CZ68WV3&Quantity.3=1&ASIN.4=B0DM913D7Y&Quantity.4=1&ASIN.5=B0BJPNTXFJ&Quantity.5=1&ASIN.6=B089NF2932&Quantity.6=1&ASIN.7=B08DD93FSF&Quantity.7=1&tag=XXXX-21';
 export const pageMeta = (path: string) => PAGES.find(p => p.path === path)!;

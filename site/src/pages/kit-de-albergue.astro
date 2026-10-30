@@ -1,0 +1,125 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { albergueChecklist, albergueFaqs } from '../data/albergue';
+import { CART_URL_ALBERGUE, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = albergueChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_ALBERGUE).length;
+const meta = pageMeta('/kit-de-albergue/');
+const jsonLd = [faqPage(albergueFaqs), itemList('Checklist: kit de albergue del Camino de Santiago', albergueChecklist)];
+const label = 'Añadir el kit de albergue al carrito de Amazon';
+const note = `Añade ${inKit} artículos de talla única. Chanclas y toalla se eligen por talla o color y quedan fuera.`;
+---
+<Base title="Qué llevar al albergue del Camino de Santiago: kit y chinches (2026)" description="Kit de albergue del Camino de Santiago: saco sábana, tapones, chanclas, toalla, candado y cómo evitar las chinches. Tipos de albergue, normas y checklist en un clic." jsonLd={jsonLd} crumb="Kit de albergue">
+  <Hero eyebrow="Kit de albergue" title="Qué llevar al albergue del Camino de Santiago: kit para dormir bien y evitar chinches" highlight="dormir bien y evitar chinches" updated={meta.modified}>
+    <p>Para dormir en los albergues del Camino de Santiago necesitas <strong>tu propia ropa de cama ligera, algo contra el ruido y la luz, lo básico para la ducha y la colada, y un candado</strong>: los albergues públicos dan cama, pero casi nunca toalla ni sábanas.</p>
+    <p>Aquí tienes los tipos de albergue, la checklist ({total} artículos) con el porqué de cada cosa, cómo prevenir y actuar ante chinches y las normas que conviene conocer.</p>
+    <KitButton slot="side" url={CART_URL_ALBERGUE} label={label} title="Kit de albergue del peregrino" note={note} />
+  </Hero>
+
+  <section class="block" id="tipos">
+    <div class="wrap">
+      <span class="eyebrow">Dónde dormir</span>
+      <h2>Tipos de albergue en el Camino y qué te dan</h2>
+      <p class="lead">En el Camino hay albergues públicos, privados y parroquiales o de donativo, y lo que incluyen cambia: por eso tu kit debe cubrir lo que los públicos no dan.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Tipo</th><th scope="col">Reserva</th><th scope="col">Qué suele incluir</th><th scope="col">Qué llevar tú</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Público (municipal o de la Xunta)</th><td>Normalmente no; por orden de llegada con credencial</td><td>Litera y funda desechable de colchón y almohada</td><td>Saco sábana o saco, toalla, chanclas, tapones</td></tr>
+            <tr><th scope="row">Privado</th><td>Sí, en la mayoría</td><td>Cama; a veces sábanas y toalla (incluidas o de alquiler)</td><td>Lo mismo, por si no hay o se cobra aparte</td></tr>
+            <tr><th scope="row">Parroquial o de donativo</th><td>No</td><td>Lo básico, a veces cena comunitaria</td><td>Kit completo y respeto por las normas de la casa</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Confirma siempre las condiciones de cada albergue al llegar o en su web. En invierno muchos privados cierran: lee el <a href="/camino-en-invierno/">Camino en invierno</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Qué llevar al albergue: checklist ({total} artículos)</h2>
+      <p class="lead">El kit de albergue son {total} artículos ligeros para dormir, ducharte, tender y proteger tus cosas; súmalos a la checklist de la <a href="/mochila-del-camino/">mochila del Camino</a>.</p>
+      <Checklist checklist={albergueChecklist} cartUrl={CART_URL_ALBERGUE} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_ALBERGUE} label={label} variant="band" title="El kit de albergue, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block" id="chinches">
+    <div class="narrow prose">
+      <span class="eyebrow">Chinches</span>
+      <h2>Chinches en albergues: cómo prevenirlas y qué hacer si te pican</h2>
+      <p>Para evitar las chinches en los albergues, revisa la cama antes de acostarte, no dejes la mochila sobre el colchón y duerme en tu propio saco sábana.</p>
+      <h3>Prevención, cada noche</h3>
+      <ol>
+        <li><strong>Revisa costuras y esquinas</strong> del colchón y del somier con la linterna del móvil: busca puntos negros, manchas de sangre o insectos pequeños y marrones.</li>
+        <li><strong>Mochila fuera de la cama</strong>, cerrada y, si puedes, colgada o en una silla, nunca en el suelo junto a la pared.</li>
+        <li><strong>Saco sábana siempre</strong>, y la ropa del día siguiente dentro de una bolsa cerrada.</li>
+        <li><strong>Repelente de tejidos</strong> sobre el saco y la mochila si quieres una capa más.</li>
+      </ol>
+      <h3>Si te pican</h3>
+      <ol>
+        <li>Avisa al hospitalero para que revise y trate la habitación.</li>
+        <li>Lava toda tu ropa y el saco a 60 °C o sécalos en secadora caliente; lo que no se pueda lavar, en bolsa cerrada.</li>
+        <li>Revisa la mochila por dentro antes del siguiente albergue para no llevarlas contigo.</li>
+        <li>Para el picor, pregunta en la farmacia; si las picaduras se infectan, ve al centro de salud. Más en el <a href="/botiquin-y-ampollas/">botiquín del Camino</a>.</li>
+      </ol>
+      <p class="callout"><strong>Aviso:</strong> información práctica para peregrinos; no sustituye el consejo sanitario. Ante dudas, pregunta en tu farmacia.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="normas">
+    <div class="narrow prose">
+      <span class="eyebrow">Convivencia</span>
+      <h2>Normas y horarios de los albergues</h2>
+      <p>Los albergues del Camino tienen horario de entrada, cierre nocturno y salida temprana, y en los públicos necesitas la credencial del peregrino para dormir.</p>
+      <ul>
+        <li><strong>Credencial</strong>: la sellan al llegar y es obligatoria en los públicos.</li>
+        <li><strong>Horarios</strong>: abren a primera hora de la tarde, cierran la puerta por la noche y piden salir temprano; confírmalos al llegar.</li>
+        <li><strong>Botas fuera</strong>: casi todos piden dejar el calzado en la entrada; las chanclas son tu calzado de tarde. Ver la <a href="/calzado/">guía de calzado</a>.</li>
+        <li><strong>Madrugar en silencio</strong>: prepara la mochila la noche antes y usa luz roja o frontal baja.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="que-no-llevar">
+    <div class="narrow prose">
+      <span class="eyebrow">Peso muerto</span>
+      <h2>Qué no llevar al albergue</h2>
+      <p>No lleves al albergue nada que pese mucho y uses poco: toallas de algodón, almohada hinchable, secador o un saco de invierno en pleno verano.</p>
+      <ul>
+        <li>Toalla de algodón: pesa y no seca de un día para otro.</li>
+        <li>Botes grandes de champú y gel: compra formato viaje o pastilla de jabón.</li>
+        <li>Pijama aparte: duerme con la ropa de tarde.</li>
+        <li>Objetos de valor que no necesites.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="kit-de-albergue" withMochila />
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="narrow"><Faq faqs={albergueFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>
