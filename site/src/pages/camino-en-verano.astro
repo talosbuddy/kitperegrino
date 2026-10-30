@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { veranoChecklist, veranoFaqs } from '../data/verano';
+import { CART_URL_VERANO, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = veranoChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_VERANO).length;
+const meta = pageMeta('/camino-en-verano/');
+const jsonLd = [faqPage(veranoFaqs), itemList('Checklist: Camino de Santiago en verano', veranoChecklist)];
+const label = 'Añadir el kit de verano al carrito de Amazon';
+const note = `Añade ${inKit} artículos de talla única. Sombrero y gafas se eligen por talla o color y quedan fuera.`;
+---
+<Base title="Camino de Santiago en verano: qué llevar contra el calor (2026)" description="Cómo hacer el Camino de Santiago en verano: a qué hora salir, cuánta agua llevar, protección solar, ropa, golpe de calor y checklist de verano con kit en un clic." jsonLd={jsonLd} crumb="Camino en verano">
+  <Hero eyebrow="Camino en verano" title="Camino de Santiago en verano: qué llevar y cómo caminar con calor" highlight="cómo caminar con calor" updated={meta.modified}>
+    <p>Hacer el Camino de Santiago en verano es fácil si te adaptas al calor: <strong>sal al amanecer, lleva agua de sobra, protégete del sol y termina la etapa antes de las horas centrales</strong>.</p>
+    <p>Aquí tienes cómo organizar el día, cuánta agua llevar, la ropa, la checklist de verano ({total} artículos) y cómo reconocer un golpe de calor.</p>
+    <KitButton slot="side" url={CART_URL_VERANO} label={label} title="Kit de verano del peregrino" note={note} />
+  </Hero>
+
+  <section class="block" id="horarios">
+    <div class="wrap">
+      <span class="eyebrow">El día</span>
+      <h2>A qué hora caminar en verano: el día tipo</h2>
+      <p class="lead">En verano conviene caminar desde el amanecer hasta primera hora de la tarde y dedicar las horas de más calor a la ducha, la colada y el descanso.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Momento</th><th scope="col">Qué hacer</th><th scope="col">Por qué</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Antes del amanecer</th><td>Salir con frontal y mochila preparada la noche antes</td><td>Las primeras horas son las más frescas.</td></tr>
+            <tr><th scope="row">Media mañana</th><td>Pausa a la sombra, rellenar agua, aplicar protector</td><td>El sol ya calienta; el protector se renueva cada pocas horas.</td></tr>
+            <tr><th scope="row">Mediodía</th><td>Terminar la etapa o parar a la sombra</td><td>Son las horas de más riesgo de golpe de calor.</td></tr>
+            <tr><th scope="row">Tarde</th><td>Ducha, colada, cuidar los pies, descansar</td><td>La ropa seca rápido al sol; los pies se recuperan.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Qué llevar al Camino en verano: checklist ({total} artículos)</h2>
+      <p class="lead">Al equipo básico de la <a href="/mochila-del-camino/">mochila del Camino</a> añade en verano protección solar y más capacidad de agua; estos {total} artículos cubren lo que cambia con el calor.</p>
+      <Checklist checklist={veranoChecklist} cartUrl={CART_URL_VERANO} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_VERANO} label={label} variant="band" title="El kit de verano, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block" id="agua">
+    <div class="narrow prose">
+      <span class="eyebrow">Hidratación</span>
+      <h2>Cuánta agua llevar en el Camino en verano</h2>
+      <p>En verano lleva como mínimo un litro y medio de agua y más en los tramos largos sin fuentes, y rellena en cada pueblo aunque no la hayas terminado.</p>
+      <ul>
+        <li><strong>Bebe a sorbos</strong> y con frecuencia, antes de tener sed.</li>
+        <li><strong>Electrolitos</strong> en las etapas largas o si sudas mucho.</li>
+        <li><strong>Revisa los puntos de agua</strong> de la etapa en tu guía: en la Meseta hay tramos largos sin pueblos.</li>
+        <li><strong>Agua de fuentes</strong>: bebe solo de las señalizadas como potables.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="ropa">
+    <div class="narrow prose">
+      <span class="eyebrow">Ropa y pies</span>
+      <h2>Ropa y calzado para el Camino en verano</h2>
+      <p>La ropa para el Camino en verano debe ser técnica, ligera, de colores claros y de secado rápido, con la cabeza y la nuca siempre cubiertas.</p>
+      <ul>
+        <li>Dos o tres camisetas técnicas; manga larga fina si tu piel se quema fácilmente.</li>
+        <li>Pantalón corto y uno largo o convertible para las mañanas frescas.</li>
+        <li>Una capa ligera y un chubasquero: en Galicia puede llover también en verano.</li>
+        <li>Zapatillas de trekking transpirables y calcetines técnicos; ver la <a href="/calzado/">guía de calzado</a>.</li>
+        <li>Vaselina o barra antifricción cada mañana: con calor y sudor aumentan las ampollas. Ver el <a href="/botiquin-y-ampollas/">botiquín y ampollas</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="golpe-de-calor">
+    <div class="narrow prose">
+      <span class="eyebrow">Salud</span>
+      <h2>Golpe de calor: señales y qué hacer</h2>
+      <p>Un golpe de calor es una urgencia: si un peregrino tiene mareo, confusión, piel muy caliente o deja de sudar, llévalo a la sombra, refréscalo y llama al 112.</p>
+      <ul>
+        <li><strong>Señales de alarma:</strong> dolor de cabeza, náuseas, mareo, calambres, confusión, piel caliente y seca.</li>
+        <li><strong>Qué hacer:</strong> parar, sombra, aflojar la ropa, mojar cuello, axilas e ingles y dar agua a sorbos si está consciente.</li>
+        <li><strong>Prevención:</strong> etapas cortas los días de ola de calor y consulta de los avisos de AEMET.</li>
+      </ul>
+      <p class="callout"><strong>Aviso:</strong> información práctica para peregrinos; no sustituye el consejo sanitario ni los avisos oficiales. Ante dudas, pregunta en tu farmacia o centro de salud.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="albergues-y-rutas">
+    <div class="narrow prose">
+      <span class="eyebrow">Planificación</span>
+      <h2>Albergues y rutas en verano</h2>
+      <p>En verano los albergues de las etapas más concurridas, sobre todo desde Sarria, se llenan pronto, así que reserva en privados o llega a primera hora de la tarde a los públicos.</p>
+      <ul>
+        <li>Lo que llevar para dormir y ducharte: <a href="/kit-de-albergue/">kit de albergue</a>.</li>
+        <li>Para elegir ruta con menos calor y gente, compara <a href="/frances-vs-portugues/">Francés vs Portugués</a>.</li>
+        <li>Si vas con niños o en bici, mira <a href="/camino-en-bici-y-con-ninos/">Camino en bici y con niños</a>.</li>
+        <li>Y si te planteas ir fuera de temporada, lee el <a href="/camino-en-invierno/">Camino en invierno</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="camino-en-verano" withMochila />
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={veranoFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>
