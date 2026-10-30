@@ -1,0 +1,9 @@
+---
+import { faqs } from '../data/checklist';
+---
+<h2 id="preguntas-frecuentes">Preguntas frecuentes</h2>
+{faqs.map(f => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+<style>
+  details { border-bottom: 1px solid #eadcc8; padding: .6rem 0; }
+  summary { font-weight: 600; cursor: pointer; }
+</style>

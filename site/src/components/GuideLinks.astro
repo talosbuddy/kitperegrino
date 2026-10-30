@@ -1,0 +1,4 @@
+---
+import { guides } from '../data/site';
+---
+<ul>{guides.map(g => <li><a href={`/${g.slug}/`}>{g.title}</a>: {g.desc}</li>)}</ul>

@@ -1,0 +1,42 @@
+---
+import { guides } from '../data/site';
+interface Props { title: string; description: string; jsonLd?: object }
+const { title, description, jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+</head>
+<body>
+  <header class="site"><a href="/" class="brand">🎒 KitPeregrino</a><a href="/mochila-del-camino/">Mochila del Camino</a></header>
+  <main><slot /></main>
+  <footer class="site">
+    <nav aria-label="Guías"><a href="/mochila-del-camino/">Mochila del Camino</a>{guides.map(g => <a href={`/${g.slug}/`}>{g.title}</a>)}</nav>
+    <p class="disclosure">Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
+  </footer>
+</body>
+</html>
+<style is:global>
+  :root { --c: #8a4b12; --bg: #fffdf8; --t: #222; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: var(--t); background: var(--bg); }
+  body { margin: 0; }
+  main { max-width: 46rem; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
+  h1 { line-height: 1.2; font-size: clamp(1.7rem, 5vw, 2.4rem); }
+  h2 { margin-top: 2.5rem; border-bottom: 2px solid #eadcc8; }
+  a { color: var(--c); }
+  header.site, footer.site { padding: .8rem 1.25rem; background: #f4ead9; display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center; }
+  header.site .brand { font-weight: 700; text-decoration: none; margin-right: auto; }
+  footer.site { flex-direction: column; align-items: flex-start; font-size: .9rem; }
+  footer.site nav { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+  .disclosure { font-style: italic; }
+</style>

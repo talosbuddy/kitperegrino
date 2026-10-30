@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { guides } from '../data/site';
+export function getStaticPaths() { return guides.map(g => ({ params: { slug: g.slug }, props: { g } })); }
+const { g } = Astro.props;
+---
+<Base title={`${g.title} | KitPeregrino`} description={`${g.title}: ${g.desc} Guía del Camino de Santiago de KitPeregrino, próximamente.`}>
+  <h1>{g.title}</h1>
+  <p><strong>Próximamente.</strong> {g.desc}</p>
+  <p>Mientras tanto, consulta <a href="/mochila-del-camino/">qué llevar en la mochila del Camino</a>.</p>
+</Base>

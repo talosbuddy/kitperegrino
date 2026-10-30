@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { faqs, checklist } from '../data/checklist';
+const total = checklist.reduce((s, g) => s + g.items.length, 0);
+const jsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<Base title="Qué llevar en la mochila del Camino de Santiago: lista completa 2026" description={`Checklist de la mochila del Camino de Santiago: ${total} imprescindibles probados por peregrinos, cuánto debe pesar y qué dejar en casa. Añade el kit al carrito en un clic.`} jsonLd={jsonLd}>
+  <h1>Qué llevar en la mochila del Camino de Santiago: la lista que de verdad usarás</h1>
+  <p>Si buscas qué llevar en la mochila del Camino, la regla es sencilla: <strong>lleva solo lo que vayas a usar cada día y que no pase del 10 % de tu peso corporal</strong>. Con 70 kg, unos 7 kg con agua incluida. Todo lo demás se compra por el camino o se queda en casa.</p>
+  <p>Hemos preparado una checklist corta para cualquier ruta de 5 a 30 etapas en primavera u otoño. Es la misma lista que te cabe en una mochila de 30-35 litros. Si vas en verano o en invierno, en bici o con niños, consulta las guías específicas que enlazamos más abajo.</p>
+  <KitButton />
+  <p><small><em>Añade 10 artículos básicos. Las prendas con talla (camiseta, calcetines, chanclas, poncho, riñonera) tienes que elegirlas tú en su ficha, porque cada uno usa una talla distinta.</em></small></p>
+
+  <h2>Cuánto debe pesar la mochila del Camino</h2>
+  <ul>
+    <li><strong>Objetivo: 10 % de tu peso</strong> (máximo 12 %), con agua y comida del día.</li>
+    <li><strong>Capacidad: 30-40 litros.</strong> Si es más grande, acabarás llenándola.</li>
+    <li><strong>Tres mudas como máximo:</strong> una puesta, otra secándose y otra de reserva.</li>
+    <li><strong>Pésala antes de salir.</strong> Cada cosa que lleves "por si acaso" te pesará durante 800 km.</li>
+  </ul>
+
+  <h2>Checklist de la mochila del Camino ({total} artículos)</h2>
+  <Checklist />
+  <p>Todo lo demás para la noche (candado, pinzas, tapones de repuesto) está en <a href="/kit-de-albergue/">Kit de albergue</a>.</p>
+  <KitButton />
+
+  <h2>Qué NO llevar en la mochila del Camino</h2>
+  <ul>
+    <li>Más de 3 mudas, vaqueros, toallas de algodón o neceseres de tamaño normal.</li>
+    <li>Libros en papel (lleva el móvil), portátil y "por si acaso" duplicados.</li>
+    <li>Saco de dormir de plumas en verano: el saco sábana es suficiente.</li>
+  </ul>
+
+  <h2>Adapta la mochila a tu Camino</h2>
+  <GuideLinks />
+  <Faq />
+</Base>

@@ -1,0 +1,22 @@
+---
+import { checklist } from '../data/checklist';
+import { amazon } from '../data/site';
+let n = 0;
+---
+{checklist.map(group => (
+  <section>
+    <h3>{group.title}</h3>
+    <ol class="items" start={n + 1}>
+      {group.items.map(item => { n++; return (
+        <li>
+          <strong>{item.what}:</strong> <a href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">{item.name}</a>.
+          <em> Por qué:</em> {item.why}
+          {item.link && <> {item.link.pre} <a href={item.link.href}>{item.link.text}</a>.</>}
+        </li>
+      ); })}
+    </ol>
+  </section>
+))}
+<style>
+  .items li { margin-bottom: .9rem; }
+</style>
