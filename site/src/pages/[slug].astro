@@ -1,11 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import GuideLinks from '../components/GuideLinks.astro';
 import { guides, PUBLISHED } from '../data/site';
 export function getStaticPaths() { return guides.filter(g => !PUBLISHED.has(g.slug)).map(g => ({ params: { slug: g.slug }, props: { g } })); }
 const { g } = Astro.props;
 ---
 <Base title={`${g.title} | KitPeregrino`} description={`${g.title}: ${g.desc} Guía del Camino de Santiago de KitPeregrino, próximamente.`}>
-  <h1>{g.title}</h1>
-  <p><strong>Próximamente.</strong> {g.desc}</p>
-  <p>Mientras tanto, consulta <a href="/mochila-del-camino/">qué llevar en la mochila del Camino</a>.</p>
+  <Hero eyebrow={g.title} title={g.title}>
+    <p><strong>Próximamente.</strong> {g.desc}</p>
+    <p>Mientras tanto, consulta <a href="/mochila-del-camino/">qué llevar en la mochila del Camino</a>.</p>
+  </Hero>
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Ya disponible</span>
+      <h2>Otras guías</h2>
+      <GuideLinks exclude={g.slug} withMochila />
+    </div>
+  </section>
 </Base>

@@ -3,6 +3,7 @@ import { guides } from '../data/site';
 interface Props { title: string; description: string; jsonLd?: object }
 const { title, description, jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="es">
@@ -16,27 +17,100 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
+  <meta name="theme-color" content="#14324f" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2314324f'/><path d='M7 16h14l-5-5m5 5-5 5' stroke='%23f5c400' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </head>
 <body>
-  <header class="site"><a href="/" class="brand">🎒 KitPeregrino</a><a href="/mochila-del-camino/">Mochila del Camino</a></header>
+  <div class="topbar"><span>🐚 Checklists para el Camino de Santiago · Cada producto comprobado en Amazon.es</span></div>
+  <header class="site">
+    <div class="wrap hdr">
+      <a href="/" class="brand" aria-label="KitPeregrino, inicio">
+        <span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32" width="34" height="34"><rect width="32" height="32" rx="9" fill="#14324f"/><path d="M7 16h14l-5-5m5 5-5 5" stroke="#f5c400" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span>Kit<b>Peregrino</b></span>
+      </a>
+      <nav class="mainnav" aria-label="Principal">
+        <a href="/mochila-del-camino/" aria-current={path === '/mochila-del-camino/' ? 'page' : undefined}>Mochila</a>
+        <a href="/calzado/" aria-current={path === '/calzado/' ? 'page' : undefined}>Calzado</a>
+        <a href="/#guias">Guías</a>
+      </nav>
+      <a class="hdr-cta" href="/mochila-del-camino/#checklist">Ver el kit <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
   <main><slot /></main>
   <footer class="site">
-    <nav aria-label="Guías"><a href="/mochila-del-camino/">Mochila del Camino</a>{guides.map(g => <a href={`/${g.slug}/`}>{g.title}</a>)}</nav>
-    <p class="disclosure">Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p>
+    <div class="wrap foot">
+      <div>
+        <a href="/" class="brand light"><span>Kit<b>Peregrino</b></span></a>
+        <p class="muted">Checklists razonadas para caminar a Santiago con lo justo. Cada producto se comprueba en su ficha de Amazon.es antes de recomendarlo.</p>
+      </div>
+      <nav aria-label="Guías">
+        <h2>Guías</h2>
+        <a href="/mochila-del-camino/">Mochila del Camino</a>
+        {guides.map(g => <a href={`/${g.slug}/`}>{g.title}</a>)}
+      </nav>
+    </div>
+    <div class="wrap"><p class="disclosure">Como Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.</p></div>
   </footer>
 </body>
 </html>
 <style is:global>
-  :root { --c: #8a4b12; --bg: #fffdf8; --t: #222; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: var(--t); background: var(--bg); }
-  body { margin: 0; }
-  main { max-width: 46rem; margin: 0 auto; padding: 1rem 1.25rem 3rem; }
-  h1 { line-height: 1.2; font-size: clamp(1.7rem, 5vw, 2.4rem); }
-  h2 { margin-top: 2.5rem; border-bottom: 2px solid #eadcc8; }
-  a { color: var(--c); }
-  header.site, footer.site { padding: .8rem 1.25rem; background: #f4ead9; display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center; }
-  header.site .brand { font-weight: 700; text-decoration: none; margin-right: auto; }
-  footer.site { flex-direction: column; align-items: flex-start; font-size: .9rem; }
-  footer.site nav { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
-  .disclosure { font-style: italic; }
+  :root {
+    --ink: #1c2430; --muted: #5b6573; --navy: #14324f; --navy-2: #0e2439;
+    --sun: #f5c400; --sun-2: #ffd93d; --sand: #f7f1e6; --sand-2: #efe5d3; --line: #e3d7c2;
+    --paper: #fffcf6; --green: #2f7d4f; --radius: 18px;
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --shadow: 0 1px 2px rgba(20,50,79,.06), 0 8px 24px -8px rgba(20,50,79,.18);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--sans); font-size: 17px; line-height: 1.65; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; }
+  a { color: var(--navy); text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--sun); }
+  a:hover { color: #0a1c2e; }
+  h1, h2, h3 { font-family: var(--serif); color: var(--navy-2); line-height: 1.12; letter-spacing: -.01em; }
+  h2 { font-size: clamp(1.6rem, 3.6vw, 2.25rem); margin: 0 0 1rem; }
+  h3 { font-size: 1.3rem; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+  .narrow { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+  .topbar { background: var(--navy-2); color: #cfdbe7; font-size: .8rem; text-align: center; padding: .45rem 1rem; letter-spacing: .02em; }
+  header.site { position: sticky; top: 0; z-index: 20; background: rgba(255,252,246,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .hdr { display: flex; align-items: center; gap: 1.5rem; height: 66px; }
+  .brand { display: inline-flex; align-items: center; gap: .55rem; font-family: var(--serif); font-size: 1.35rem; font-weight: 600; text-decoration: none; color: var(--navy-2); }
+  .brand b { font-weight: 800; color: var(--navy); }
+  .brand.light, .brand.light b { color: #fff; }
+  .logo { display: inline-flex; }
+  .mainnav { display: flex; gap: 1.4rem; margin-left: auto; }
+  .mainnav a { text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--ink); padding: .3rem 0; border-bottom: 2px solid transparent; }
+  .mainnav a[aria-current="page"], .mainnav a:hover { border-color: var(--sun); }
+  .hdr-cta { background: var(--sun); color: var(--navy-2); font-weight: 700; text-decoration: none; padding: .55rem 1rem; border-radius: 999px; font-size: .92rem; white-space: nowrap; }
+  .hdr-cta:hover { background: var(--sun-2); }
+  @media (max-width: 640px) {
+    .mainnav { display: none; }
+    .hdr-cta { margin-left: auto; }
+    body { font-size: 16.5px; }
+  }
+  section.block { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+  section.alt { background: var(--sand); border-block: 1px solid var(--line); }
+  .eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); background: #fff3b8; padding: .3rem .7rem; border-radius: 999px; margin-bottom: 1rem; }
+  .lead { font-size: 1.12rem; color: #3a4452; }
+  .muted { color: var(--muted); }
+  .prose ul, .prose ol { padding-left: 1.2rem; }
+  .prose li { margin: .45rem 0; }
+  .prose li::marker { color: #c39a00; font-weight: 700; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; padding: 0; list-style: none; }
+  .facts li { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; margin: 0; box-shadow: var(--shadow); }
+  .facts li strong { display: block; font-family: var(--serif); font-size: 1.15rem; color: var(--navy-2); margin-bottom: .2rem; }
+  .callout { background: #fff; border-left: 5px solid var(--sun); border-radius: 12px; padding: 1rem 1.25rem; box-shadow: var(--shadow); }
+  footer.site { background: var(--navy-2); color: #cfdbe7; padding: 3rem 0 1.5rem; margin-top: 0; }
+  footer.site a { color: #fff; text-decoration-color: rgba(245,196,0,.6); }
+  .foot { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; }
+  .foot nav { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem 1rem; align-content: start; }
+  .foot nav h2 { grid-column: 1 / -1; font-family: var(--sans); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sun); margin: 0 0 .4rem; }
+  .foot .muted { color: #9fb0c2; max-width: 34ch; }
+  .disclosure { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.2rem; font-size: .85rem; color: #9fb0c2; }
+  @media (max-width: 760px) { .foot { grid-template-columns: 1fr; } }
 </style>

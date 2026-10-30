@@ -1,11 +1,33 @@
 ---
 import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
 import GuideLinks from '../components/GuideLinks.astro';
+import { CART_URL, CART_URL_CALZADO, cartAsins } from '../data/site';
 ---
 <Base title="KitPeregrino: qué llevar al Camino de Santiago" description="Guías y checklists para preparar la mochila del Camino de Santiago: calzado, botiquín, albergue, verano, invierno, rutas, bici y niños.">
-  <h1>Prepara tu Camino de Santiago con lo justo</h1>
-  <p>Checklists cortas y razonadas para que la mochila no pese más de lo necesario.</p>
-  <p><a href="/mochila-del-camino/"><strong>👉 Qué llevar en la mochila del Camino de Santiago</strong></a>: la lista completa con el kit listo para añadir al carrito.</p>
-  <h2>Guías por tema</h2>
-  <GuideLinks />
+  <Hero eyebrow="Camino de Santiago" title="Prepara tu Camino de Santiago con lo justo" highlight="con lo justo" crumbs={false}>
+    <p>Checklists cortas y razonadas para que la mochila no pese más de lo necesario. Cada artículo explica <strong>por qué</strong> está en la lista, y el kit entero entra en tu carrito con un clic.</p>
+    <p class="hero-ctas"><a class="cta-main" href="/mochila-del-camino/">Ver la lista de la mochila →</a> <a class="cta-ghost" href="/calzado/">Calzado y ampollas</a></p>
+    <ul slot="side" class="steps">
+      <li><b>1</b><span><strong>Lee la checklist.</strong> Cada artículo trae su porqué y nada más.</span></li>
+      <li><b>2</b><span><strong>Añade el kit.</strong> {cartAsins(CART_URL).length} básicos de mochila o {cartAsins(CART_URL_CALZADO).length} de cuidado de pies, en un clic.</span></li>
+      <li><b>3</b><span><strong>Elige tus tallas.</strong> El calzado y la ropa, a tu medida.</span></li>
+    </ul>
+  </Hero>
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Guías por tema</h2>
+      <GuideLinks withMochila />
+    </div>
+  </section>
 </Base>
+<style>
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+  .cta-main { background: var(--sun); color: var(--navy-2) !important; font-weight: 800; text-decoration: none; padding: .9rem 1.3rem; border-radius: 14px; box-shadow: 0 4px 0 #c99f00; }
+  .cta-ghost { color: #fff !important; font-weight: 700; text-decoration: none; padding: .9rem 1.2rem; border-radius: 14px; border: 1.5px solid rgba(255,255,255,.35); }
+  .steps { list-style: none; margin: 0; padding: 1.4rem; display: grid; gap: 1rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; }
+  .steps li { display: flex; gap: .9rem; align-items: flex-start; color: #d4e0ec; }
+  .steps b { flex: none; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--sun); color: var(--navy-2); font-family: var(--serif); }
+  .steps strong { color: #fff; }
+</style>

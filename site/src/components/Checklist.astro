@@ -1,23 +1,48 @@
 ---
 import type { Group } from '../data/checklist';
-const { checklist } = Astro.props as { checklist: Group[] };
-import { amazon } from '../data/site';
+import { amazon, cartAsins } from '../data/site';
+const { checklist, cartUrl } = Astro.props as { checklist: Group[]; cartUrl: string };
+const inCart = new Set(cartAsins(cartUrl));
 let n = 0;
 ---
+<div class="groups">
 {checklist.map(group => (
-  <section>
-    <h3>{group.title}</h3>
-    <ol class="items" start={n + 1}>
-      {group.items.map(item => { n++; return (
-        <li>
-          <strong>{item.what}:</strong> <a href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">{item.name}</a>.
-          <em> Por qué:</em> {item.why}
-          {item.link && <> {item.link.pre} <a href={item.link.href}>{item.link.text}</a>.</>}
+  <section class="group">
+    <h3 class="group-title">{group.title} <span>{group.items.length}</span></h3>
+    <ol class="cards">
+      {group.items.map(item => { n++; const k = inCart.has(item.asin); return (
+        <li class="card">
+          <div class="card-top">
+            <span class="num">{String(n).padStart(2, '0')}</span>
+            <span class:list={['tag', k ? 'in' : 'size']}>{k ? '✓ En el kit' : 'Elige talla o color'}</span>
+          </div>
+          <h4>{item.what}</h4>
+          <p class="pick">Nuestra elección: <strong>{item.name}</strong></p>
+          <p class="why"><span>Por qué</span> {item.why}{item.link && <>{' '}{item.link.pre}{' '}<a href={item.link.href}>{item.link.text}</a>.</>}</p>
+          <a class="see" href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon <span aria-hidden="true">↗</span></a>
         </li>
       ); })}
     </ol>
   </section>
 ))}
+</div>
 <style>
-  .items li { margin-bottom: .9rem; }
+  .groups { display: grid; gap: 2.5rem; }
+  .group-title { display: flex; align-items: center; gap: .6rem; font-size: 1.45rem; margin: 0 0 1rem; }
+  .group-title span { font-family: var(--sans); font-size: .8rem; font-weight: 700; background: var(--navy); color: #fff; border-radius: 999px; padding: .15rem .55rem; }
+  .cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+  .card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem 1.3rem 1.1rem; box-shadow: var(--shadow); transition: transform .15s, box-shadow .15s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(20,50,79,.06), 0 16px 32px -12px rgba(20,50,79,.28); }
+  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .7rem; }
+  .num { font-family: var(--serif); font-weight: 800; font-size: 1.5rem; color: #d7b200; line-height: 1; }
+  .tag { font-size: .74rem; font-weight: 700; border-radius: 999px; padding: .22rem .6rem; }
+  .tag.in { background: #e5f3ea; color: var(--green); }
+  .tag.size { background: var(--sand-2); color: #6b5a3c; }
+  h4 { font-family: var(--serif); font-size: 1.15rem; line-height: 1.25; margin: 0 0 .35rem; color: var(--navy-2); }
+  .pick { margin: 0 0 .7rem; font-size: .93rem; color: var(--muted); }
+  .pick strong { color: var(--ink); }
+  .why { margin: 0 0 1rem; font-size: .95rem; flex: 1; }
+  .why > span { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); background: #fff3b8; border-radius: 6px; padding: .05rem .4rem; margin-right: .25rem; }
+  .see { align-self: flex-start; font-weight: 700; font-size: .92rem; text-decoration: none; color: var(--navy); border: 1.5px solid var(--navy); border-radius: 10px; padding: .45rem .8rem; }
+  .see:hover { background: var(--navy); color: #fff; }
 </style>
