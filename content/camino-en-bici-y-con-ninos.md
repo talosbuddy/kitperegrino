@@ -41,7 +41,7 @@ Consulta los requisitos actualizados de la Compostela en la [Oficina del Peregri
 
 Para hacer el Camino en bici necesitas una bici de montaña o gravel revisada, con portabultos y alforjas, más un kit básico de reparación, luces, candado y casco. 
 - Bici: de montaña o gravel con neumáticos anchos; revísala en un taller antes de salir. 
-- Casco: imprescindible; elígelo por talla. 
+- Casco: obligatorio en vías interurbanas desde el 1 de octubre de 2026 (DGT); elígelo por talla. 
 - Etapas: calcula según desnivel y firme, no solo kilómetros; deja margen para averías. 
 - Convivencia: avisa con el timbre y cede el paso a los peregrinos a pie en las sendas. 
 - Ruta: el Portugués y el Francés admiten bici; compáralos en [Francés vs Portugués](/frances-vs-portugues/). Con niños 

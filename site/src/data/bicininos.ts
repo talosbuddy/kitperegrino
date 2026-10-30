@@ -29,4 +29,5 @@ export const biciNinosFaqs = [
   { q: '¿Qué llevar al Camino con niños?', a: 'Para el Camino con niños lleva su propia mochila pequeña con agua y chubasquero, calzado ya usado, protector solar infantil, gorra, una pulsera con tu teléfono, tentempiés y un botiquín con tiritas y apósitos para ampollas. Reserva alojamiento para no buscar cama con niños cansados.' },
   { q: '¿Se puede llevar a un bebé en el Camino?', a: 'Sí, con mochila portabebés o carrito en tramos que lo permitan. El nombre del bebé puede incluirse en la Compostela del adulto, según la Oficina del Peregrino.' },
   { q: '¿Se puede alquilar bici para el Camino?', a: 'Sí: hay empresas que alquilan y recogen la bici al final. Compara y revisa lo que incluyen antes de reservar.' },
+  { q: '¿Es obligatorio el casco para hacer el Camino en bici?', a: 'Sí en carreteras fuera de poblado: desde el 1 de octubre de 2026 todos los ciclistas deben llevarlo en vías interurbanas, sin excepciones, según la DGT. Los menores de 16 años también en ciudad.' },
 ];
