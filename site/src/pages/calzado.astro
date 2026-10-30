@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { faqPage, itemList } from '../data/schema';
+import { pageMeta } from '../data/site';
 import Hero from '../components/Hero.astro';
 import KitButton from '../components/KitButton.astro';
 import Checklist from '../components/Checklist.astro';
@@ -8,12 +10,13 @@ import GuideLinks from '../components/GuideLinks.astro';
 import { calzadoChecklist, calzadoFaqs } from '../data/calzado';
 import { CART_URL_CALZADO } from '../data/site';
 const total = calzadoChecklist.reduce((s, g) => s + g.items.length, 0);
-const jsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: calzadoFaqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const jsonLd = [faqPage(calzadoFaqs), itemList('Checklist: Calzado', calzadoChecklist)];
+const meta = pageMeta('/calzado/');
 const label = 'Añadir el kit de cuidado de pies al carrito de Amazon';
 const note = 'El botón añade los 6 artículos de cuidado (sin talla). Las zapatillas, los calcetines, los cordones y las plantillas tienes que elegirlos en su ficha, según tu talla y tu color.';
 ---
-<Base title="Calzado para el Camino de Santiago: botas o zapatillas y cómo evitar ampollas" description="Qué calzado llevar al Camino de Santiago: botas o zapatillas, qué talla elegir, calcetines contra las ampollas y el kit de cuidado de pies. Añade el kit al carrito en un clic." jsonLd={jsonLd}>
-  <Hero eyebrow="Calzado" title="Calzado para el Camino de Santiago: botas o zapatillas, calcetines y cuidado de pies" highlight="botas o zapatillas">
+<Base title="Calzado para el Camino de Santiago: botas o zapatillas y cómo evitar ampollas" description="Qué calzado llevar al Camino de Santiago: botas o zapatillas, qué talla elegir, calcetines contra las ampollas y el kit de cuidado de pies. Añade el kit al carrito en un clic." jsonLd={jsonLd} crumb="Calzado">
+  <Hero eyebrow="Calzado" title="Calzado para el Camino de Santiago: botas o zapatillas, calcetines y cuidado de pies" highlight="botas o zapatillas" updated={meta.modified}>
     <p>El calzado decide tu Camino más que ninguna otra cosa de la mochila. Muchos abandonos por lesión empiezan en los pies: ampollas, uñas negras o tendinitis. La buena noticia es que casi todo se previene con <strong>un calzado ya usado, media talla más grande, buenos calcetines y dos minutos de cuidado cada mañana</strong>.</p>
     <p>Esta guía responde a la pregunta de siempre, ¿botas o zapatillas para el Camino de Santiago?, y reúne los {total} artículos que de verdad marcan la diferencia. La lista completa del resto del equipo está en <a href="/mochila-del-camino/">qué llevar en la mochila del Camino</a>.</p>
     <KitButton slot="side" url={CART_URL_CALZADO} label={label} title="Kit de cuidado de pies" note={note} />
@@ -58,7 +61,7 @@ const note = 'El botón añade los 6 artículos de cuidado (sin talla). Las zapa
 
   <section class="block">
     <div class="narrow prose">
-      <span class="eyebrow">Rutina</span>
+      <span class="eyebrow" id="rutina">Rutina</span>
       <h2>Rutina diaria de pies del peregrino</h2>
       <ol>
         <li><strong>Por la mañana:</strong> barra antifricción, calcetines limpios y secos, y esparadrapo en los puntos que ya te avisaron.</li>

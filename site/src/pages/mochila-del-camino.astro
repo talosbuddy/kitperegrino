@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { faqPage, itemList } from '../data/schema';
+import { pageMeta } from '../data/site';
 import Hero from '../components/Hero.astro';
 import KitButton from '../components/KitButton.astro';
 import Checklist from '../components/Checklist.astro';
@@ -8,11 +10,12 @@ import GuideLinks from '../components/GuideLinks.astro';
 import { faqs, checklist } from '../data/checklist';
 import { CART_URL } from '../data/site';
 const total = checklist.reduce((s, g) => s + g.items.length, 0);
-const jsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const jsonLd = [faqPage(faqs), itemList('Checklist: Mochila del Camino', checklist)];
+const meta = pageMeta('/mochila-del-camino/');
 const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, calcetines, chanclas, poncho, riñonera) tienes que elegirlas tú en su ficha, porque cada uno usa una talla distinta.';
 ---
-<Base title="Qué llevar en la mochila del Camino de Santiago: lista completa 2026" description={`Checklist de la mochila del Camino de Santiago: ${total} imprescindibles probados por peregrinos, cuánto debe pesar y qué dejar en casa. Añade el kit al carrito en un clic.`} jsonLd={jsonLd}>
-  <Hero eyebrow="Mochila del Camino" title="Qué llevar en la mochila del Camino de Santiago: la lista que de verdad usarás" highlight="la lista que de verdad usarás">
+<Base title="Qué llevar en la mochila del Camino de Santiago: lista completa 2026" description={`Checklist de la mochila del Camino de Santiago: ${total} imprescindibles probados por peregrinos, cuánto debe pesar y qué dejar en casa. Añade el kit al carrito en un clic.`} jsonLd={jsonLd} crumb="Mochila del Camino">
+  <Hero eyebrow="Mochila del Camino" title="Qué llevar en la mochila del Camino de Santiago: la lista que de verdad usarás" highlight="la lista que de verdad usarás" updated={meta.modified}>
     <p>Si buscas qué llevar en la mochila del Camino, la regla es sencilla: <strong>lleva solo lo que vayas a usar cada día y que no pase del 10 % de tu peso corporal</strong>. Con 70 kg, unos 7 kg con agua incluida. Todo lo demás se compra por el camino o se queda en casa.</p>
     <p>Hemos preparado una checklist corta para cualquier ruta de 5 a 30 etapas en primavera u otoño. Es la misma lista que te cabe en una mochila de 30-35 litros. Si vas en verano o en invierno, en bici o con niños, consulta las guías específicas que enlazamos más abajo.</p>
     <KitButton slot="side" url={CART_URL} title="Kit básico de mochila" note={note} />

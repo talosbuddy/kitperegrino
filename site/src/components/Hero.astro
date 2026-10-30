@@ -1,6 +1,7 @@
 ---
-interface Props { eyebrow: string; title: string; highlight?: string; crumbs?: boolean }
-const { eyebrow, title, highlight, crumbs = true } = Astro.props;
+interface Props { eyebrow: string; title: string; highlight?: string; crumbs?: boolean; updated?: string }
+const { eyebrow, title, highlight, crumbs = true, updated } = Astro.props;
+const fmt = (d: string) => new Date(d + 'T12:00:00Z').toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
 const parts = highlight && title.includes(highlight) ? title.split(highlight) : null;
 ---
 <section class="hero">
@@ -10,6 +11,7 @@ const parts = highlight && title.includes(highlight) ? title.split(highlight) : 
       <span class="eyebrow">{eyebrow}</span>
       <h1>{parts ? <>{parts[0]}<mark>{highlight}</mark>{parts[1]}</> : title}</h1>
       <div class="hero-lead"><slot /></div>
+      {updated && <p class="updated">Actualizado el <time datetime={updated}>{fmt(updated)}</time> · Equipo KitPeregrino · Productos comprobados en Amazon.es</p>}
     </div>
     <div class="hero-side"><slot name="side" /></div>
   </div>
@@ -27,6 +29,7 @@ const parts = highlight && title.includes(highlight) ? title.split(highlight) : 
   .hero-lead { font-size: 1.1rem; color: #d4e0ec; max-width: 60ch; }
   .hero-lead :global(strong) { color: #fff; }
   .hero-lead :global(a) { color: #fff; }
+  .updated { font-size: .85rem; color: #9fb7cf; margin-top: 1.2rem; }
   .arrow-bg { position: absolute; right: -40px; bottom: -40px; width: 420px; color: rgba(245,196,0,.08); }
   @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
 </style>

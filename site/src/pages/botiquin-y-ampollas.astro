@@ -1,0 +1,153 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { botiquinChecklist, botiquinFaqs } from '../data/botiquin';
+import { CART_URL_BOTIQUIN, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = botiquinChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_BOTIQUIN).length;
+const meta = pageMeta('/botiquin-y-ampollas/');
+const steps: [string, string][] = [
+  ['Para en cuanto notes calor o escozor', 'Una «zona caliente» tratada a tiempo con esparadrapo o barra antifricción casi nunca llega a ser ampolla.'],
+  ['Lávate las manos y limpia la zona', 'Usa agua limpia o suero fisiológico y seca bien.'],
+  ['Desinfecta', 'Aplica antiséptico (clorhexidina o povidona yodada) sobre la ampolla y alrededor.'],
+  ['Decide si drenar', 'Pequeña y sin dolor: no la toques. Grande, tensa o dolorosa: pínchala por el borde en uno o dos puntos con una aguja estéril o desinfectada y vacía el líquido presionando suavemente.'],
+  ['No quites la piel', 'La piel de la ampolla protege la herida y ayuda a regenerarla. Recorta solo la que se haya desprendido del todo.'],
+  ['Cubre', 'Pon un apósito hidrocoloide del tamaño adecuado, calentado entre las manos y sin arrugas, o una gasa con esparadrapo.'],
+  ['Revisa cada día', 'Repite la cura si se vuelve a llenar. Si aparece pus, rojez que se extiende o fiebre, ve al centro de salud.'],
+];
+const jsonLd = [faqPage(botiquinFaqs), itemList('Checklist: botiquín del Camino de Santiago', botiquinChecklist)];
+const label = 'Añadir el botiquín al carrito de Amazon';
+const note = `Añade ${inKit} artículos. La cinta de kinesiología y el botiquín todo en uno son opcionales y quedan fuera para no duplicar.`;
+---
+<Base title="Botiquín del Camino de Santiago: lista y cómo curar ampollas (2026)" description="Qué llevar en el botiquín del Camino de Santiago y cómo curar una ampolla en ruta paso a paso: aguja e hilo, Compeed o tirita, vaselina y cuándo ir al médico. Kit en un clic." jsonLd={jsonLd} crumb="Botiquín y ampollas">
+  <Hero eyebrow="Botiquín y ampollas" title="Botiquín para el Camino de Santiago: qué llevar y cómo curar una ampolla en ruta" highlight="cómo curar una ampolla en ruta" updated={meta.modified}>
+    <p>El botiquín del Camino de Santiago es, sobre todo, un <strong>kit para los pies</strong>: apósitos para ampollas, algo contra la fricción, antiséptico y material para fijar curas. Las ampollas son la lesión de piel más habitual del peregrino; en un estudio con 315 peregrinos difundido por el <a href="https://cgcop.es/el-camino-de-santiago-y-las-ampollas/" rel="noopener" target="_blank">Consejo General de Colegios Oficiales de Podólogos</a>, el 74 % tuvo alguna tras varias etapas.</p>
+    <p>Aquí tienes la checklist del botiquín ({total} artículos), cómo curar una ampolla paso a paso, una tabla para elegir entre aguja e hilo, Compeed o tirita, y cuándo ir al centro de salud.</p>
+    <KitButton slot="side" url={CART_URL_BOTIQUIN} label={label} title="Botiquín del peregrino" note={note} />
+  </Hero>
+
+  <section class="block" id="kit">
+    <div class="wrap">
+      <span class="eyebrow">El kit</span>
+      <h2>Kit de botiquín del peregrino</h2>
+      <p class="lead">El kit de botiquín del peregrino reúne en un solo carrito los {inKit} básicos para prevenir y curar ampollas, desinfectar pequeñas heridas y protegerte del sol y los mosquitos. Revisa el carrito y quita lo que ya tengas en casa.</p>
+      <KitButton url={CART_URL_BOTIQUIN} label={label} variant="band" title="El botiquín, en un clic" note={note} />
+    </div>
+  </section>
+
+  <section class="block alt" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Qué llevar en el botiquín del Camino: checklist ({total} artículos)</h2>
+      <p class="lead">Lleva raciones de viaje, no cajas enteras: 5 o 6 monodosis de suero, una tira de esparadrapo y los apósitos justos para unos días; el resto se repone en farmacias del recorrido.</p>
+      <Checklist checklist={botiquinChecklist} cartUrl={CART_URL_BOTIQUIN} />
+      <p class="callout" style="margin-top:2rem">Añade tu medicación habitual, los analgésicos que ya toleres y la tarjeta sanitaria (o la Tarjeta Sanitaria Europea si vienes de otro país de la UE).</p>
+    </div>
+  </section>
+
+  <section class="block" id="curar-ampolla">
+    <div class="narrow prose">
+      <span class="eyebrow">Paso a paso</span>
+      <h2>Cómo curar una ampolla en el Camino, paso a paso</h2>
+      <p>Para curar una ampolla en el Camino hay que limpiarla, desinfectarla, drenarla solo si es grande o dolorosa, conservar la piel y cubrirla; así lo recogen la <a href="https://www.saludcastillayleon.es/es/camino-santiago/problemas-salud-frecuentes-peregrino/heridas-rozaduras-ampollas" rel="noopener" target="_blank">guía de Sacyl para peregrinos</a> y la <a href="https://www.caminodesantiago.gal/es/preparate/recomendaciones-y-guia-para-mantener-el-estado-fisico-y-la-salud" rel="noopener" target="_blank">web oficial del Camino de la Xunta de Galicia</a>.</p>
+      <ol class="steps">
+        {steps.map(([n, t]) => <li><strong>{n}.</strong> {t}</li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="block alt" id="aguja-compeed-tirita">
+    <div class="wrap">
+      <span class="eyebrow">Tabla de decisión</span>
+      <h2>Aguja e hilo, Compeed o tirita: cuándo usar cada uno</h2>
+      <p class="lead">Elige la cura según el estado de la ampolla: intacta y pequeña se protege, grande y tensa se drena, y abierta se limpia y se cubre con hidrocoloide.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Situación</th><th scope="col">Qué usar</th><th scope="col">Por qué</th><th scope="col">Evita</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Zona caliente (roce, sin ampolla)</th><td>Esparadrapo o barra antifricción / vaselina</td><td>Reduce la fricción antes de que se forme la ampolla.</td><td>Seguir caminando sin mirar.</td></tr>
+            <tr><th scope="row">Ampolla pequeña e intacta</th><td>Apósito hidrocoloide (tipo Compeed)</td><td>Amortigua y protege; la piel intacta es la mejor barrera contra la infección.</td><td>Pincharla.</td></tr>
+            <tr><th scope="row">Ampolla grande, tensa o dolorosa</th><td>Aguja estéril o desinfectada + antiséptico + apósito</td><td>Drenar alivia la presión; las guías oficiales indican pinchar por el borde sin quitar la piel.</td><td>Recortar la piel.</td></tr>
+            <tr><th scope="row">Método aguja e hilo</th><td>Hilo estéril, solo si sabes hacerlo</td><td>Es tradición peregrina para que siga drenando, pero el hilo puede arrastrar bacterias; las guías oficiales no lo recogen.</td><td>Hilo de costura sin esterilizar o dejarlo más de un día.</td></tr>
+            <tr><th scope="row">Ampolla reventada o abierta</th><td>Suero + antiséptico + apósito hidrocoloide</td><td>Mantiene la herida limpia y húmeda para que cierre antes.</td><td>Ponerlo si ya hay pus.</td></tr>
+            <tr><th scope="row">Rozadura o corte pequeño</th><td>Tirita</td><td>Basta para heridas superficiales sin presión.</td><td>Gastar un Compeed en un rasguño.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="evitar-ampollas">
+    <div class="narrow prose">
+      <span class="eyebrow">Prevención</span>
+      <h2>Cómo evitar ampollas: vaselina, calcetines y rutina</h2>
+      <p>Las ampollas se evitan controlando la fricción, la humedad y el calor del pie: calzado ya usado, calcetines secos y una capa de vaselina o barra antifricción cada mañana.</p>
+      <ol>
+        <li><strong>Vaselina o barra antifricción antes de caminar</strong>, en talones, dedos y planta; la <a href="https://www.caminodesantiago.gal/es/preparate/recomendaciones-y-guia-para-mantener-el-estado-fisico-y-la-salud" rel="noopener" target="_blank">web oficial del Camino</a> recomienda la vaselina diaria.</li>
+        <li><strong>Calcetines técnicos o de merino, secos</strong>: cámbialos al menos una vez en etapas largas y siempre que se mojen.</li>
+        <li><strong>Calzado usado, media talla más grande</strong>; nunca lo estrenes en ruta. Lo explicamos en <a href="/calzado/">la guía de calzado para el Camino</a>.</li>
+        <li><strong>Esparadrapo preventivo</strong> en cuanto notes una zona caliente.</li>
+        <li><strong>Pausas cada 2 horas</strong> para descalzarte y airear los pies; sigue la <a href="/calzado/#rutina">rutina diaria de pies del peregrino</a>.</li>
+        <li><strong>Mochila ligera</strong>: más peso, más presión en el pie. Ver <a href="/mochila-del-camino/">qué llevar en la mochila del Camino</a>.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block alt" id="centro-de-salud">
+    <div class="narrow prose">
+      <span class="eyebrow">Señales de alarma</span>
+      <h2>Cuándo ir al centro de salud</h2>
+      <p>Debes ir al centro de salud si una ampolla o herida no mejora, es grande o profunda, sangra mucho o tiene pus; añade la fiebre y el enrojecimiento que avanza como señales de posible infección.</p>
+      <ul>
+        <li>Pus, mal olor o líquido turbio.</li>
+        <li>Enrojecimiento, calor o hinchazón que se extiende, o una línea roja que sube por la pierna.</li>
+        <li>Fiebre o malestar general.</li>
+        <li>Heridas profundas, extensas o con sangrado abundante.</li>
+        <li>Diabetes, mala circulación o inmunodepresión: consulta antes de pinchar.</li>
+      </ul>
+      <p>En caso de urgencia, llama al <strong>112</strong>. Para más información oficial consulta la <a href="https://www.cultura.gob.es/consejo-jacobeo/dam/jcr:9c7ccd21-9f94-4d92-8816-e32b5326951b/Guia%20peregrino%20castellano.pdf" rel="noopener" target="_blank">Guía de emergencias para la peregrinación por los Caminos de Santiago</a> (Xunta de Galicia, publicada por el Consejo Jacobeo) y los <a href="https://www.saludcastillayleon.es/es/camino-santiago/problemas-salud-frecuentes-peregrino" rel="noopener" target="_blank">problemas de salud frecuentes del peregrino de Sacyl</a>.</p>
+      <p class="callout"><strong>Aviso sanitario:</strong> esta guía es información práctica para peregrinos y no sustituye el consejo de un profesional sanitario. Ante cualquier duda, pregunta en tu farmacia o centro de salud.</p>
+    </div>
+  </section>
+
+  <section class="block" id="que-no-llevar">
+    <div class="narrow prose">
+      <span class="eyebrow">Peso muerto</span>
+      <h2>Qué no llevar en el botiquín</h2>
+      <p>No lleves en el botiquín nada que puedas comprar en el siguiente pueblo ni cajas enteras: en las rutas principales hay farmacias en las localidades medianas y muchos albergues tienen botiquín básico.</p>
+      <ul>
+        <li>Cajas completas de medicamentos (lleva solo las dosis de unos días en el pastillero).</li>
+        <li>Botiquines grandes de coche o de montaña con material que no sabrás usar.</li>
+        <li>Alcohol para heridas: escuece y daña el tejido; mejor clorhexidina.</li>
+        <li>Botes de más de 100 ml si vuelas solo con equipaje de mano.</li>
+        <li>Antibióticos sin receta ni indicación médica.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="botiquin-y-ampollas" withMochila />
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="narrow"><Faq faqs={botiquinFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 22%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>

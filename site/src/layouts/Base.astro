@@ -1,7 +1,13 @@
 ---
 import { guides } from '../data/site';
-interface Props { title: string; description: string; jsonLd?: object }
-const { title, description, jsonLd } = Astro.props;
+import { breadcrumbs, article } from '../data/schema';
+import { PAGES } from '../data/site';
+interface Props { title: string; description: string; jsonLd?: object | object[]; noindex?: boolean; crumb?: string; h1?: string }
+const { title, description, jsonLd, noindex = false, crumb, h1 } = Astro.props;
+const meta = PAGES.find(p => p.path === Astro.url.pathname);
+const ld: object[] = [...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+if (crumb && !noindex) ld.push(breadcrumbs(Astro.url.pathname, crumb));
+if (meta) ld.push(article({ path: meta.path, headline: h1 ?? title, description, datePublished: meta.published, dateModified: meta.modified }));
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
 ---
@@ -22,7 +28,8 @@ const path = Astro.url.pathname;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  {noindex && <meta name="robots" content="noindex, follow" />}
+  {ld.map(o => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
 </head>
 <body>
   <div class="topbar"><span>🐚 Checklists para el Camino de Santiago · Cada producto comprobado en Amazon.es</span></div>

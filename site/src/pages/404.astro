@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+---
+<Base title="Página no encontrada | KitPeregrino" description="Esta página no existe. Vuelve a las guías del Camino de Santiago de KitPeregrino." noindex>
+  <Hero eyebrow="Error 404" title="Esta flecha no lleva a ningún sitio" highlight="no lleva a ningún sitio" crumbs={false}>
+    <p>La página que buscas no existe o ha cambiado de dirección. Vuelve al <a href="/">inicio</a> o elige una guía.</p>
+  </Hero>
+  <section class="block"><div class="wrap"><GuideLinks withMochila /></div></section>
+</Base>
