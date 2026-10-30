@@ -22,6 +22,8 @@ const ready = (s: string) => s === 'mochila-del-camino' || PUBLISHED.has(s);
   .guides { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
   .guides a { display: flex; flex-direction: column; gap: .3rem; height: 100%; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform .15s, border-color .15s; }
   .guides a:hover { transform: translateY(-2px); border-color: var(--sun); }
+  .guides a:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .guides a { transition: none; } .guides a:hover { transform: none; } }
   .ico { font-size: 1.6rem; }
   .t { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--navy-2); line-height: 1.2; }
   .d { font-size: .92rem; color: var(--muted); flex: 1; }

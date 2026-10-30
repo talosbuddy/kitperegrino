@@ -2,9 +2,20 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import GuideLinks from '../components/GuideLinks.astro';
-import { CART_URL, CART_URL_CALZADO, cartAsins } from '../data/site';
+import { CART_URL, CART_URL_CALZADO, cartAsins, guides } from '../data/site';
+const site = 'https://kitperegrino.com';
+const all = [{ slug: 'mochila-del-camino', title: 'Mochila del Camino' }, ...guides];
+const jsonLd = { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Guías de KitPeregrino para el Camino de Santiago', itemListElement: all.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `${site}/${g.slug}/` })) };
+const paths = [
+  { q: 'Es mi primer Camino', a: 'Empieza por la mochila y el calzado: son lo que más se nota en el cuerpo.', links: [['/mochila-del-camino/', 'Mochila'], ['/calzado/', 'Calzado']] },
+  { q: 'Aún no sé qué ruta hacer', a: 'Compara distancia, etapas y ambiente antes de comprar nada.', links: [['/frances-vs-portugues/', 'Francés vs Portugués']] },
+  { q: 'Ya tengo fecha', a: 'La estación cambia la ropa, el agua y dónde dormir.', links: [['/camino-en-verano/', 'Verano'], ['/camino-en-invierno/', 'Invierno']] },
+  { q: 'Dormiré en albergues', a: 'Saco sábana, tapones y cómo evitar chinches.', links: [['/kit-de-albergue/', 'Kit de albergue']] },
+  { q: 'Me preocupan las ampollas', a: 'Prevención, botiquín y cómo curarlas en ruta.', links: [['/botiquin-y-ampollas/', 'Botiquín'], ['/calzado/#rutina', 'Rutina de pies']] },
+  { q: 'Voy en bici o con niños', a: 'Etapas, equipo y requisitos para la Compostela.', links: [['/camino-en-bici-y-con-ninos/', 'Bici y niños']] },
+];
 ---
-<Base title="KitPeregrino: qué llevar al Camino de Santiago" description="Guías y checklists para preparar la mochila del Camino de Santiago: calzado, botiquín, albergue, verano, invierno, rutas, bici y niños.">
+<Base title="KitPeregrino: qué llevar al Camino de Santiago" description="Guías y checklists para preparar la mochila del Camino de Santiago: calzado, botiquín, albergue, verano, invierno, rutas, bici y niños." jsonLd={jsonLd}>
   <Hero eyebrow="Camino de Santiago" title="Prepara tu Camino de Santiago con lo justo" highlight="con lo justo" crumbs={false}>
     <p>Checklists cortas y razonadas para que la mochila no pese más de lo necesario. Cada artículo explica <strong>por qué</strong> está en la lista, y el kit entero entra en tu carrito con un clic.</p>
     <p class="hero-ctas"><a class="cta-main" href="/mochila-del-camino/">Ver la lista de la mochila →</a> <a class="cta-ghost" href="/calzado/">Calzado y ampollas</a></p>
@@ -21,6 +32,17 @@ import { CART_URL, CART_URL_CALZADO, cartAsins } from '../data/site';
       <GuideLinks withMochila />
     </div>
   </section>
+  <section class="block" id="empieza">
+    <div class="wrap">
+      <span class="eyebrow">Por dónde empiezo</span>
+      <h2>Elige según tu situación</h2>
+      <ul class="paths">
+        {paths.map(p => (
+          <li><strong>{p.q}</strong><span>{p.a}</span><span class="pl">{p.links.map(([h, t]) => <a href={h}>{t} →</a>)}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
 </Base>
 <style>
   .hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
@@ -30,4 +52,10 @@ import { CART_URL, CART_URL_CALZADO, cartAsins } from '../data/site';
   .steps li { display: flex; gap: .9rem; align-items: flex-start; color: #d4e0ec; }
   .steps b { flex: none; width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; background: var(--sun); color: var(--navy-2); font-family: var(--serif); }
   .steps strong { color: #fff; }
+  .paths { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .paths li { display: flex; flex-direction: column; gap: .35rem; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--sun); border-radius: var(--radius); padding: 1rem 1.2rem; }
+  .paths strong { font-family: var(--serif); color: var(--navy-2); font-size: 1.05rem; }
+  .paths span { color: var(--muted); font-size: .92rem; }
+  .paths .pl { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .2rem; }
+  .paths a { font-weight: 700; color: var(--navy); font-size: .9rem; }
 </style>
