@@ -10,6 +10,7 @@ if (crumb && !noindex) ld.push(breadcrumbs(Astro.url.pathname, crumb));
 if (meta) ld.push(article({ path: meta.path, headline: h1 ?? title, description, datePublished: meta.published, dateModified: meta.modified }));
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
+const kitAnchor = meta ? (path === '/frances-vs-portugues/' ? '#equipo' : '#checklist') : null;
 ---
 <!doctype html>
 <html lang="es">
@@ -42,7 +43,8 @@ const path = Astro.url.pathname;
   <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
   {ld.map(o => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
 </head>
-<body>
+<body class:list={[{ 'has-sticky': kitAnchor }]}>
+  <a class="skip" href="#main">Saltar al contenido</a>
   <div class="topbar"><span>🐚 Checklists para el Camino de Santiago · Cada producto comprobado en Amazon.es</span></div>
   <header class="site">
     <div class="wrap hdr">
@@ -60,7 +62,8 @@ const path = Astro.url.pathname;
       <a class="hdr-cta" href="/mochila-del-camino/#checklist">Ver el kit <span aria-hidden="true">→</span></a>
     </div>
   </header>
-  <main><slot /></main>
+  <main id="main"><slot /></main>
+  {kitAnchor && <a class="sticky-kit" href={kitAnchor}>🛒 Ver la checklist y el kit en un clic</a>}
   <footer class="site">
     <div class="wrap foot">
       <div>
@@ -134,4 +137,11 @@ const path = Astro.url.pathname;
   .foot .muted { color: #9fb0c2; max-width: 34ch; }
   .disclosure { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.2rem; font-size: .85rem; color: #9fb0c2; }
   @media (max-width: 760px) { .foot { grid-template-columns: 1fr; } }
+  .skip { position: absolute; left: -999px; top: 0; background: var(--sun); color: var(--navy-2); padding: .6rem 1rem; z-index: 50; font-weight: 700; }
+  .skip:focus { left: .5rem; top: .5rem; }
+  .sticky-kit { display: none; }
+  @media (max-width: 640px) {
+    .sticky-kit { display: block; position: fixed; left: .75rem; right: .75rem; bottom: calc(.75rem + env(safe-area-inset-bottom)); z-index: 30; text-align: center; background: var(--sun); color: var(--navy-2); font-weight: 800; text-decoration: none; padding: .85rem 1rem; border-radius: 14px; box-shadow: 0 4px 0 #c99f00, 0 10px 24px -6px rgba(0,0,0,.35); }
+    body.has-sticky { padding-bottom: 4.5rem; }
+  }
 </style>
