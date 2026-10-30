@@ -72,7 +72,26 @@ const note = 'El botón añade los 6 artículos de cuidado (sin talla). Las zapa
     </div>
   </section>
 
-  <section class="block alt" id="guias">
+  <section class="block alt">
+    <div class="wrap">
+      <span class="eyebrow">Tabla de decisión</span>
+      <h2>Qué calzado elegir según la época y el terreno</h2>
+      <p class="lead">La zapatilla de trail es la opción por defecto; la bota ligera solo gana con frío, barro o tobillos débiles.</p>
+      <div class="tw"><table class="dt">
+        <thead><tr><th>Situación</th><th>Calzado</th><th>Membrana</th><th>Calcetín</th></tr></thead>
+        <tbody>
+          <tr><td>Verano por la Meseta</td><td>Zapatilla de trail</td><td>No, mejor transpirable</td><td>Técnico fino</td></tr>
+          <tr><td>Primavera u otoño</td><td>Zapatilla de trail</td><td>Opcional</td><td>Merino medio</td></tr>
+          <tr><td>Invierno o Galicia con lluvia</td><td>Bota ligera o zapatilla impermeable</td><td>Sí</td><td>Merino grueso</td></tr>
+          <tr><td>Tobillos débiles o mucho peso</td><td>Bota de caña media</td><td>Según época</td><td>Merino medio</td></tr>
+          <tr><td>Tendencia a ampollas entre dedos</td><td>Horma ancha</td><td>Según época</td><td>De dedos</td></tr>
+        </tbody>
+      </table></div>
+      <p class="callout" style="margin-top:1.5rem">Más detalle por estación en <a href="/camino-en-verano/">Camino en verano</a> y <a href="/camino-en-invierno/">Camino en invierno</a>; para curar ampollas, <a href="/botiquin-y-ampollas/">Botiquín y ampollas</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
     <div class="wrap">
       <span class="eyebrow">Guías</span>
       <h2>Más guías para preparar tu Camino</h2>
@@ -80,7 +99,14 @@ const note = 'El botón añade los 6 artículos de cuidado (sin talla). Las zapa
     </div>
   </section>
 
-  <section class="block">
+  <section class="block alt">
     <div class="narrow"><Faq faqs={calzadoFaqs} /></div>
   </section>
 </Base>
+
+<style>
+  .tw { overflow-x: auto; }
+  .dt { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); font-size: .97rem; }
+  .dt th, .dt td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .dt th { background: var(--navy); color: #fff; font-weight: 700; }
+</style>

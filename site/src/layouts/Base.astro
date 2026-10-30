@@ -18,17 +18,28 @@ const path = Astro.url.pathname;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={canonical} />
+  {!noindex && <link rel="canonical" href={canonical} />}
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={meta ? 'article' : 'website'} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="KitPeregrino" />
+  <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="KitPeregrino: checklists para el Camino de Santiago" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL('/og.png', Astro.site)} />
+  {meta && <meta property="article:modified_time" content={meta.modified} />}
   <meta property="og:locale" content="es_ES" />
   <meta name="theme-color" content="#14324f" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2314324f'/><path d='M7 16h14l-5-5m5 5-5 5' stroke='%23f5c400' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  {noindex && <meta name="robots" content="noindex, follow" />}
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
   {ld.map(o => <script type="application/ld+json" set:html={JSON.stringify(o)} />)}
 </head>
 <body>
@@ -42,6 +53,8 @@ const path = Astro.url.pathname;
       <nav class="mainnav" aria-label="Principal">
         <a href="/mochila-del-camino/" aria-current={path === '/mochila-del-camino/' ? 'page' : undefined}>Mochila</a>
         <a href="/calzado/" aria-current={path === '/calzado/' ? 'page' : undefined}>Calzado</a>
+        <a href="/botiquin-y-ampollas/" aria-current={path === '/botiquin-y-ampollas/' ? 'page' : undefined}>Botiquín</a>
+        <a href="/kit-de-albergue/" aria-current={path === '/kit-de-albergue/' ? 'page' : undefined}>Albergue</a>
         <a href="/#guias">Guías</a>
       </nav>
       <a class="hdr-cta" href="/mochila-del-camino/#checklist">Ver el kit <span aria-hidden="true">→</span></a>
@@ -52,6 +65,7 @@ const path = Astro.url.pathname;
     <div class="wrap foot">
       <div>
         <a href="/" class="brand light"><span>Kit<b>Peregrino</b></span></a>
+        <p class="muted"><a href="/#glosario">Glosario del peregrino</a> · <a href="/#compostela">Credencial y Compostela</a></p>
         <p class="muted">Checklists razonadas para caminar a Santiago con lo justo. Cada producto se comprueba en su ficha de Amazon.es antes de recomendarlo.</p>
       </div>
       <nav aria-label="Guías">

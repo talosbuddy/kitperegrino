@@ -3,9 +3,30 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import GuideLinks from '../components/GuideLinks.astro';
 import { CART_URL, CART_URL_CALZADO, cartAsins, guides } from '../data/site';
+import Faq from '../components/Faq.astro';
+import { website, faqPage } from '../data/schema';
 const site = 'https://kitperegrino.com';
+const glosario = [
+  ['Credencial', 'El «pasaporte» del peregrino. Se sella en albergues, iglesias, bares y oficinas de turismo, y es lo que presentas para pedir la Compostela.'],
+  ['Compostela', 'Certificado gratuito, en latín, que expide la Oficina del Peregrino de la Catedral de Santiago a quien cumple la distancia mínima.'],
+  ['Sello', 'La marca con fecha que te ponen en la credencial. Demuestra por dónde has pasado.'],
+  ['Albergue', 'Alojamiento compartido para peregrinos con credencial. Puede ser público, parroquial o privado.'],
+  ['Etapa', 'El tramo que se camina en un día, normalmente entre dos poblaciones con albergue.'],
+  ['Flecha amarilla', 'La señal pintada que marca el Camino, junto a la concha de vieira de los mojones.'],
+  ['Mojón', 'Hito de piedra con la concha y, en Galicia, los kilómetros que faltan hasta Santiago.'],
+  ['Hospitalero', 'La persona, a menudo voluntaria, que atiende el albergue.'],
+  ['Meseta', 'El tramo llano de Castilla y León en el Camino Francés, aproximadamente entre Burgos y León: mucho sol y poca sombra.'],
+  ['Sarria', 'El punto de salida más habitual del Francés para hacer los últimos 100 km a pie.'],
+];
+const homeFaqs = [
+  { q: '¿Cuántos kilómetros hay que hacer para conseguir la Compostela?', a: 'Al menos los últimos 100 km continuos a pie o a caballo, o 200 km en bicicleta, por un mismo camino reconocido y en dirección a Santiago, según la Oficina del Peregrino.' },
+  { q: '¿Cuánto cuesta la Compostela?', a: 'Nada: la Oficina del Peregrino la entrega gratis. Se recoge en persona en el Centro Internacional de Acogida al Peregrino, Rúa Carretas 33, en Santiago.' },
+  { q: '¿Se puede hacer el Camino por partes en distintos años?', a: 'Sí, si las etapas van en orden geográfico y cronológico. Si solo haces la distancia mínima, sella al principio y al final de cada etapa, con fecha.' },
+  { q: '¿Puedo mezclar dos Caminos distintos?', a: 'No para la Compostela: la Oficina del Peregrino pide recorrer una misma ruta sin alternar ni mezclar caminos.' },
+];
 const all = [{ slug: 'mochila-del-camino', title: 'Mochila del Camino' }, ...guides];
 const jsonLd = { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Guías de KitPeregrino para el Camino de Santiago', itemListElement: all.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `${site}/${g.slug}/` })) };
+const ld = [jsonLd, website(), faqPage(homeFaqs)];
 const paths = [
   { q: 'Es mi primer Camino', a: 'Empieza por la mochila y el calzado: son lo que más se nota en el cuerpo.', links: [['/mochila-del-camino/', 'Mochila'], ['/calzado/', 'Calzado']] },
   { q: 'Aún no sé qué ruta hacer', a: 'Compara distancia, etapas y ambiente antes de comprar nada.', links: [['/frances-vs-portugues/', 'Francés vs Portugués']] },
@@ -15,7 +36,7 @@ const paths = [
   { q: 'Voy en bici o con niños', a: 'Etapas, equipo y requisitos para la Compostela.', links: [['/camino-en-bici-y-con-ninos/', 'Bici y niños']] },
 ];
 ---
-<Base title="KitPeregrino: qué llevar al Camino de Santiago" description="Guías y checklists para preparar la mochila del Camino de Santiago: calzado, botiquín, albergue, verano, invierno, rutas, bici y niños." jsonLd={jsonLd}>
+<Base title="KitPeregrino: qué llevar al Camino de Santiago" description="Guías y checklists para preparar la mochila del Camino de Santiago: calzado, botiquín, albergue, verano, invierno, rutas, bici y niños." jsonLd={ld}>
   <Hero eyebrow="Camino de Santiago" title="Prepara tu Camino de Santiago con lo justo" highlight="con lo justo" crumbs={false}>
     <p>Checklists cortas y razonadas para que la mochila no pese más de lo necesario. Cada artículo explica <strong>por qué</strong> está en la lista, y el kit entero entra en tu carrito con un clic.</p>
     <p class="hero-ctas"><a class="cta-main" href="/mochila-del-camino/">Ver la lista de la mochila →</a> <a class="cta-ghost" href="/calzado/">Calzado y ampollas</a></p>
@@ -43,6 +64,32 @@ const paths = [
       </ul>
     </div>
   </section>
+  <section class="block alt" id="compostela">
+    <div class="narrow prose">
+      <span class="eyebrow">Credencial y Compostela</span>
+      <h2>Credencial y Compostela: requisitos</h2>
+      <p>Para recibir la Compostela hay que recorrer al menos los últimos 100 km a pie o a caballo, o 200 km en bicicleta, por un mismo camino reconocido y en dirección a Santiago, con la credencial sellada.</p>
+      <ul>
+        <li><strong>Distancia:</strong> 100 km continuos a pie o a caballo; 200 km en bici. Si empiezas fuera de España, al menos 70 km continuos en territorio español.</li>
+        <li><strong>Sellos:</strong> si solo haces la distancia mínima o vas por partes, sella al principio y al final de cada etapa, con fecha.</li>
+        <li><strong>Una sola ruta:</strong> no se pueden alternar ni mezclar caminos.</li>
+        <li><strong>En persona y gratis:</strong> se recoge en el Centro Internacional de Acogida al Peregrino (Rúa Carretas, 33), tras registrarte con un código QR.</li>
+        <li><strong>Niños:</strong> pueden recibir la Compostela o un certificado especial según su edad.</li>
+      </ul>
+      <p class="muted">Fuente: <a href="https://oficinadelperegrino.com/peregrinacion/la-compostela/" rel="noopener">Oficina del Peregrino, «La Compostela»</a>. La credencial no se vende en Amazon: consíguela en asociaciones de amigos del Camino, parroquias, albergues de salida o la propia Oficina.</p>
+    </div>
+  </section>
+  <section class="block" id="glosario">
+    <div class="narrow">
+      <span class="eyebrow">Glosario</span>
+      <h2>Glosario del peregrino</h2>
+      <p class="lead">Las palabras del Camino que verás en todas nuestras guías.</p>
+      <dl class="glos">{glosario.map(([t, d]) => <><dt>{t}</dt><dd>{d}</dd></>)}</dl>
+    </div>
+  </section>
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={homeFaqs} /></div>
+  </section>
 </Base>
 <style>
   .hero-ctas { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
@@ -58,4 +105,8 @@ const paths = [
   .paths span { color: var(--muted); font-size: .92rem; }
   .paths .pl { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .2rem; }
   .paths a { font-weight: 700; color: var(--navy); font-size: .9rem; }
+  .glos { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.2rem; margin: 0; }
+  .glos dt { font-weight: 700; color: var(--navy-2); }
+  .glos dd { margin: 0; }
+  @media (max-width: 560px) { .glos { grid-template-columns: 1fr; } .glos dd { margin-bottom: .6rem; } }
 </style>

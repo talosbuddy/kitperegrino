@@ -32,4 +32,7 @@ export const calzadoFaqs = [
   { q: '¿Calzado impermeable o transpirable?', a: 'En primavera, otoño o invierno, o si vas por Galicia, merece la pena la membrana impermeable. En pleno verano por la Meseta, una zapatilla transpirable se seca antes y da menos calor.' },
   { q: '¿Cuántos pares de calcetines llevo?', a: 'Entre 2 y 3 pares de merino o técnicos. Si tienes tendencia a las ampollas entre los dedos, añade unos de dedos.' },
   { q: '¿Llevo un segundo calzado?', a: 'Sí, unas chanclas o sandalias ligeras para la ducha y el albergue. Las recomendamos en la lista de la mochila.' },
+  { q: '¿Qué hago si me duelen los pies a mitad de etapa?', a: 'Para, descálzate, airea los pies y revisa si hay zonas rojas. Protégelas con esparadrapo antes de que salga la ampolla y cambia de calcetín si está húmedo.' },
+  { q: '¿Plantillas de serie o personalizadas?', a: 'Si ya usas plantillas a medida en tu día a día, llévalas. Si no, no estrenes unas en el Camino: cualquier cambio en el pie hay que probarlo antes.' },
+  { q: '¿Cada cuánto hay que cambiar las zapatillas?', a: 'Revisa la suela y la amortiguación antes de salir. Si ya están muy gastadas, cámbialas con tiempo para poder hacer kilómetros con las nuevas.' },
 ];

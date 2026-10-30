@@ -60,6 +60,40 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
     </div>
   </section>
 
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Tabla de decisión</span>
+      <h2>Cómo cambia la mochila según la época y la forma de viajar</h2>
+      <p class="lead">La lista base sirve todo el año; lo que cambia es la capa de abrigo, el saco y el agua.</p>
+      <div class="tw"><table class="dt">
+        <thead><tr><th>Caso</th><th>Litros</th><th>Saco</th><th>Qué añadir</th><th>Guía</th></tr></thead>
+        <tbody>
+          <tr><td>Primavera u otoño</td><td>30-35 L</td><td>Saco sábana</td><td>Chubasquero y una capa media</td><td><a href="/calzado/">Calzado</a></td></tr>
+          <tr><td>Verano</td><td>30-35 L</td><td>Saco sábana</td><td>Más agua, gorra, protector solar</td><td><a href="/camino-en-verano/">Verano</a></td></tr>
+          <tr><td>Invierno</td><td>35-40 L</td><td>Saco ligero</td><td>Capas térmicas, frontal, guantes</td><td><a href="/camino-en-invierno/">Invierno</a></td></tr>
+          <tr><td>Albergues públicos</td><td>Igual</td><td>Saco sábana o ligero</td><td>Tapones, antifaz, candado</td><td><a href="/kit-de-albergue/">Albergue</a></td></tr>
+          <tr><td>En bici</td><td>Alforjas</td><td>Según época</td><td>Kit de reparación y luces</td><td><a href="/camino-en-bici-y-con-ninos/">Bici y niños</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow prose">
+      <span class="eyebrow">Errores comunes</span>
+      <h2>Errores comunes al preparar la mochila del Camino</h2>
+      <p>El error más habitual es salir con demasiado peso y con calzado sin probar; casi todo lo demás tiene arreglo por el camino.</p>
+      <ol>
+        <li><strong>No pesar la mochila antes de salir.</strong> Pésala cargada y con agua; si pasa del 10-12 % de tu peso, quita cosas.</li>
+        <li><strong>Estrenar calzado.</strong> Haz kilómetros con él antes. Lo explicamos en <a href="/calzado/">Calzado</a>.</li>
+        <li><strong>Algodón en lugar de tejido técnico.</strong> Tarda en secar y roza. Elige ropa técnica o de merino.</li>
+        <li><strong>Olvidar el botiquín de pies.</strong> Las ampollas se previenen; mira <a href="/botiquin-y-ampollas/">Botiquín y ampollas</a>.</li>
+        <li><strong>No ajustar la mochila.</strong> El peso va en la cadera, no en los hombros: aprieta el cinturón lumbar antes que las hombreras.</li>
+        <li><strong>Olvidar la credencial.</strong> Sin sellos no hay Compostela; consulta los <a href="/#compostela">requisitos</a>.</li>
+      </ol>
+    </div>
+  </section>
+
   <section class="block" id="guias">
     <div class="wrap">
       <span class="eyebrow">Guías</span>
@@ -72,3 +106,10 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
     <div class="narrow"><Faq faqs={faqs} /></div>
   </section>
 </Base>
+
+<style>
+  .tw { overflow-x: auto; }
+  .dt { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); font-size: .97rem; }
+  .dt th, .dt td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .dt th { background: var(--navy); color: #fff; font-weight: 700; }
+</style>
