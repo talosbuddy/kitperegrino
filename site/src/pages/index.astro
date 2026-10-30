@@ -17,6 +17,13 @@ const glosario = [
   ['Hospitalero', 'La persona, a menudo voluntaria, que atiende el albergue.'],
   ['Meseta', 'El tramo llano de Castilla y León en el Camino Francés, aproximadamente entre Burgos y León: mucho sol y poca sombra.'],
   ['Sarria', 'El punto de salida más habitual del Francés para hacer los últimos 100 km a pie.'],
+  ['Año Santo (Xacobeo)', 'El año en que el 25 de julio, día de Santiago, cae en domingo. Se abre la Puerta Santa de la Catedral y suele haber más peregrinos.'],
+  ['Concha de vieira', 'El símbolo del peregrino. Muchos la cuelgan de la mochila y aparece en los mojones que marcan el Camino.'],
+  ['Bordón', 'El bastón tradicional del peregrino. Hoy casi todos usan bastones de trekking.'],
+  ['Albergue de donativo', 'Albergue sin precio fijo: cada peregrino deja lo que puede para que siga abierto.'],
+  ['Transporte de mochilas', 'Servicio que lleva tu mochila de un alojamiento al siguiente para que camines solo con lo del día.'],
+  ['Fisterra (Finisterre)', 'El cabo de la costa gallega al que muchos peregrinos siguen caminando después de llegar a Santiago.'],
+  ['Peregrino', 'Quien recorre el Camino a pie, en bici o a caballo hacia Santiago, con credencial.'],
 ];
 const homeFaqs = [
   { q: '¿Cuántos kilómetros hay que hacer para conseguir la Compostela?', a: 'Al menos los últimos 100 km continuos a pie o a caballo, o 200 km en bicicleta, por un mismo camino reconocido y en dirección a Santiago, según la Oficina del Peregrino.' },
@@ -64,6 +71,22 @@ const paths = [
       </ul>
     </div>
   </section>
+  <section class="block" id="epoca">
+    <div class="wrap">
+      <span class="eyebrow">Mejor época</span>
+      <h2>Cuándo hacer el Camino de Santiago: época por época</h2>
+      <p class="lead">Primavera y otoño son las épocas más cómodas para la mayoría; el verano trae calor y más gente, y el invierno frío, lluvia y menos albergues abiertos.</p>
+      <div class="tw"><table class="dt">
+        <thead><tr><th>Época</th><th>Cómo es</th><th>Qué cambia en la mochila</th><th>Guía</th></tr></thead>
+        <tbody>
+          <tr><td>Primavera (abril-junio)</td><td>Temperaturas suaves, lluvia posible y más peregrinos según se acerca el verano.</td><td>Chubasquero y una capa media.</td><td><a href="/mochila-del-camino/">Mochila</a></td></tr>
+          <tr><td>Verano (julio-septiembre)</td><td>Calor en la Meseta y el interior, mucha gente en los últimos 100 km.</td><td>Más agua, gorra, protector solar, saco sábana.</td><td><a href="/camino-en-verano/">Verano</a></td></tr>
+          <tr><td>Otoño (octubre-noviembre)</td><td>Menos gente, días más cortos y lluvia frecuente en Galicia.</td><td>Calzado que seque, frontal y chubasquero.</td><td><a href="/calzado/">Calzado</a></td></tr>
+          <tr><td>Invierno (diciembre-marzo)</td><td>Frío, nieve posible en montaña y muchos albergues cerrados.</td><td>Capas térmicas, saco ligero, guantes.</td><td><a href="/camino-en-invierno/">Invierno</a></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
   <section class="block alt" id="compostela">
     <div class="narrow prose">
       <span class="eyebrow">Credencial y Compostela</span>
@@ -109,4 +132,8 @@ const paths = [
   .glos dt { font-weight: 700; color: var(--navy-2); }
   .glos dd { margin: 0; }
   @media (max-width: 560px) { .glos { grid-template-columns: 1fr; } .glos dd { margin-bottom: .6rem; } }
+  .tw { overflow-x: auto; }
+  .dt { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); font-size: .97rem; }
+  .dt th, .dt td { padding: .75rem 1rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .dt th { background: var(--navy); color: #fff; font-weight: 700; }
 </style>
