@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { biciNinosChecklist, biciNinosFaqs } from '../data/bicininos';
+import { CART_URL_BICI_NINOS, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = biciNinosChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_BICI_NINOS).length;
+const meta = pageMeta('/camino-en-bici-y-con-ninos/');
+const jsonLd = [faqPage(biciNinosFaqs), itemList('Checklist: Camino de Santiago en bici y con niños', biciNinosChecklist)];
+const label = 'Añadir el kit de bici y niños al carrito de Amazon';
+const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con niños, o los de niños si vas solo en bici. La mochila infantil se elige por color y queda fuera.`;
+---
+<Base title="Camino de Santiago en bici y con niños: guía y qué llevar (2026)" description="Cómo hacer el Camino de Santiago en bici (200 km para la Compostela, alforjas, reparación) y con niños (etapas, alojamiento, equipo). Tablas, FAQ y kit en un clic." jsonLd={jsonLd} crumb="Camino en bici y con niños">
+  <Hero eyebrow="Bici y niños" title="Camino de Santiago en bici y con niños: cómo organizarlo y qué llevar" highlight="cómo organizarlo y qué llevar" updated={meta.modified}>
+    <p>El Camino de Santiago se puede hacer <strong>en bicicleta</strong>, con al menos 200 km para la Compostela, y <strong>con niños</strong>, con etapas cortas y alojamiento reservado; en ambos casos el equipo y la planificación cambian respecto a ir a pie solo.</p>
+    <p>Aquí tienes la comparativa bici vs a pie, qué bici y equipo llevar, cómo adaptar el Camino a los niños y una checklist ({total} artículos) con kit en un clic.</p>
+    <KitButton slot="side" url={CART_URL_BICI_NINOS} label={label} title="Kit de bici y familia" note={note} />
+  </Hero>
+
+  <section class="block" id="bici-vs-a-pie">
+    <div class="wrap">
+      <span class="eyebrow">Comparativa</span>
+      <h2>Camino en bici vs a pie: diferencias</h2>
+      <p class="lead">La diferencia principal entre hacer el Camino en bici y a pie es la distancia mínima para la Compostela: 200 km en bici frente a 100 km a pie, con etapas más largas y otro equipo.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">En bici</th><th scope="col">A pie</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mínimo para la Compostela</th><td>Últimos 200 km</td><td>Últimos 100 km</td></tr>
+            <tr><th scope="row">Inicio habitual (Francés)</th><td>Ponferrada o antes</td><td>Sarria</td></tr>
+            <tr><th scope="row">Carga</th><td>Alforjas en el portabultos</td><td>Mochila a la espalda</td></tr>
+            <tr><th scope="row">Albergues públicos</th><td>Prioridad para los que van a pie; mejor reservar privados con garaje</td><td>Por orden de llegada</td></tr>
+            <tr><th scope="row">Equipo clave</th><td>Kit de pinchazos, bomba, herramienta, luces, candado, casco</td><td>Calzado probado, botiquín de pies</td></tr>
+            <tr><th scope="row">Terreno</th><td>Variantes por carretera en tramos de senda estrecha</td><td>Todo el trazado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem;font-size:.92rem">Consulta los requisitos actualizados de la Compostela en la <a href="https://oficinadelperegrino.com/" rel="noopener" target="_blank">Oficina del Peregrino</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="bici">
+    <div class="narrow prose">
+      <span class="eyebrow">En bici</span>
+      <h2>Cómo hacer el Camino en bici: bici, equipo y etapas</h2>
+      <p>Para hacer el Camino en bici necesitas una bici de montaña o gravel revisada, con portabultos y alforjas, más un kit básico de reparación, luces, candado y casco.</p>
+      <ul>
+        <li><strong>Bici:</strong> de montaña o gravel con neumáticos anchos; revísala en un taller antes de salir.</li>
+        <li><strong>Casco:</strong> imprescindible; elígelo por talla.</li>
+        <li><strong>Etapas:</strong> calcula según desnivel y firme, no solo kilómetros; deja margen para averías.</li>
+        <li><strong>Convivencia:</strong> avisa con el timbre y cede el paso a los peregrinos a pie en las sendas.</li>
+        <li><strong>Ruta:</strong> el Portugués y el Francés admiten bici; compáralos en <a href="/frances-vs-portugues/">Francés vs Portugués</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="ninos">
+    <div class="wrap">
+      <span class="eyebrow">Con niños</span>
+      <h2>Cómo hacer el Camino con niños</h2>
+      <p class="lead">Para hacer el Camino con niños, adapta las etapas a su ritmo, reserva el alojamiento y lleva menos peso tú para poder cargar con lo suyo si se cansa.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Edad</th><th scope="col">Cómo suele ir</th><th scope="col">Consejo</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Bebés y hasta 3-4 años</th><td>En portabebés o carrito de montaña</td><td>Tramos llanos y cortos; el adulto carga todo.</td></tr>
+            <tr><th scope="row">Infantil y primaria</th><td>Caminan parte de la etapa</td><td>Etapas cortas, muchas paradas y un plan B de transporte.</td></tr>
+            <tr><th scope="row">Preadolescentes y adolescentes</th><td>Pueden hacer etapas casi de adulto</td><td>Su propia mochila ligera y calzado ya usado.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul style="margin-top:1.2rem">
+        <li>Rutas cómodas para familias: el Francés desde Sarria o el Portugués desde Tui.</li>
+        <li>Evita las horas de calor: lee el <a href="/camino-en-verano/">Camino en verano</a>. Si vas en vacaciones de invierno, el <a href="/camino-en-invierno/">Camino en invierno</a>.</li>
+        <li>Reserva habitaciones familiares o albergues privados: guía de <a href="/kit-de-albergue/">kit de albergue</a>.</li>
+        <li>Calzado ya usado también para ellos: <a href="/calzado/">guía de calzado</a>.</li>
+        <li>Botiquín con tiritas y apósitos de ampollas: <a href="/botiquin-y-ampollas/">botiquín del Camino</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Qué llevar al Camino en bici y con niños: checklist ({total} artículos)</h2>
+      <p class="lead">Estos {total} artículos se suman a la checklist de la <a href="/mochila-del-camino/">mochila del Camino</a>: reparación y carga para la bici y seguridad y sol para los niños.</p>
+      <Checklist checklist={biciNinosChecklist} cartUrl={CART_URL_BICI_NINOS} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_BICI_NINOS} label={label} variant="band" title="El kit de bici y familia, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block" id="seguridad">
+    <div class="narrow prose">
+      <span class="eyebrow">Seguridad</span>
+      <h2>Seguridad en bici y con niños</h2>
+      <p>La seguridad en el Camino en bici y con niños depende de ser visible, llevar el teléfono cargado y saber a quién llamar: en una emergencia, el número es el 112.</p>
+      <ul>
+        <li>Luces y ropa visible en carretera, también de día.</li>
+        <li>Pulsera con tu teléfono en la muñeca de los niños pequeños.</li>
+        <li>Batería externa y la ubicación compartida con alguien de casa.</li>
+      </ul>
+      <p class="callout"><strong>Aviso:</strong> información práctica para peregrinos; no sustituye el consejo sanitario ni las normas de tráfico. Ante dudas de salud, pregunta en tu farmacia o pediatra.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="camino-en-bici-y-con-ninos" withMochila />
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="narrow"><Faq faqs={biciNinosFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>
