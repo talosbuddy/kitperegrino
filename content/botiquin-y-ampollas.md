@@ -7,7 +7,7 @@ updated: 2026-10-30
 [Inicio](/) / Botiquín y ampollas Botiquín y ampollas 
 # Botiquín para el Camino de Santiago: qué llevar y cómo curar una ampolla en ruta 
 
-El botiquín del Camino de Santiago es, sobre todo, un kit para los pies: apósitos para ampollas, algo contra la fricción, antiséptico y material para fijar curas. Las ampollas son la lesión de piel más habitual del peregrino; en un estudio con 315 peregrinos difundido por el [Consejo General de Colegios Oficiales de Podólogos](https://cgcop.es/el-camino-de-santiago-y-las-ampollas/), el 74 % tuvo alguna tras varias etapas. 
+El botiquín del Camino de Santiago es, sobre todo, un kit para los pies: apósitos para ampollas, algo contra la fricción, antiséptico y material para fijar curas. Las ampollas son el problema de pies que más etapas estropea, y casi siempre se pueden prevenir. 
 
 Aquí tienes la checklist del botiquín (15 artículos), cómo curar una ampolla paso a paso, una tabla para elegir entre aguja e hilo, Compeed o tirita, y cuándo ir al centro de salud. 
 
@@ -185,7 +185,7 @@ No lleves en el botiquín nada que puedas comprar en el siguiente pueblo ni caja
 - [ 👟 Calzado para el Camino de Santiago ¿Botas o zapatillas? Cómo acertar con la talla. Leer guía → ](/calzado/)
 - [ 🛏️ Kit de albergue Dormir bien en albergues públicos. Próximamente ](/kit-de-albergue/)
 - [ ☀️ Camino en verano Calor, agua y salir de madrugada. Próximamente ](/camino-en-verano/)
-- [ ❄️ Camino en invierno Capas, albergues cerrados y luz. Próximamente ](/camino-en-invierno/)
+- [ ❄️ Camino en invierno Capas, luz y albergues abiertos de noviembre a marzo. Leer guía → ](/camino-en-invierno/)
 - [ 🧭 Camino Francés vs Portugués Qué cambia en la mochila según la ruta. Próximamente ](/frances-vs-portugues/)
 - [ 🚲 Camino en bici y con niños Alforjas, kit de reparación y equipo infantil. Próximamente ](/camino-en-bici-y-con-ninos/) 
 

@@ -1,0 +1,139 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { inviernoChecklist, inviernoFaqs } from '../data/invierno';
+import { CART_URL_INVIERNO, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = inviernoChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_INVIERNO).length;
+const meta = pageMeta('/camino-en-invierno/');
+const jsonLd = [faqPage(inviernoFaqs), itemList('Checklist: Camino de Santiago en invierno', inviernoChecklist)];
+const label = 'Añadir el kit de invierno al carrito de Amazon';
+const note = `Añade ${inKit} artículos de talla única. Guantes, gorro y funda de mochila se eligen por talla o color y quedan fuera.`;
+---
+<Base title="Camino de Santiago en invierno: qué llevar, albergues y rutas (2026)" description="Cómo hacer el Camino de Santiago en invierno (noviembre a marzo): ropa por capas, luz, albergues abiertos, rutas recomendadas y checklist con kit en un clic." jsonLd={jsonLd} crumb="Camino en invierno">
+  <Hero eyebrow="Camino en invierno" title="Camino de Santiago en invierno: qué llevar, dónde dormir y qué ruta elegir" highlight="qué llevar, dónde dormir y qué ruta elegir" updated={meta.modified}>
+    <p>Hacer el Camino de Santiago en invierno, de noviembre a marzo, es posible y muy tranquilo si te preparas para <strong>tres cosas: frío y lluvia, pocas horas de luz y menos albergues abiertos</strong>.</p>
+    <p>Aquí tienes la ropa por capas, la checklist de invierno ({total} artículos), cómo planificar etapas y albergues, qué rutas convienen y un kit para añadir al carrito en un clic.</p>
+    <KitButton slot="side" url={CART_URL_INVIERNO} label={label} title="Kit de invierno del peregrino" note={note} />
+  </Hero>
+
+  <section class="block" id="capas">
+    <div class="wrap">
+      <span class="eyebrow">Ropa</span>
+      <h2>Ropa para el Camino en invierno: el sistema de capas</h2>
+      <p class="lead">La ropa para el Camino en invierno funciona por capas: una que saca el sudor, otra que abriga y otra que corta la lluvia y el viento, para quitar o poner según el esfuerzo y el tiempo.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Capa</th><th scope="col">Qué llevar</th><th scope="col">Para qué</th><th scope="col">Evita</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1. Base</th><td>Camiseta térmica de manga larga (sintética o merino)</td><td>Saca el sudor de la piel para que no te enfríes al parar.</td><td>Algodón: se empapa y tarda en secar.</td></tr>
+            <tr><th scope="row">2. Abrigo</th><td>Forro polar fino o chaqueta ligera de plumas o fibra</td><td>Retiene el calor; se guarda en la mochila al subir una cuesta.</td><td>Un solo abrigo grueso que no puedes regular.</td></tr>
+            <tr><th scope="row">3. Exterior</th><td>Chaqueta impermeable y transpirable con capucha</td><td>Corta lluvia y viento, clave en Galicia y en los puertos.</td><td>Chubasquero sin transpiración en etapas largas.</td></tr>
+            <tr><th scope="row">Piernas</th><td>Pantalón de trekking + malla térmica los días de helada</td><td>Abriga sin limitar el paso.</td><td>Vaqueros.</td></tr>
+            <tr><th scope="row">Extremidades</th><td>Guantes, gorro, braga de cuello y calcetines de merino</td><td>Es donde primero notas el frío.</td><td>Ir sin repuesto de calcetines secos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">La ropa térmica se compra por talla y no la incluimos en el carrito. Para el calzado impermeable y los calcetines, consulta la <a href="/calzado/">guía de calzado para el Camino</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Qué llevar al Camino en invierno: checklist ({total} artículos)</h2>
+      <p class="lead">Al equipo básico de la <a href="/mochila-del-camino/">mochila del Camino</a> añade en invierno luz, calor y protección contra la lluvia; estos {total} artículos cubren lo que cambia respecto al verano.</p>
+      <Checklist checklist={inviernoChecklist} cartUrl={CART_URL_INVIERNO} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_INVIERNO} label={label} variant="band" title="El kit de invierno, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block" id="luz-y-etapas">
+    <div class="narrow prose">
+      <span class="eyebrow">Planificación</span>
+      <h2>Horas de luz y etapas: cómo planificar en invierno</h2>
+      <p>En invierno hay que planificar las etapas según las horas de luz: en diciembre, en Galicia amanece hacia las nueve de la mañana y anochece antes de las seis de la tarde, así que las etapas largas de verano no caben.</p>
+      <ul>
+        <li><strong>Etapas más cortas</strong>: calcula llegar con luz según tu ritmo real, no según la guía.</li>
+        <li><strong>Sal con la primera luz</strong> y lleva la frontal por si se alarga la etapa.</li>
+        <li><strong>Consulta la previsión</strong> cada noche, sobre todo antes de los puertos (O Cebreiro, Foncebadón, el Perdón).</li>
+        <li><strong>Avisa</strong> a alguien de tu etapa si caminas solo; en invierno hay tramos con muy pocos peregrinos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="albergues">
+    <div class="wrap">
+      <span class="eyebrow">Dónde dormir</span>
+      <h2>Albergues abiertos en invierno</h2>
+      <p class="lead">En invierno hay albergues abiertos en las rutas principales, pero muchos privados cierran entre noviembre y marzo, así que confirma cada noche que el de la siguiente etapa está abierto.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Tipo</th><th scope="col">En invierno</th><th scope="col">Qué hacer</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Albergues públicos (municipales y de la Xunta)</th><td>Suelen abrir todo el año en las rutas principales.</td><td>Llega con luz: no se reservan y la calefacción puede ser limitada.</td></tr>
+            <tr><th scope="row">Albergues privados</th><td>Bastantes cierran por temporada.</td><td>Llama antes; si abren, reserva.</td></tr>
+            <tr><th scope="row">Pensiones y hoteles rurales</th><td>Abren más, pero no todos.</td><td>Buen plan B en etapas sin albergue abierto.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Lleva un saco de dormir más abrigado que en verano. Lo que llevar para dormir en albergues lo contaremos en el <a href="/kit-de-albergue/">kit de albergue</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="rutas">
+    <div class="narrow prose">
+      <span class="eyebrow">Rutas</span>
+      <h2>Qué ruta del Camino elegir en invierno</h2>
+      <p>La ruta más sencilla para hacer el Camino en invierno es el Francés desde Sarria o León, porque mantiene más albergues y servicios abiertos todo el año.</p>
+      <ul>
+        <li><strong>Francés desde Sarria o León</strong>: más servicios y compañía; vigila la nieve en O Cebreiro.</li>
+        <li><strong>Portugués por la costa</strong>: clima más suave y llano, con lluvia frecuente.</li>
+        <li><strong>Saint-Jean-Pied-de-Port</strong>: la ruta de Napoleón está cerrada del 1 de noviembre al 31 de marzo; usa la variante de Valcarlos.</li>
+        <li><strong>Primitivo y Norte</strong>: más exigentes y con menos servicios en invierno; solo con experiencia.</li>
+      </ul>
+      <p>Para comparar rutas, consulta <a href="/frances-vs-portugues/">Francés vs Portugués</a>, y si vas con niños o en bici, <a href="/camino-en-bici-y-con-ninos/">Camino en bici y con niños</a>. En la temporada de calor, lee el <a href="/camino-en-verano/">Camino en verano</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="salud">
+    <div class="narrow prose">
+      <span class="eyebrow">Salud</span>
+      <h2>Frío, humedad y pies: cuidados en invierno</h2>
+      <p>En invierno el mayor riesgo para el peregrino es pasar horas mojado y con frío, así que cámbiate de calcetines y capa base en cuanto llegues y no te quedes parado con ropa húmeda.</p>
+      <ul>
+        <li>Pies secos: calcetines de repuesto en bolsa estanca y vaselina en farmacia o supermercado.</li>
+        <li>Hidrátate aunque no tengas sed: con frío se bebe menos.</li>
+        <li>Lleva una manta térmica y el móvil cargado; en emergencias, llama al <strong>112</strong>.</li>
+      </ul>
+      <p>Para ampollas y pequeñas curas, ve al <a href="/botiquin-y-ampollas/">botiquín del Camino</a>.</p>
+      <p class="callout"><strong>Aviso:</strong> información práctica para peregrinos; no sustituye la previsión oficial ni el consejo sanitario. Consulta AEMET antes de cada etapa y, ante dudas de salud, pregunta en tu farmacia.</p>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="camino-en-invierno" withMochila />
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={inviernoFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>
