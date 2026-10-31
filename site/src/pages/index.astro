@@ -115,16 +115,17 @@ const paths = [
   </section>
 </Base>
 <style>
-  .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; margin-top: 1.8rem; }
-  .cta-main { display: inline-flex; gap: .5rem; background: var(--navy-2); color: #f6f2ea !important; font-weight: 600; text-decoration: none; padding: .95rem 1.4rem; border-radius: 10px; transition: background .15s; }
-  .cta-main:hover { background: #000; }
-  .cta-ghost { color: var(--navy-2) !important; font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--sun); padding-bottom: 2px; }
-  .steps { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; counter-reset: s; border-top: 2px solid var(--navy-2); }
-  .steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); color: #3e443f; }
-  .steps b { font-family: var(--serif); font-weight: 400; font-size: 1.6rem; line-height: 1.1; color: var(--sun); }
-  .steps strong { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.12rem; color: var(--navy-2); }
+  .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; margin-top: 1.8rem; }
+  .cta-main { display: inline-flex; gap: .5rem; background: var(--sun); color: var(--navy-2) !important; font-weight: 800; font-size: 1.05rem; text-decoration: none; padding: 1rem 1.5rem; border-radius: 16px; box-shadow: 0 5px 0 #d9a400, 0 16px 30px -12px rgba(255,198,26,.6); transition: transform .12s, box-shadow .12s; }
+  .cta-main:hover { transform: translateY(-2px); }
+  .cta-ghost { color: #fff !important; font-weight: 700; text-decoration: none; padding: 1rem 1.3rem; border-radius: 16px; border: 1.5px solid rgba(255,255,255,.3); background: rgba(255,255,255,.06); backdrop-filter: blur(6px); }
+  .cta-ghost:hover { background: rgba(255,255,255,.14); }
+  .steps { list-style: none; margin: 0; padding: 1.5rem; display: grid; gap: 1rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 24px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.5); }
+  .steps li { display: flex; gap: 1rem; align-items: flex-start; color: #c9d8ec; }
+  .steps b { flex: none; width: 2.6rem; height: 2.6rem; display: grid; place-items: center; border-radius: 14px; background: var(--sun); color: var(--navy-2); font-family: var(--serif); font-size: 1.2rem; }
+  .steps strong { display: block; color: #fff; font-family: var(--serif); font-size: 1.1rem; }
   .paths { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-  .paths li { display: flex; flex-direction: column; gap: .35rem; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--navy-2); border-radius: 4px; padding: 1.1rem 1.2rem; }
+  .paths li { display: flex; flex-direction: column; gap: .35rem; background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--sun); border-radius: var(--radius); padding: 1.2rem 1.3rem; box-shadow: var(--shadow); }
   .paths strong { font-family: var(--serif); color: var(--navy-2); font-size: 1.05rem; }
   .paths span { color: var(--muted); font-size: .92rem; }
   .paths .pl { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .2rem; }

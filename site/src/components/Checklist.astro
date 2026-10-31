@@ -1,6 +1,8 @@
 ---
 import type { Group } from '../data/checklist';
 import { amazon, cartAsins } from '../data/site';
+import { iconFor } from '../data/icons';
+import Icon from './Icon.astro';
 const { checklist, cartUrl } = Astro.props as { checklist: Group[]; cartUrl: string };
 const inCart = new Set(cartAsins(cartUrl));
 let n = 0;
@@ -8,11 +10,12 @@ let n = 0;
 <div class="groups">
 {checklist.map(group => (
   <section class="group">
-    <h3 class="group-title">{group.title} <span>{group.items.length}</span></h3>
+    <h3 class="group-title"><span class="gi"><Icon name={iconFor(group.title)} size={22} /></span>{group.title} <span class="gc">{group.items.length}</span></h3>
     <ol class="cards">
       {group.items.map(item => { n++; const k = inCart.has(item.asin); return (
         <li class="card">
           <div class="card-top">
+            <span class="pic"><Icon name={iconFor(item.what, group.title)} size={30} /></span>
             <span class="num">{String(n).padStart(2, '0')}</span>
             
           </div>
@@ -31,30 +34,29 @@ let n = 0;
 </div>
 <style>
 .groups { display: grid; gap: 3rem; }
-  .group-title { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; font-size: 1.5rem; margin: 0; padding-bottom: .8rem; border-bottom: 2px solid var(--navy-2); }
-  .group-title span { font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .12em; color: var(--muted); }
-  .group-title span::after { content: " artículos"; }
-  .cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; }
-  .card { display: grid; grid-template-columns: 2.6rem 1fr; column-gap: .9rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
-  .card-top { grid-row: span 4; display: flex; flex-direction: column; gap: .5rem; }
-  .num { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: var(--muted); line-height: 1.2; font-variant-numeric: tabular-nums; transition: color .2s; }
-  .card:hover .num { color: var(--sun); }
-  .tag { order: 2; font-size: 0; width: 8px; height: 8px; border-radius: 50%; margin: .2rem 0 0 .3rem; }
-  .tag.in { background: var(--green); }
-  .tag.size { background: var(--sun); }
-  h4 { font-family: var(--serif); font-weight: 600; font-size: 1.18rem; line-height: 1.25; margin: 0 0 .25rem; color: var(--navy-2); letter-spacing: -.01em; }
-  .pick { margin: 0 0 .6rem; font-size: .9rem; color: var(--muted); }
-  .pick strong { color: var(--ink); font-weight: 600; }
-  .why { margin: 0 0 .8rem; font-size: .95rem; color: #3e443f; }
-  .why > span { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: .3rem; }
-  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
-  .see { font-weight: 600; font-size: .9rem; text-decoration: none; color: var(--navy-2); border-bottom: 1.5px solid var(--sun); padding-bottom: 1px; }
-  .see:hover { color: #000; border-color: currentColor; }
+  .group-title { display: flex; align-items: center; gap: .7rem; font-size: 1.5rem; margin: 0 0 1.1rem; }
+  .gi { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--navy); color: var(--sun); flex: none; }
+  .gc { font-family: var(--sans); font-size: .8rem; font-weight: 800; background: var(--sun); color: var(--navy-2); border-radius: 999px; padding: .15rem .6rem; }
+  .cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
+  .card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s var(--ease), box-shadow .18s; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(10,38,71,.06), 0 22px 40px -16px rgba(10,38,71,.35); }
+  .card-top { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.2rem; background: linear-gradient(135deg, var(--sky), #f6f9fd); border-bottom: 1px solid var(--line); }
+  .pic { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 16px; background: #fff; color: var(--navy); box-shadow: 0 6px 16px -8px rgba(10,38,71,.35); transition: transform .25s var(--ease), background .2s, color .2s; }
+  .card:hover .pic { transform: rotate(-6deg) scale(1.06); background: var(--navy); color: var(--sun); }
+  .num { font-family: var(--serif); font-weight: 800; font-size: 2.2rem; color: rgba(15,61,115,.16); line-height: 1; }
+  .card > :not(.card-top) { margin-left: 1.25rem; margin-right: 1.25rem; }
+  h4 { font-family: var(--serif); font-size: 1.2rem; line-height: 1.25; margin: 1rem 0 .3rem; color: var(--navy-2); }
+  .pick { margin: 0 0 .7rem; font-size: .9rem; color: var(--muted); }
+  .pick strong { color: var(--ink); }
+  .why { margin: 0 0 1rem; font-size: .95rem; flex: 1; color: #34465e; }
+  .why > span { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-2); background: #fff1b3; border-radius: 6px; padding: .05rem .4rem; margin-right: .25rem; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; padding: .9rem 0 1.1rem; border-top: 1px dashed var(--line); }
+  .see { display: inline-flex; align-items: center; gap: .35rem; font-weight: 800; font-size: .9rem; text-decoration: none; color: var(--navy-2); background: var(--sun); border-radius: 999px; padding: .5rem .95rem; transition: background .15s; }
+  .see:hover { background: var(--sun-2); color: var(--navy-2); }
   .see span { display: inline-block; transition: transform .2s var(--ease); }
   .see:hover span { transform: translate(2px, -2px); }
-  .note { font-size: .78rem; color: var(--muted); }
-  .note.in::before, .note.size::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: .35rem; vertical-align: .05em; }
-  .note.in::before { background: var(--green); }
-  .note.size::before { background: var(--sun); }
-  @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+  .note { font-size: .76rem; font-weight: 700; border-radius: 999px; padding: .22rem .6rem; }
+  .note.in { background: #e3f4ea; color: var(--green); }
+  .note.in::before { content: "✓ "; }
+  .note.size { background: #fff4d1; color: #8a6400; }
 </style>

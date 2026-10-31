@@ -15,19 +15,29 @@ const parts = highlight && title.includes(highlight) ? title.split(highlight) : 
     </div>
     <div class="hero-side"><slot name="side" /></div>
   </div>
+  <svg class="land" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 C180 60 320 140 520 90 S860 30 1040 80 1320 60 1440 40 V220 H0z" fill="#174a85"/>
+    <path d="M0 160 C220 110 380 170 600 135 S980 90 1180 130 1380 110 1440 100 V220 H0z" fill="#1f5c96"/>
+    <path d="M0 190 C260 160 460 205 720 180 S1160 150 1440 170 V220 H0z" fill="#ffffff"/>
+    <path d="M760 220 C820 185 700 165 860 140 S1100 110 1180 92" stroke="#ffc61a" stroke-width="5" stroke-dasharray="2 14" stroke-linecap="round" fill="none" opacity=".85"/>
+  </svg>
+  <svg class="shell" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 3.5 10A8.5 8.5 0 0 1 20.5 10z M12 21 8 6M12 21l4-15M12 21V5M12 21 5 8M12 21l7-13" fill="none" stroke="currentColor" stroke-width=".9" stroke-linejoin="round"/></svg>
 </section>
 <style>
-.hero { position: relative; overflow: hidden; background: var(--paper); color: var(--ink); padding: clamp(2.2rem, 5vw, 4rem) 0 clamp(2.8rem, 6vw, 4.5rem); border-bottom: 1px solid rgba(29,33,31,.08); }
-  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 5vw, 4.5rem); align-items: start; position: relative; z-index: 1; }
+  .hero { position: relative; overflow: hidden; background: radial-gradient(900px 420px at 88% 0%, rgba(255,198,26,.16), transparent 60%), linear-gradient(160deg, #0f3d73 0%, #0a2647 70%); color: #dbe6f4; padding: clamp(2.4rem, 5vw, 4rem) 0 clamp(6rem, 11vw, 9rem); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; position: relative; z-index: 2; }
   .hero-grid:has(.hero-side:empty) { grid-template-columns: 1fr; max-width: 900px; }
   .hero-side:empty { display: none; }
-  .crumbs { font-size: .85rem; color: var(--muted); margin-bottom: 1.6rem; }
-  .crumbs a { color: var(--muted); text-decoration: none; }
-  .crumbs a:hover { color: var(--ink); text-decoration: underline; }
-  h1 { color: var(--navy-2); font-size: clamp(2.3rem, 5.6vw, 4.1rem); font-weight: 600; line-height: 1.02; letter-spacing: -.035em; margin: 0 0 1.4rem; max-width: 17ch; }
-  mark { background: none; color: inherit; font-style: italic; font-weight: 400; background-image: linear-gradient(transparent 72%, rgba(228,167,12,.38) 72%, rgba(228,167,12,.38) 92%, transparent 92%); padding: 0 .05em; }
-  .hero-lead { font-size: 1.12rem; color: #3e443f; max-width: 58ch; }
-  .hero-lead :global(strong) { color: var(--ink); }
-  .updated { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .84rem; color: var(--muted); margin-top: 1.6rem; padding-top: 1rem; border-top: 1px solid var(--line); max-width: 58ch; }
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  .crumbs { font-size: .85rem; color: #9fb7d3; margin-bottom: 1.4rem; }
+  .crumbs a { color: #dbe6f4; text-decoration: none; }
+  .crumbs a:hover { text-decoration: underline; }
+  .hero :global(.eyebrow) { background: rgba(255,198,26,.14); color: var(--sun); }
+  h1 { color: #fff; font-size: clamp(2.3rem, 5.6vw, 4rem); font-weight: 800; line-height: 1.04; letter-spacing: -.03em; margin: 0 0 1.3rem; max-width: 18ch; }
+  mark { background: none; color: var(--sun); }
+  .hero-lead { font-size: 1.12rem; color: #c9d8ec; max-width: 58ch; }
+  .hero-lead :global(strong), .hero-lead :global(a) { color: #fff; }
+  .updated { display: inline-flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .84rem; color: #c9d8ec; margin-top: 1.4rem; padding: .5rem .9rem; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); }
+  .land { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: clamp(80px, 12vw, 170px); z-index: 1; }
+  .shell { position: absolute; right: 4%; top: 8%; width: clamp(120px, 18vw, 260px); color: rgba(255,198,26,.13); z-index: 0; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } .shell { opacity: .6; } }
 </style>

@@ -10,7 +10,7 @@ const count = cartAsins(url).length;
     <h2 class="kit-title">{title}</h2>
     <p class="kit-sub">Un clic y los añades todos a tu carrito de Amazon.es. Revisa antes de pagar y quita lo que ya tengas.</p>
   </div>
-  <a class="btn" href={url} rel="sponsored nofollow noopener" target="_blank">{label} <span class="arr" aria-hidden="true">↗</span></a>
+  <a class="btn" href={url} rel="sponsored nofollow noopener" target="_blank"><svg class="cart" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.5 12h11.5l2-8H6.2"/></svg>{label} <span class="arr" aria-hidden="true">↗</span></a>
   {note && <p class="kit-note">{note}</p>}
   <ul class="trust">
     <li>ASIN comprobados uno a uno</li>
@@ -19,28 +19,30 @@ const count = cartAsins(url).length;
   </ul>
 </aside>
 <style>
-.kit { background: #fffdf8; color: var(--ink); border-radius: var(--radius); padding: 1.6rem; border: 1px solid var(--line); box-shadow: 0 1px 0 rgba(23,32,27,.04), 0 24px 48px -32px rgba(23,32,27,.35); position: relative; }
-  .kit::before { content: ""; position: absolute; left: 1.6rem; right: 1.6rem; top: -1px; height: 3px; background: var(--sun); border-radius: 0 0 3px 3px; }
-  .band { margin: 0 auto; max-width: 900px; display: grid; grid-template-columns: 1fr auto; gap: .5rem 2.5rem; align-items: center; background: var(--navy-2); color: #d8dcd4; border: 0; padding: clamp(1.6rem, 4vw, 2.4rem); }
-  .band::before { display: none; }
-  .band .kit-title { color: #f6f2ea; }
-  .band .kit-sub, .band .kit-note, .band .trust { color: #b9c1b9; }
-  .band .count { color: var(--sun); }
+.kit { background: #fff; color: var(--ink); border-radius: 24px; padding: 1.7rem; box-shadow: 0 30px 60px -24px rgba(0,0,0,.5); position: relative; overflow: hidden; }
+  .kit::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px; background: repeating-linear-gradient(90deg, var(--sun) 0 28px, var(--navy) 28px 36px); }
+  .band { margin: 0 auto; max-width: 980px; display: grid; grid-template-columns: 1fr auto; gap: .6rem 2.5rem; align-items: center; background: radial-gradient(500px 220px at 100% 0%, rgba(255,198,26,.22), transparent 70%), var(--navy); color: #c9d8ec; padding: clamp(1.8rem, 4vw, 2.6rem); box-shadow: 0 30px 60px -30px rgba(10,38,71,.6); }
+  .band .kit-title { color: #fff; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  .band .kit-sub, .band .kit-note, .band .trust { color: #c9d8ec; }
+  .band .count { background: rgba(255,198,26,.16); color: var(--sun); }
   .band .kit-note, .band .trust { grid-column: 1 / -1; }
-  .count { display: inline-block; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-  .kit-title { font-size: 1.55rem; margin: .4rem 0 .4rem; max-width: none; }
+  .count { display: inline-flex; align-items: center; gap: .3rem; font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--green); background: #e3f4ea; border-radius: 999px; padding: .3rem .75rem; }
+  .count b { font-size: 1rem; }
+  .kit-title { font-size: 1.65rem; margin: .7rem 0 .35rem; max-width: none; }
   .kit-sub { margin: 0 0 1.2rem; color: var(--muted); font-size: .95rem; }
-  .btn { display: flex; justify-content: center; align-items: center; gap: .6rem; text-align: center; background: var(--sun); color: var(--navy-2); font-weight: 700; font-size: 1rem; padding: .95rem 1.3rem; border-radius: 10px; text-decoration: none; box-shadow: inset 0 -2px 0 rgba(0,0,0,.12); transition: background .15s, transform .15s var(--ease); }
-  .btn:hover { background: var(--sun-2); color: var(--navy-2); transform: translateY(-1px); }
-  .btn:active { transform: translateY(1px); }
-  .btn:focus-visible { outline: 2px solid var(--navy-2); outline-offset: 3px; }
+  .btn { display: flex; justify-content: center; align-items: center; gap: .6rem; text-align: center; background: var(--sun); color: var(--navy-2); font-weight: 800; font-size: 1.06rem; padding: 1.1rem 1.5rem; border-radius: 16px; text-decoration: none; box-shadow: 0 5px 0 #d9a400, 0 14px 28px -10px rgba(255,198,26,.7); transition: transform .12s var(--ease), box-shadow .12s, background .15s; }
+  .btn:hover { background: var(--sun-2); color: var(--navy-2); transform: translateY(-2px); box-shadow: 0 7px 0 #d9a400, 0 18px 32px -10px rgba(255,198,26,.8); }
+  .btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #d9a400; }
+  .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .btn .cart { flex: none; }
   .btn .arr { transition: transform .2s var(--ease); }
-  .btn:hover .arr { transform: translate(2px, -2px); }
-  @media (max-width: 480px) { .kit { padding: 1.25rem; } .kit-title { font-size: 1.35rem; } .btn { font-size: .96rem; padding: .9rem 1rem; } }
+  .btn:hover .arr { transform: translate(3px, -3px); }
+  @media (max-width: 480px) { .kit { padding: 1.3rem; } .kit-title { font-size: 1.4rem; } .btn { font-size: 1rem; padding: 1rem; } }
   .kit-note { font-size: .86rem; color: var(--muted); margin: .9rem 0 0; }
-  .trust { list-style: none; padding: 1rem 0 0; margin: 1rem 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font-size: .8rem; color: var(--muted); }
-  .band .trust { border-top-color: rgba(255,255,255,.1); }
-  .trust li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+  .trust { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: .45rem; font-size: .8rem; color: var(--muted); }
+  .trust li { background: var(--sky); border-radius: 999px; padding: .25rem .7rem; }
+  .band .trust li { background: rgba(255,255,255,.08); }
+  .trust li::before { content: "✓ "; color: var(--green); font-weight: 800; }
   .band .trust li::before { color: var(--sun); }
   @media (max-width: 700px) { .band { grid-template-columns: 1fr; } }
 </style>

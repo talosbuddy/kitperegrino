@@ -6,12 +6,12 @@ const { faqs } = Astro.props as { faqs: { q: string; a: string }[] };
 {faqs.map((f, i) => (<details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>))}
 </div>
 <style>
-.faq { display: grid; border-top: 1px solid var(--line); }
-  details { border-bottom: 1px solid var(--line); }
-  summary { list-style: none; cursor: pointer; font-family: var(--serif); font-weight: 600; font-size: 1.12rem; padding: 1.15rem 2.5rem 1.15rem 0; position: relative; color: var(--navy-2); transition: color .15s; }
-  summary:hover { color: #000; }
+.faq { display: grid; gap: .7rem; }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 0 1.3rem; box-shadow: var(--shadow); transition: border-color .15s; }
+  details[open] { border-color: var(--navy); }
+  summary { list-style: none; cursor: pointer; font-weight: 700; padding: 1.1rem 2.6rem 1.1rem 0; position: relative; color: var(--navy-2); }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font-family: var(--sans); font-weight: 300; position: absolute; right: .2rem; top: .9rem; font-size: 1.5rem; color: var(--muted); transition: transform .25s var(--ease); }
-  details[open] summary::after { transform: rotate(45deg); color: var(--sun); }
-  details p { margin: 0 0 1.3rem; color: #3e443f; max-width: 65ch; }
+  summary::after { content: "+"; position: absolute; right: 0; top: .8rem; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--sky); color: var(--navy); font-size: 1.3rem; transition: transform .25s var(--ease), background .2s; }
+  details[open] summary::after { transform: rotate(45deg); background: var(--sun); color: var(--navy-2); }
+  details p { margin: 0 0 1.2rem; color: #34465e; }
 </style>

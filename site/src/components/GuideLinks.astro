@@ -1,5 +1,8 @@
 ---
 import { guides, PUBLISHED } from '../data/site';
+import { iconFor } from '../data/icons';
+import Icon from './Icon.astro';
+const ICON: Record<string,string> = { 'mochila-del-camino': 'mochila', calzado: 'calzado', 'botiquin-y-ampollas': 'botiquin', 'kit-de-albergue': 'albergue', 'camino-en-verano': 'sol', 'camino-en-invierno': 'frio', 'frances-vs-portugues': 'ruta', 'camino-en-bici-y-con-ninos': 'bici' };
 const { exclude, withMochila = false } = Astro.props as { exclude?: string; withMochila?: boolean };
 const list = [
   ...(withMochila ? [{ slug: 'mochila-del-camino', title: 'Mochila del Camino', desc: 'La checklist completa: 16 imprescindibles y el kit en un clic.' }] : []),
@@ -10,6 +13,7 @@ const ready = (s: string) => s === 'mochila-del-camino' || PUBLISHED.has(s);
 <ul class="guides">
   {list.map(g => (
     <li><a href={`/${g.slug}/`}>
+      <span class="gic"><Icon name={ICON[g.slug] ?? iconFor(g.title)} size={26} /></span>
       <span class="t">{g.title}</span>
       <span class="d">{g.desc}</span>
       <span class:list={['st', ready(g.slug) ? 'ok' : 'soon']}>{ready(g.slug) ? <span aria-label="Leer guía">→</span> : 'Próximamente'}</span>
@@ -17,16 +21,14 @@ const ready = (s: string) => s === 'mochila-del-camino' || PUBLISHED.has(s);
   ))}
 </ul>
 <style>
-.guides { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; border-top: 1px solid var(--line); counter-reset: g; }
-  .guides li { counter-increment: g; }
-  .guides a { display: grid; grid-template-columns: 2.6rem 1fr auto; column-gap: .9rem; align-items: baseline; padding: 1.15rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); height: 100%; }
-  .guides a::before { content: counter(g, decimal-leading-zero); font-family: var(--serif); color: var(--muted); font-size: 1.05rem; grid-row: span 2; transition: color .2s; }
-  .guides a:hover::before { color: var(--sun); }
-  .t { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; color: var(--navy-2); line-height: 1.25; letter-spacing: -.01em; }
-  .d { grid-column: 2 / 4; font-size: .92rem; color: var(--muted); }
-  .st { grid-row: 1; grid-column: 3; font-size: 1.1rem; color: var(--navy-2); transition: transform .2s var(--ease); }
-  .guides a:hover .st { transform: translateX(4px); }
-  .guides a:hover .t { text-decoration: underline; text-decoration-color: var(--sun); text-underline-offset: 4px; }
-  .st.soon { font-size: .75rem; color: #9a8a6c; }
-  @media (max-width: 760px) { .guides { grid-template-columns: 1fr; } }
+.guides { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+  .guides a { display: flex; flex-direction: column; gap: .35rem; height: 100%; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem; text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform .18s var(--ease), box-shadow .18s, border-color .18s; }
+  .guides a:hover { transform: translateY(-4px); border-color: var(--sun); box-shadow: 0 22px 40px -18px rgba(10,38,71,.35); }
+  .gic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; background: var(--navy); color: var(--sun); margin-bottom: .5rem; transition: transform .25s var(--ease); }
+  .guides a:hover .gic { transform: rotate(-6deg) scale(1.06); }
+  .t { font-family: var(--serif); font-weight: 700; font-size: 1.18rem; color: var(--navy-2); line-height: 1.2; }
+  .d { font-size: .92rem; color: var(--muted); flex: 1; }
+  .st { align-self: flex-start; margin-top: .6rem; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--sky); color: var(--navy); font-weight: 800; transition: background .15s, transform .2s var(--ease); }
+  .guides a:hover .st { background: var(--sun); transform: translateX(4px); }
+  .st.soon { width: auto; border-radius: 999px; padding: 0 .7rem; font-size: .75rem; color: #8a6400; background: #fff4d1; }
 </style>
