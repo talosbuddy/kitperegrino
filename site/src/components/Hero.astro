@@ -15,21 +15,19 @@ const parts = highlight && title.includes(highlight) ? title.split(highlight) : 
     </div>
     <div class="hero-side"><slot name="side" /></div>
   </div>
-  <svg class="arrow-bg" viewBox="0 0 200 120" aria-hidden="true"><path d="M10 60h150l-45-45m45 45-45 45" stroke="currentColor" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </section>
 <style>
-  .hero { position: relative; overflow: hidden; background: radial-gradient(1200px 500px at 85% -10%, #1f4a73 0%, transparent 60%), var(--navy); color: #e7eef6; padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3rem, 7vw, 5rem); }
-  .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; position: relative; z-index: 1; }
-  .hero-grid:has(.hero-side:empty) { grid-template-columns: 1fr; max-width: 860px; }
-  .crumbs { font-size: .85rem; color: #9fb7cf; margin-bottom: 1rem; }
-  .crumbs a { color: #cfe0f0; text-decoration: none; }
-  .hero :global(.eyebrow) { background: rgba(245,196,0,.16); color: var(--sun); }
-  h1 { color: #fff; font-size: clamp(2.1rem, 5.4vw, 3.6rem); font-weight: 800; margin: 0 0 1.2rem; }
-  mark { background: none; color: var(--sun); }
-  .hero-lead { font-size: 1.1rem; color: #d4e0ec; max-width: 60ch; }
-  .hero-lead :global(strong) { color: #fff; }
-  .hero-lead :global(a) { color: #fff; }
-  .updated { font-size: .85rem; color: #9fb7cf; margin-top: 1.2rem; }
-  .arrow-bg { position: absolute; right: -40px; bottom: -40px; width: 420px; color: rgba(245,196,0,.08); }
+.hero { position: relative; overflow: hidden; background: var(--paper); color: var(--ink); padding: clamp(2.2rem, 5vw, 4rem) 0 clamp(2.8rem, 6vw, 4.5rem); border-bottom: 1px solid rgba(29,33,31,.08); }
+  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 5vw, 4.5rem); align-items: start; position: relative; z-index: 1; }
+  .hero-grid:has(.hero-side:empty) { grid-template-columns: 1fr; max-width: 900px; }
+  .hero-side:empty { display: none; }
+  .crumbs { font-size: .85rem; color: var(--muted); margin-bottom: 1.6rem; }
+  .crumbs a { color: var(--muted); text-decoration: none; }
+  .crumbs a:hover { color: var(--ink); text-decoration: underline; }
+  h1 { color: var(--navy-2); font-size: clamp(2.3rem, 5.6vw, 4.1rem); font-weight: 600; line-height: 1.02; letter-spacing: -.035em; margin: 0 0 1.4rem; max-width: 17ch; }
+  mark { background: none; color: inherit; font-style: italic; font-weight: 400; background-image: linear-gradient(transparent 72%, rgba(228,167,12,.38) 72%, rgba(228,167,12,.38) 92%, transparent 92%); padding: 0 .05em; }
+  .hero-lead { font-size: 1.12rem; color: #3e443f; max-width: 58ch; }
+  .hero-lead :global(strong) { color: var(--ink); }
+  .updated { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .84rem; color: var(--muted); margin-top: 1.6rem; padding-top: 1rem; border-top: 1px solid var(--line); max-width: 58ch; }
   @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
 </style>

@@ -1,6 +1,5 @@
 ---
 import { guides, PUBLISHED } from '../data/site';
-const icons: Record<string, string> = { calzado: '👟', 'botiquin-y-ampollas': '🩹', 'kit-de-albergue': '🛏️', 'camino-en-verano': '☀️', 'camino-en-invierno': '❄️', 'frances-vs-portugues': '🧭', 'camino-en-bici-y-con-ninos': '🚲' };
 const { exclude, withMochila = false } = Astro.props as { exclude?: string; withMochila?: boolean };
 const list = [
   ...(withMochila ? [{ slug: 'mochila-del-camino', title: 'Mochila del Camino', desc: 'La checklist completa: 16 imprescindibles y el kit en un clic.' }] : []),
@@ -11,23 +10,23 @@ const ready = (s: string) => s === 'mochila-del-camino' || PUBLISHED.has(s);
 <ul class="guides">
   {list.map(g => (
     <li><a href={`/${g.slug}/`}>
-      <span class="ico" aria-hidden="true">{g.slug === 'mochila-del-camino' ? '🎒' : icons[g.slug]}</span>
       <span class="t">{g.title}</span>
       <span class="d">{g.desc}</span>
-      <span class:list={['st', ready(g.slug) ? 'ok' : 'soon']}>{ready(g.slug) ? 'Leer guía →' : 'Próximamente'}</span>
+      <span class:list={['st', ready(g.slug) ? 'ok' : 'soon']}>{ready(g.slug) ? <span aria-label="Leer guía">→</span> : 'Próximamente'}</span>
     </a></li>
   ))}
 </ul>
 <style>
-  .guides { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
-  .guides a { display: flex; flex-direction: column; gap: .3rem; height: 100%; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem; text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform .15s, border-color .15s; }
-  .guides a:hover { transform: translateY(-2px); border-color: var(--sun); }
-  .guides a:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
-  @media (prefers-reduced-motion: reduce) { .guides a { transition: none; } .guides a:hover { transform: none; } }
-  .ico { font-size: 1.6rem; }
-  .t { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--navy-2); line-height: 1.2; }
-  .d { font-size: .92rem; color: var(--muted); flex: 1; }
-  .st { font-size: .82rem; font-weight: 700; margin-top: .4rem; }
-  .st.ok { color: var(--navy); }
-  .st.soon { color: #9a8a6c; }
+.guides { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; border-top: 1px solid var(--line); counter-reset: g; }
+  .guides li { counter-increment: g; }
+  .guides a { display: grid; grid-template-columns: 2.6rem 1fr auto; column-gap: .9rem; align-items: baseline; padding: 1.15rem 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); height: 100%; }
+  .guides a::before { content: counter(g, decimal-leading-zero); font-family: var(--serif); color: var(--muted); font-size: 1.05rem; grid-row: span 2; transition: color .2s; }
+  .guides a:hover::before { color: var(--sun); }
+  .t { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; color: var(--navy-2); line-height: 1.25; letter-spacing: -.01em; }
+  .d { grid-column: 2 / 4; font-size: .92rem; color: var(--muted); }
+  .st { grid-row: 1; grid-column: 3; font-size: 1.1rem; color: var(--navy-2); transition: transform .2s var(--ease); }
+  .guides a:hover .st { transform: translateX(4px); }
+  .guides a:hover .t { text-decoration: underline; text-decoration-color: var(--sun); text-underline-offset: 4px; }
+  .st.soon { font-size: .75rem; color: #9a8a6c; }
+  @media (max-width: 760px) { .guides { grid-template-columns: 1fr; } }
 </style>

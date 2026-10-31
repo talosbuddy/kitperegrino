@@ -14,12 +14,15 @@ let n = 0;
         <li class="card">
           <div class="card-top">
             <span class="num">{String(n).padStart(2, '0')}</span>
-            <span class:list={['tag', k ? 'in' : 'size']}>{k ? '✓ En el kit' : 'Elige talla o color'}</span>
+            
           </div>
           <h4>{item.what}</h4>
           <p class="pick">Nuestra elección: <strong>{item.name}</strong></p>
           <p class="why"><span>Por qué</span> {item.why}{item.link && <>{' '}{item.link.pre}{' '}<a href={item.link.href}>{item.link.text}</a>.</>}</p>
-          <a class="see" href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon <span aria-hidden="true">↗</span></a>
+          <div class="meta">
+            <a class="see" href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon <span aria-hidden="true">↗</span></a>
+            <span class:list={['note', k ? 'in' : 'size']}>{k ? 'Incluido en el kit' : 'Elige talla o color'}</span>
+          </div>
         </li>
       ); })}
     </ol>
@@ -27,22 +30,31 @@ let n = 0;
 ))}
 </div>
 <style>
-  .groups { display: grid; gap: 2.5rem; }
-  .group-title { display: flex; align-items: center; gap: .6rem; font-size: 1.45rem; margin: 0 0 1rem; }
-  .group-title span { font-family: var(--sans); font-size: .8rem; font-weight: 700; background: var(--navy); color: #fff; border-radius: 999px; padding: .15rem .55rem; }
-  .cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-  .card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem 1.3rem 1.1rem; box-shadow: var(--shadow); transition: transform .15s, box-shadow .15s; }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(20,50,79,.06), 0 16px 32px -12px rgba(20,50,79,.28); }
-  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .7rem; }
-  .num { font-family: var(--serif); font-weight: 800; font-size: 1.5rem; color: #d7b200; line-height: 1; }
-  .tag { font-size: .74rem; font-weight: 700; border-radius: 999px; padding: .22rem .6rem; }
-  .tag.in { background: #e5f3ea; color: var(--green); }
-  .tag.size { background: var(--sand-2); color: #6b5a3c; }
-  h4 { font-family: var(--serif); font-size: 1.15rem; line-height: 1.25; margin: 0 0 .35rem; color: var(--navy-2); }
-  .pick { margin: 0 0 .7rem; font-size: .93rem; color: var(--muted); }
-  .pick strong { color: var(--ink); }
-  .why { margin: 0 0 1rem; font-size: .95rem; flex: 1; }
-  .why > span { display: inline-block; font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); background: #fff3b8; border-radius: 6px; padding: .05rem .4rem; margin-right: .25rem; }
-  .see { align-self: flex-start; font-weight: 700; font-size: .92rem; text-decoration: none; color: var(--navy); border: 1.5px solid var(--navy); border-radius: 10px; padding: .45rem .8rem; }
-  .see:hover { background: var(--navy); color: #fff; }
+.groups { display: grid; gap: 3rem; }
+  .group-title { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; font-size: 1.5rem; margin: 0; padding-bottom: .8rem; border-bottom: 2px solid var(--navy-2); }
+  .group-title span { font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .12em; color: var(--muted); }
+  .group-title span::after { content: " artículos"; }
+  .cards { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; }
+  .card { display: grid; grid-template-columns: 2.6rem 1fr; column-gap: .9rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+  .card-top { grid-row: span 4; display: flex; flex-direction: column; gap: .5rem; }
+  .num { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: var(--muted); line-height: 1.2; font-variant-numeric: tabular-nums; transition: color .2s; }
+  .card:hover .num { color: var(--sun); }
+  .tag { order: 2; font-size: 0; width: 8px; height: 8px; border-radius: 50%; margin: .2rem 0 0 .3rem; }
+  .tag.in { background: var(--green); }
+  .tag.size { background: var(--sun); }
+  h4 { font-family: var(--serif); font-weight: 600; font-size: 1.18rem; line-height: 1.25; margin: 0 0 .25rem; color: var(--navy-2); letter-spacing: -.01em; }
+  .pick { margin: 0 0 .6rem; font-size: .9rem; color: var(--muted); }
+  .pick strong { color: var(--ink); font-weight: 600; }
+  .why { margin: 0 0 .8rem; font-size: .95rem; color: #3e443f; }
+  .why > span { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: .3rem; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
+  .see { font-weight: 600; font-size: .9rem; text-decoration: none; color: var(--navy-2); border-bottom: 1.5px solid var(--sun); padding-bottom: 1px; }
+  .see:hover { color: #000; border-color: currentColor; }
+  .see span { display: inline-block; transition: transform .2s var(--ease); }
+  .see:hover span { transform: translate(2px, -2px); }
+  .note { font-size: .78rem; color: var(--muted); }
+  .note.in::before, .note.size::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: .35rem; vertical-align: .05em; }
+  .note.in::before { background: var(--green); }
+  .note.size::before { background: var(--sun); }
+  @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
 </style>
