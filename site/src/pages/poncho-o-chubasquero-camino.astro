@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Faq from '../components/Faq.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+import { faqPage } from '../data/schema';
+const meta = pageMeta('/poncho-o-chubasquero-camino/');
+const faqs = [
+  { q: '¿Necesito llevar poncho y chubasquero?', a: 'No por defecto. Cubren funciones que se solapan y añaden volumen. Llevar ambos necesita una razón concreta relacionada con tu recorrido y tu equipo, no solo la posibilidad de que llueva.' },
+  { q: '¿Un poncho evita comprar cubremochilas?', a: 'Puede hacerlo si cubre bien tu mochila cargada y se mantiene en su sitio. Compruébalo. Aun así, protege dentro las cosas que no pueden mojarse.' },
+  { q: '¿Necesito pantalón impermeable?', a: 'Valóralo si prevés caminar con frío, viento y lluvia persistente. Un poncho o una chaqueta dejan zonas expuestas. El pantalón también añade calor y peso, así que pruébalo con el calzado y las capas que usarás.' },
+  { q: '¿Por qué estoy húmedo si no veo una fuga?', a: 'Puede ser sudor o condensación, además de agua que entra por cuello, mangas o costuras. Revisa dónde aparece la humedad y las condiciones en que sucede antes de atribuirla a un fallo del tejido.' },
+];
+const jsonLd = [faqPage(faqs)];
+---
+<Base title="Poncho o chubasquero para el Camino: cómo elegir" description="Compara poncho y chubasquero para el Camino según el viento, el calor y tu mochila. Qué protege cada uno y qué comprobar antes de salir." jsonLd={jsonLd} crumb="Poncho o chubasquero">
+  <Hero eyebrow="Lluvia en el Camino" title="Poncho frente a chubasquero para el Camino" highlight="Poncho frente a chubasquero" updated={meta.modified}>
+    <p>Para caminar con lluvia y viento, un chubasquero que ajuste bien suele resultar más manejable. Para lluvia con poco viento, un poncho amplio puede cubrirte a ti y a la mochila con una sola pieza. La elección cambia con el recorrido y con lo cómodo que te resulte caminar dentro de cada prenda.</p>
+  </Hero>
+
+  <section class="block">
+    <ProseArticle>
+      <p>No compres las dos por si acaso sin probar primero la que ya tienes. Ninguna evita por sí sola que se mojen las piernas o que la ropa se humedezca con el sudor.</p>
+
+      <h2>Qué cambia al caminar</h2>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Aspecto</th><th>Poncho</th><th>Chubasquero</th></tr></thead>
+          <tbody>
+            <tr><td>Mochila</td><td>Algunos modelos la cubren. Hay que comprobarlo con la mochila cargada.</td><td>Normalmente necesita protección independiente para la mochila y su contenido.</td></tr>
+            <tr><td>Viento</td><td>El tejido suelto puede levantarse y dificultar el avance.</td><td>Un corte ajustado y una capucha regulable permiten controlar mejor la prenda.</td></tr>
+            <tr><td>Ventilación</td><td>Las aberturas pueden facilitar la circulación de aire. Depende del corte.</td><td>Depende del tejido y de las aperturas de ventilación. Puede acumular calor.</td></tr>
+            <tr><td>Brazos y manos</td><td>La cobertura cambia al usar bastones o al elevar los brazos.</td><td>Las mangas acompañan mejor el movimiento, pero las manos suelen quedar fuera.</td></tr>
+            <tr><td>Piernas</td><td>Puede cubrir parte de ellas, pero el agua escurre por el borde.</td><td>La chaqueta deja las piernas fuera.</td></tr>
+            <tr><td>Acceso a bolsillos y agua</td><td>Puede obligarte a levantar la prenda y dejar entrar agua.</td><td>Los bolsillos suelen quedar más accesibles, según el modelo y el cinturón lumbar.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Estas diferencias describen formatos, no garantías. Un poncho corto y uno diseñado para llevar mochila no protegen igual. Tampoco un cortavientos equivale a una chaqueta impermeable.</p>
+
+      <h2>Elige poncho si puedes controlar el tejido suelto</h2>
+      <p>Tiene sentido si quieres cubrir la mochila con la misma prenda y esperas caminar con poco viento. Pruébalo con la carga real. Comprueba que el borde no te hace tropezar y que la espalda queda cubierta al inclinarte.</p>
+      <p>Su principal inconveniente aparece cuando el viento levanta el tejido o lo empuja contra las piernas. También puede engancharse en vegetación o limitar lo que ves al mirar al suelo. No improvises cordones o sujeciones que puedan enredarse con los bastones.</p>
+      <p>Antes de decidir, practica cómo ponértelo y quitártelo sin empapar la ropa seca. Si necesitas ayuda para colocarlo sobre la mochila, conviene saberlo antes de salir.</p>
+
+      <h2>Elige chubasquero si priorizas el control con viento</h2>
+      <p>Una chaqueta con capucha y puños regulables permite reducir las entradas de agua y mantener el tejido recogido. Es una opción razonable para tramos expuestos y para quien camina con bastones.</p>
+      <p>A cambio, necesitas resolver la protección de la mochila. Un cubremochilas no protege necesariamente el respaldo ni todo lo que queda bajo los tirantes. Guarda lo imprescindible en bolsas interiores adecuadas para mantenerlo seco.</p>
+      <p>La chaqueta también puede dar calor. La palabra «transpirable» no significa que elimine todo el sudor mientras subes con la mochila. Ajusta el ritmo, evita capas innecesarias y usa las aperturas de ventilación cuando no entre lluvia por ellas.</p>
+
+      <h2>Decide según la etapa, no solo según el mes</h2>
+      <p>En una etapa cálida con chubascos y poco viento, puede interesarte la ventilación de un poncho. Con viento, una chaqueta ajustada suele ser más práctica. Con frío y lluvia, revisa el conjunto de ropa, la protección de las piernas y lo que llevarás seco para cambiarte.</p>
+      <p>La <a href="/camino-en-verano/">guía del Camino en verano</a> y la <a href="/camino-en-invierno/">guía de invierno</a> sirven para completar el equipo. La previsión de la etapa y los avisos oficiales deben guiar la decisión de salir. Ninguna de estas prendas convierte una etapa con condiciones peligrosas en una etapa segura.</p>
+
+      <h2>Haz esta prueba antes de meterlo en la mochila</h2>
+      <ol>
+        <li>Ponte las capas con las que caminarás y carga la mochila.</li>
+        <li>Coloca la prenda y regula la capucha. Gira la cabeza para comprobar la visión lateral.</li>
+        <li>Camina, sube un escalón y agáchate. Revisa si el borde estorba o si queda una zona de la espalda descubierta.</li>
+        <li>Mueve los brazos como al usar bastones. Comprueba mangas, aberturas y acceso al agua.</li>
+        <li>Ensaya cómo guardarla mojada sin tocar el saco o la ropa limpia.</li>
+      </ol>
+      <p>Si compruebas la protección con agua en casa, hazlo en un lugar seguro y sin dispositivos o documentos dentro de la mochila. Una prueba breve permite detectar entradas evidentes, pero no demuestra cómo responderá tras horas de lluvia.</p>
+
+      <h2>No dejes la ropa seca a merced de una sola capa</h2>
+      <p>Protege en el interior de la mochila lo que necesitas al terminar la etapa. Lleva el impermeable accesible, no debajo del saco. Al parar, evita abrir todo el equipaje bajo la lluvia.</p>
+      <p>Revisa el estado de la prenda antes del viaje. Busca desgarros, costuras deterioradas y cierres que no funcionan. Sigue las instrucciones de lavado y mantenimiento del fabricante. No apliques tratamientos sin comprobar que son adecuados para ese tejido.</p>
+      <p>Para colocar las bolsas interiores sin desordenar la carga, consulta la <a href="/mochila-del-camino/">checklist de mochila</a>. Para el sistema de capas y mudas, mira la <a href="/ropa-del-camino/">guía de ropa</a>.</p>
+    </ProseArticle>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={faqs} /></div>
+  </section>
+</Base>

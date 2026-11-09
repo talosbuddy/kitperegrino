@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+const meta = pageMeta('/privacidad/');
+---
+<Base title="Política de privacidad | KitPeregrino" description="Qué datos trata KitPeregrino, qué servicios de terceros usa el sitio y cómo ejercer tus derechos." crumb="Privacidad">
+  <Hero eyebrow="Privacidad" title="Política de privacidad" updated={meta.modified}>
+    <p>Descripción del tratamiento de datos según lo que el sitio usa realmente hoy.</p>
+  </Hero>
+  <section class="block">
+    <ProseArticle>
+      <p class="todo-banner">Responsable y canal de ejercicio de derechos pendientes de completar. Auditoría del código del sitio (9 nov 2026, hora de Madrid): no hay scripts de analítica propios ni de terceros embebidos en las páginas; sí hay fuentes de Google Fonts y enlaces a Amazon.</p>
+
+      <h2>1. Responsable</h2>
+      <ul>
+        <li>Responsable: <span class="placeholder">[NOMBRE TITULAR]</span></li>
+        <li>Contacto: <span class="placeholder">[EMAIL DE CONTACTO]</span></li>
+        <li>Domicilio: <span class="placeholder">[DOMICILIO]</span></li>
+        <li>NIF: <span class="placeholder">[NIF]</span></li>
+      </ul>
+      <p>No hay delegado de protección de datos designado en este momento.</p>
+
+      <h2>2. Qué hace este sitio (auditoría del código)</h2>
+      <p>KitPeregrino es un sitio estático generado con Astro y publicado en Cloudflare Pages. Tras revisar el código y la configuración del proyecto:</p>
+      <ul>
+        <li><strong>No</strong> se incluyen scripts de Google Analytics, Cloudflare Web Analytics, píxeles publicitarios ni otros contadores en el HTML generado.</li>
+        <li><strong>No</strong> se establece un banner de cookies ni se escribe almacenamiento local desde scripts propios del sitio.</li>
+        <li>Las páginas cargan tipografías desde <strong>Google Fonts</strong> (<code>fonts.googleapis.com</code> y <code>fonts.gstatic.com</code>). Al visitar el sitio, tu navegador solicita esos recursos a Google, que puede tratar datos técnicos de la petición (por ejemplo, dirección IP y cabeceras habituales del navegador) según su propia política.</li>
+        <li>El alojamiento en <strong>Cloudflare Pages</strong> puede generar registros técnicos del servicio (accesos, errores, seguridad) en la infraestructura del proveedor. Eso no aparece como un script en nuestras páginas; su alcance depende de la configuración de Cloudflare.</li>
+        <li>Los únicos <code>&lt;script&gt;</code> del sitio son bloques JSON-LD de datos estructurados (schema.org), que no realizan seguimiento.</li>
+      </ul>
+
+      <h2>3. Enlaces a Amazon y afiliación</h2>
+      <p>Varias guías incluyen enlaces a Amazon.es (fichas de producto y botones que añaden artículos a un carrito). Al seguir esos enlaces abandonas KitPeregrino y pasas a Amazon, que trata datos según su propia política de privacidad. Los enlaces pueden llevar un identificador de afiliado (hoy el marcador provisional <code>XXXX-21</code>). KitPeregrino no recibe el contenido de tu carrito ni datos de pago; Amazon es quien gestiona la compra.</p>
+
+      <h2>4. Contacto por correo</h2>
+      <p>Si nos escribes al canal de <a href="/contacto/">contacto</a> (cuando esté habilitado), trataremos la dirección de correo y el contenido del mensaje para responder a la consulta. Base jurídica prevista: interés legítimo en atender la solicitud o, cuando proceda, la ejecución de medidas precontractuales a petición tuya. Conservaremos el mensaje el tiempo necesario para gestionarlo y, si aplica, obligaciones legales.</p>
+
+      <h2>5. Cookies y tecnologías similares</h2>
+      <p>El código del sitio no instala cookies propias de analítica ni de publicidad. Google Fonts y el propio navegador o la CDN de Cloudflare pueden usar mecanismos técnicos habituales de entrega de contenido. No afirmamos «no usamos cookies» de forma absoluta: no controlamos todas las cabeceras o registros del proveedor de alojamiento. Si en el futuro se activa analítica o una tecnología que requiera consentimiento, actualizaremos esta política y, si procede, el mecanismo de consentimiento antes de activarla.</p>
+
+      <h2>6. Destinatarios y transferencias</h2>
+      <ul>
+        <li>Google (fuentes tipográficas), cuando el navegador descarga Google Fonts.</li>
+        <li>Cloudflare (alojamiento y red de entrega), como encargado o proveedor de infraestructura.</li>
+        <li>Amazon, solo si decides seguir un enlace a Amazon.es.</li>
+      </ul>
+      <p>Algunos de estos proveedores pueden tratar datos fuera del Espacio Económico Europeo. Consulta sus políticas para las garantías que aplican.</p>
+
+      <h2>7. Derechos</h2>
+      <p>Puedes solicitar acceso, rectificación, supresión, limitación, oposición y portabilidad cuando procedan, escribiendo a <span class="placeholder">[EMAIL DE CONTACTO]</span>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es). No tomamos decisiones automatizadas con efectos jurídicos a partir de tu navegación en este sitio.</p>
+
+      <h2>8. Actualización</h2>
+      <p>Fecha de esta versión: <time datetime={meta.modified}>9 de noviembre de 2026</time>. Si cambia la analítica, el alojamiento o los canales de contacto, revisaremos este texto.</p>
+    </ProseArticle>
+  </section>
+</Base>

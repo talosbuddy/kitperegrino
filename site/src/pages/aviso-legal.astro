@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+const meta = pageMeta('/aviso-legal/');
+---
+<Base title="Aviso legal | KitPeregrino" description="Titular, objeto del sitio y condiciones legales de KitPeregrino." crumb="Aviso legal">
+  <Hero eyebrow="Aviso legal" title="Aviso legal" updated={meta.modified}>
+    <p>Información del titular y del objeto de KitPeregrino.</p>
+  </Hero>
+  <section class="block">
+    <ProseArticle>
+      <p class="todo-banner">Esquema incompleto: faltan los datos de identidad del titular. Los marcadores entre corchetes deben sustituirse antes de dar por definitiva esta página.</p>
+
+      <h2>1. Titular del sitio</h2>
+      <ul>
+        <li>Titular: <span class="placeholder">[NOMBRE TITULAR]</span></li>
+        <li>Identificación fiscal: <span class="placeholder">[NIF]</span></li>
+        <li>Domicilio a efectos legales: <span class="placeholder">[DOMICILIO]</span></li>
+        <li>Contacto: <span class="placeholder">[EMAIL DE CONTACTO]</span> (ver también <a href="/contacto/">Contacto</a>)</li>
+        <li>Datos registrales u otros datos profesionales: <span class="placeholder">[PENDIENTE SI APLICAN]</span></li>
+      </ul>
+
+      <h2>2. Objeto del sitio</h2>
+      <p>KitPeregrino publica guías de preparación y equipo para el Camino de Santiago. Algunas páginas incluyen enlaces a Amazon.es. Cuando esos enlaces son de afiliado, pueden generar una comisión si se produce una compra elegible. Conservamos el identificador provisional <code>XXXX-21</code> hasta disponer del identificador real. El aviso de afiliado aparece en el pie de todas las páginas y junto a las recomendaciones comerciales.</p>
+
+      <h2>3. Propiedad intelectual</h2>
+      <p>Los textos propios de KitPeregrino están protegidos. No atribuyas al titular recursos de terceros (marcas, imágenes o fichas de producto) sin revisar su procedencia. Las marcas y nombres de productos citados pertenecen a sus respectivos titulares.</p>
+
+      <h2>4. Enlaces externos</h2>
+      <p>El sitio enlaza a páginas de terceros, entre ellas Amazon.es. KitPeregrino no controla el contenido, la disponibilidad ni las condiciones de esos sitios. Distinguimos la información propia de la de terceros.</p>
+
+      <h2>5. Actualización</h2>
+      <p>Fecha de revisión de este aviso: <time datetime={meta.modified}>9 de noviembre de 2026</time>. Las cláusulas sobre legislación aplicable y jurisdicción requieren revisión jurídica y no pueden anular derechos imperativos.</p>
+    </ProseArticle>
+  </section>
+</Base>

@@ -1,4 +1,4 @@
-export interface Item { what: string; name: string; asin: string; why: string; link?: { href: string; text: string; pre: string } }
+export interface Item { what: string; name: string; asin: string; why: string; drawback?: string; alternative?: string; link?: { href: string; text: string; pre: string } }
 export interface Group { title: string; items: Item[] }
 
 export const checklist: Group[] = [
@@ -34,6 +34,6 @@ export const faqs: { q: string; a: string }[] = [
   { q: '¿Qué calzado llevo?', a: 'Zapatillas de trail o botas ligeras ya usadas, media talla más grandes. Lo explicamos en nuestra guía de calzado.' },
   { q: '¿Dónde consigo la credencial del peregrino?', a: 'En la oficina del peregrino o en albergues de la salida, en asociaciones de amigos del Camino y en parroquias. No es un producto de Amazon.' },
   { q: '¿Cuántos kilómetros hacen falta para la Compostela?', a: 'Los últimos 100 km continuos a pie o 200 km en bici por un mismo camino, con la credencial sellada, según la Oficina del Peregrino. Es gratuita y se recoge en persona en Santiago.' },
-  { q: '¿Cómo se coloca bien la mochila?', a: 'Primero el cinturón lumbar sobre los huesos de la cadera, luego las hombreras, después los tensores de carga y por último la cinta de pecho. Lo pesado, pegado a la espalda y a media altura.' },
+  { q: '¿Cómo se coloca bien la mochila?', a: 'Primero el cinturón lumbar sobre los huesos de la cadera, luego las hombreras, después los tensores de carga y por último la cinta de pecho. Lo pesado, pegado a la espalda y a media altura. Lo desarrollamos en la guía para ajustar la mochila.' },
   { q: '¿Qué hago si la mochila pesa demasiado?', a: 'Quita mudas, duplicados y todo lo que lleves «por si acaso». Lo que sobre se puede enviar a casa o a Santiago por correo.' },
 ];

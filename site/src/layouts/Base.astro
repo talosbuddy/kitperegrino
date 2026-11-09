@@ -7,10 +7,11 @@ const { title, description, jsonLd, noindex = false, crumb, h1 } = Astro.props;
 const meta = PAGES.find(p => p.path === Astro.url.pathname);
 const ld: object[] = [...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 if (crumb && !noindex) ld.push(breadcrumbs(Astro.url.pathname, crumb));
-if (meta) ld.push(article({ path: meta.path, headline: h1 ?? title, description, datePublished: meta.published, dateModified: meta.modified }));
+const kind = meta && 'kind' in meta ? (meta as { kind?: string }).kind : undefined;
+if (meta && kind !== 'legal') ld.push(article({ path: meta.path, headline: h1 ?? title, description, datePublished: meta.published, dateModified: meta.modified }));
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
-const kitAnchor = meta ? (path === '/frances-vs-portugues/' ? '#equipo' : '#checklist') : null;
+const kitAnchor = meta && !kind ? (path === '/frances-vs-portugues/' ? '#equipo' : '#checklist') : null;
 ---
 <!doctype html>
 <html lang="es">
@@ -90,6 +91,16 @@ const kitAnchor = meta ? (path === '/frances-vs-portugues/' ? '#equipo' : '#chec
         <a href="/#epoca">Mejor época</a>
         <a href="/#glosario">Glosario del peregrino</a>
         <a href="/botiquin-y-ampollas/#emergencias">Emergencias: 112</a>
+        <a href="/como-seleccionamos/">Cómo seleccionamos</a>
+      </nav>
+    </div>
+    <div class="wrap foot-legal">
+      <nav aria-label="Legal y contacto">
+        <a href="/sobre-kitperegrino/">Quiénes somos</a>
+        <a href="/contacto/">Contacto</a>
+        <a href="/privacidad/">Privacidad</a>
+        <a href="/aviso-legal/">Aviso legal</a>
+        <a href="/como-seleccionamos/">Metodología</a>
       </nav>
     </div>
     <div class="wrap foot-bottom">
@@ -170,6 +181,8 @@ const kitAnchor = meta ? (path === '/frances-vs-portugues/' ? '#equipo' : '#chec
   .foot nav { display: flex; flex-direction: column; gap: .5rem; }
   .foot nav h2 { font-family: var(--sans); font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #8ea3bd; margin: 0 0 .4rem; }
   .foot-brand p { max-width: 34ch; margin: 1rem 0 0; }
+  .foot-legal { border-top: 1px solid rgba(255,255,255,.1); padding: 1rem 0 .2rem; }
+  .foot-legal nav { display: flex; flex-wrap: wrap; gap: .55rem 1.25rem; font-size: .88rem; }
   .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.2rem; font-size: .82rem; color: #8ea3bd; }
   .foot-bottom p { margin: 0; }
   .disclosure { color: #b8c7da; }

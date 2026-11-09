@@ -1,0 +1,37 @@
+---
+/** Wrapper with shared prose styles for long-form article and legal pages. */
+---
+<div class="prose-article prose">
+  <slot />
+</div>
+<style>
+  .prose-article { max-width: 740px; margin: 0 auto; padding: 0 1.5rem; }
+  .prose-article > :first-child { margin-top: 0; }
+  .prose-article :global(h2) { margin-top: 2.4rem; max-width: none; }
+  .prose-article :global(h3) { margin: 1.8rem 0 .5rem; font-size: 1.25rem; }
+  .prose-article :global(p), .prose-article :global(li) { color: #34465e; }
+  .prose-article :global(ul), .prose-article :global(ol) { padding-left: 1.2rem; }
+  .prose-article :global(li) { margin: .55rem 0; }
+  .prose-article :global(li::marker) { color: var(--sun); font-weight: 700; }
+  .prose-article :global(table) { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); font-size: .95rem; margin: 1.2rem 0 1.6rem; }
+  .prose-article :global(th), .prose-article :global(td) { padding: .7rem .9rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .prose-article :global(th) { background: var(--navy); color: #fff; font-weight: 700; }
+  .prose-article :global(.placeholder) {
+    display: inline-block;
+    background: #ffe8a3;
+    color: var(--navy-2);
+    font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .92em;
+    padding: .05rem .35rem;
+    border-radius: 4px;
+  }
+  .prose-article :global(.todo-banner) {
+    background: #fff1b3;
+    border: 1px solid #e6c200;
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    margin: 0 0 1.5rem;
+    color: var(--navy-2);
+  }
+</style>

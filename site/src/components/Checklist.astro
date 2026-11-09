@@ -3,11 +3,13 @@ import type { Group } from '../data/checklist';
 import { amazon, cartAsins } from '../data/site';
 import { iconFor } from '../data/icons';
 import Icon from './Icon.astro';
+import AffiliateNotice from './AffiliateNotice.astro';
 const { checklist, cartUrl } = Astro.props as { checklist: Group[]; cartUrl: string };
 const inCart = new Set(cartAsins(cartUrl));
 let n = 0;
 ---
 <div class="groups">
+  <AffiliateNotice />
 {checklist.map(group => (
   <section class="group">
     <h3 class="group-title"><span class="gi"><Icon name={iconFor(group.title)} size={22} /></span>{group.title} <span class="gc">{group.items.length}</span></h3>
@@ -22,8 +24,10 @@ let n = 0;
           <h4>{item.what}</h4>
           <p class="pick">Nuestra elección: <strong>{item.name}</strong></p>
           <p class="why"><span>Por qué</span> {item.why}{item.link && <>{' '}{item.link.pre}{' '}<a href={item.link.href}>{item.link.text}</a>.</>}</p>
+          {item.drawback && <p class="drawback"><span>Limitación</span> {item.drawback}</p>}
+          {item.alternative && <p class="alt"><span>Alternativa</span> {item.alternative}</p>}
           <div class="meta">
-            <a class="see" href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon <span aria-hidden="true">↗</span></a>
+            <a class="see" href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon · enlace de afiliado <span aria-hidden="true">↗</span></a>
             <span class:list={['note', k ? 'in' : 'size']}>{k ? 'Incluido en el kit' : 'Elige talla o color'}</span>
           </div>
         </li>
@@ -48,10 +52,12 @@ let n = 0;
   h4 { font-family: var(--serif); font-size: 1.2rem; line-height: 1.25; margin: 1rem 0 .3rem; color: var(--navy-2); }
   .pick { margin: 0 0 .7rem; font-size: .9rem; color: var(--muted); }
   .pick strong { color: var(--ink); }
-  .why { margin: 0 0 1rem; font-size: .95rem; flex: 1; color: #34465e; }
-  .why > span { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-2); background: #fff1b3; border-radius: 6px; padding: .05rem .4rem; margin-right: .25rem; }
+  .why, .drawback, .alt { margin: 0 0 .7rem; font-size: .95rem; color: #34465e; }
+  .why { flex: 1; margin-bottom: 1rem; }
+  .why > span, .drawback > span, .alt > span { display: inline-block; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-2); background: #fff1b3; border-radius: 6px; padding: .05rem .4rem; margin-right: .25rem; }
+  .drawback > span, .alt > span { background: var(--sky); }
   .meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; padding: .9rem 0 1.1rem; border-top: 1px dashed var(--line); }
-  .see { display: inline-flex; align-items: center; gap: .35rem; font-weight: 800; font-size: .9rem; text-decoration: none; color: var(--navy-2); background: var(--sun); border-radius: 999px; padding: .5rem .95rem; transition: background .15s; }
+  .see { display: inline-flex; align-items: center; gap: .35rem; font-weight: 800; font-size: .85rem; text-decoration: none; color: var(--navy-2); background: var(--sun); border-radius: 999px; padding: .5rem .95rem; transition: background .15s; }
   .see:hover { background: var(--sun-2); color: var(--navy-2); }
   .see span { display: inline-block; transition: transform .2s var(--ease); }
   .see:hover span { transform: translate(2px, -2px); }

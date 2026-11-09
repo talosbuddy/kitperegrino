@@ -1,5 +1,6 @@
 ---
 import { CART_URL, cartAsins } from '../data/site';
+import AffiliateNotice from './AffiliateNotice.astro';
 interface Props { url?: string; label?: string; title?: string; note?: string; variant?: 'card' | 'band' }
 const { url = CART_URL, label = 'Añadir el kit básico al carrito de Amazon', title = 'Kit básico listo', note, variant = 'card' } = Astro.props;
 const count = cartAsins(url).length;
@@ -11,6 +12,7 @@ const count = cartAsins(url).length;
     <p class="kit-sub">Un clic y los añades todos a tu carrito de Amazon.es. Revisa antes de pagar y quita lo que ya tengas.</p>
   </div>
   <a class="btn" href={url} rel="sponsored nofollow noopener" target="_blank"><svg class="cart" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.5 12h11.5l2-8H6.2"/></svg>{label} <span class="arr" aria-hidden="true">↗</span></a>
+  <AffiliateNotice compact />
   {note && <p class="kit-note">{note}</p>}
   <ul class="trust">
     <li>ASIN comprobados uno a uno</li>
@@ -25,7 +27,9 @@ const count = cartAsins(url).length;
   .band .kit-title { color: #fff; font-size: clamp(1.6rem, 3vw, 2.1rem); }
   .band .kit-sub, .band .kit-note, .band .trust { color: #c9d8ec; }
   .band .count { background: rgba(255,198,26,.16); color: var(--sun); }
-  .band .kit-note, .band .trust { grid-column: 1 / -1; }
+  .band .kit-note, .band .trust, .band :global(.aff-notice) { grid-column: 1 / -1; }
+  .band :global(.aff-notice) { background: rgba(255,255,255,.1); border-left-color: var(--sun); color: #e9eef6; }
+  .band :global(.aff-notice a) { color: var(--sun); }
   .count { display: inline-flex; align-items: center; gap: .3rem; font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--green); background: #e3f4ea; border-radius: 999px; padding: .3rem .75rem; }
   .count b { font-size: 1rem; }
   .kit-title { font-size: 1.65rem; margin: .7rem 0 .35rem; max-width: none; }

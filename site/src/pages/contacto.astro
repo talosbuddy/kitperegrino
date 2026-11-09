@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+const meta = pageMeta('/contacto/');
+---
+<Base title="Contacto | KitPeregrino" description="Canal de contacto de KitPeregrino para erratas y consultas sobre el contenido." crumb="Contacto">
+  <Hero eyebrow="Contacto" title="Contacto" updated={meta.modified}>
+    <p>Para comunicar una errata o una consulta sobre el contenido.</p>
+  </Hero>
+  <section class="block">
+    <ProseArticle>
+      <p class="todo-banner">Pendiente de un canal público autorizado. No uses los marcadores como dirección real.</p>
+      <p>Escribe a <span class="placeholder">[EMAIL DE CONTACTO]</span>.</p>
+      <p>No prometemos un plazo de respuesta. Al contactarnos, trataremos tu mensaje según la <a href="/privacidad/">política de privacidad</a>.</p>
+    </ProseArticle>
+  </section>
+</Base>

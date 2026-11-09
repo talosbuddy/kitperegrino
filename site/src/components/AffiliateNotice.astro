@@ -1,0 +1,26 @@
+---
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<p class:list={['aff-notice', compact && 'compact']} role="note">
+  <strong>Publicidad.</strong> Estos enlaces llevan a Amazon y son enlaces de afiliado. Podemos obtener una comisión por las compras que cumplan las condiciones del programa.
+  {' '}<a href="/como-seleccionamos/">Cómo seleccionamos el equipo</a>.
+</p>
+<style>
+  .aff-notice {
+    margin: 0 0 1.25rem;
+    padding: .85rem 1.05rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--sun);
+    background: #fff8db;
+    color: var(--ink);
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+  .aff-notice.compact {
+    margin: .9rem 0 0;
+    font-size: .86rem;
+    padding: .7rem .9rem;
+  }
+  .aff-notice a { font-weight: 700; }
+</style>
