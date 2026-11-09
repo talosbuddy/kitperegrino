@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { ropaChecklist, ropaFaqs } from '../data/ropa';
+import { CART_URL_ROPA, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = ropaChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_ROPA).length;
+const meta = pageMeta('/ropa-del-camino/');
+const jsonLd = [faqPage(ropaFaqs), itemList('Checklist: ropa para el Camino de Santiago', ropaChecklist)];
+const label = 'Añadir el kit de ropa al carrito de Amazon';
+const note = `Añade ${inKit} artículos de talla única (braga de cuello, jabón, imperdibles y bolsas). Las prendas se eligen por talla en su ficha y quedan fuera.`;
+---
+<Base title="Qué ropa llevar al Camino de Santiago: capas y mudas (2026)" description="Qué ropa llevar al Camino de Santiago: sistema de 3 capas, cuántas mudas, merino o sintético (nunca algodón), ropa por estación, errores y kit en un clic." jsonLd={jsonLd} crumb="Ropa del Camino">
+  <Hero eyebrow="Ropa del Camino" title="Ropa para el Camino de Santiago: qué llevar, por capas y cuántas mudas" highlight="por capas y cuántas mudas" updated={meta.modified}>
+    <p>La ropa para el Camino de Santiago se resume en <strong>tres capas técnicas (base, abrigo e impermeable), tres mudas como máximo y nada de algodón</strong>: lavas a mano cada tarde y la ropa tiene que estar seca a la mañana siguiente.</p>
+    <p>Aquí tienes el sistema de capas, cuántas prendas llevar, merino o sintético, qué cambia en verano e invierno, los errores más comunes y una checklist ({total} artículos) con el porqué de cada prenda.</p>
+    <KitButton slot="side" url={CART_URL_ROPA} label={label} title="Kit de ropa y colada" note={note} />
+  </Hero>
+
+  <section class="block" id="capas">
+    <div class="wrap">
+      <span class="eyebrow">Sistema de 3 capas</span>
+      <h2>El sistema de tres capas para el Camino</h2>
+      <p class="lead">Vestirse por capas permite quitar y poner ropa según el esfuerzo y el tiempo: sales de madrugada con frío, sudas en la primera subida y te mojas en Galicia, todo en la misma etapa.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Capa</th><th scope="col">Qué es</th><th scope="col">Para qué sirve</th><th scope="col">Evita</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1. Base</th><td>Camiseta técnica o de merino, pegada al cuerpo; manga larga en épocas frías</td><td>Saca el sudor de la piel para que no te enfríes al parar.</td><td>Algodón: se empapa y tarda en secar.</td></tr>
+            <tr><th scope="row">2. Media (abrigo)</th><td>Forro polar ligero o chaqueta fina de fibra</td><td>Guarda el calor por la mañana y en las paradas; va en la mochila el resto del día.</td><td>Un abrigo grueso que no puedes regular.</td></tr>
+            <tr><th scope="row">3. Exterior</th><td>Chaqueta impermeable y transpirable con capucha, o poncho</td><td>Corta lluvia y viento, clave en Galicia y en los puertos.</td><td>Ir sin protección de lluvia «porque es verano».</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Las tres capas se combinan: con frío seco, base y polar; con lluvia templada, base e impermeable; con frío y lluvia, las tres. Así no necesitas un abrigo para cada situación.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="cantidades">
+    <div class="narrow prose">
+      <span class="eyebrow">Cuántas prendas</span>
+      <h2>Cuánta ropa llevar al Camino: la lista con cantidades</h2>
+      <p>Con tres mudas como máximo tienes una puesta, otra secándose y otra de reserva; para una semana bastan dos. Esta es la lista orientativa para primavera u otoño:</p>
+      <ul>
+        <li><strong>Camisetas:</strong> 2 o 3 técnicas o de merino (una de manga larga si hace fresco).</li>
+        <li><strong>Ropa interior:</strong> 2 o 3 mudas de secado rápido; sujetador deportivo sin costuras que rocen, si lo usas.</li>
+        <li><strong>Calcetines:</strong> 2 o 3 pares técnicos o de merino. Más en la <a href="/calzado/">guía de calzado</a>.</li>
+        <li><strong>Pantalón:</strong> 1 convertible o de trekking, y opcionalmente 1 corto o una malla.</li>
+        <li><strong>Abrigo:</strong> 1 forro polar ligero.</li>
+        <li><strong>Lluvia:</strong> 1 chaqueta impermeable con capucha o 1 poncho que cubra la mochila.</li>
+        <li><strong>Cabeza y cuello:</strong> gorra o sombrero y 1 braga de cuello.</li>
+        <li><strong>Tarde y noche:</strong> 1 muda ligera para el albergue, que también sirve de pijama, y chanclas. Ver el <a href="/kit-de-albergue/">kit de albergue</a>.</li>
+      </ul>
+      <p>Toda la ropa tiene que caber en la mochila sin pasar del 10 % de tu peso corporal: compruébalo con la <a href="/mochila-del-camino/">checklist de la mochila</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="tejidos">
+    <div class="wrap">
+      <span class="eyebrow">Tejidos</span>
+      <h2>Merino o sintético: qué tejido elegir (y por qué no algodón)</h2>
+      <p class="lead">Para el Camino sirven la lana merino y el tejido sintético técnico; el algodón es lo único que conviene dejar en casa.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Lana merino</th><th scope="col">Sintético técnico</th><th scope="col">Algodón</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Olor</th><td>Retiene poco olor; aguanta más de un día</td><td>Coge olor antes; mejor lavarlo cada día</td><td>Coge olor y humedad</td></tr>
+            <tr><th scope="row">Secado</th><td>Seca algo más despacio</td><td>Seca muy rápido</td><td>Seca muy despacio</td></tr>
+            <tr><th scope="row">Mojado</th><td>Sigue abrigando</td><td>Abriga poco, pero seca enseguida</td><td>Enfría y roza</td></tr>
+            <tr><th scope="row">Resistencia</th><td>Más delicada (roces de la mochila)</td><td>Muy resistente</td><td>Resistente, pero pesa mojado</td></tr>
+            <tr><th scope="row">Cuidado</th><td>Agua fría y jabón suave</td><td>Cualquier jabón</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Una combinación habitual: camisetas sintéticas para caminar, y calcetines, braga de cuello y capa base de manga larga de merino. Mira las fichas de cada prenda en Amazon para ver la composición exacta antes de comprar.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="estaciones">
+    <div class="wrap">
+      <span class="eyebrow">Por estación</span>
+      <h2>Ropa para el Camino según la época del año</h2>
+      <p class="lead">La base es la misma todo el año; lo que cambia es el grosor de la capa media, la protección contra el sol o el frío y cuánta ropa de lluvia llevas.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Época</th><th scope="col">Qué cambia</th><th scope="col">Guía</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Primavera y otoño</th><td>Lista base: polar ligero, impermeable, pantalón convertible y una manga larga para las mañanas.</td><td><a href="/mochila-del-camino/">Mochila del Camino</a></td></tr>
+            <tr><th scope="row">Verano</th><td>Camisetas claras y ligeras, pantalón corto, gorra con protección de nuca y manga larga fina si te quemas fácil. Lleva igualmente una capa ligera y algo de lluvia para Galicia.</td><td><a href="/camino-en-verano/">Camino en verano</a></td></tr>
+            <tr><th scope="row">Invierno</th><td>Las tres capas completas, base térmica de manga larga, malla bajo el pantalón, guantes, gorro y calcetines de merino de repuesto.</td><td><a href="/camino-en-invierno/">Camino en invierno</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Checklist de ropa para el Camino ({total} artículos)</h2>
+      <p class="lead">Estas {total} prendas y accesorios cubren las tres capas, el pantalón y la colada diaria. Las prendas se compran por talla; el botón añade solo los {inKit} artículos de talla única.</p>
+      <Checklist checklist={ropaChecklist} cartUrl={CART_URL_ROPA} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_ROPA} label={label} variant="band" title="El kit de ropa y colada, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="colada">
+    <div class="narrow prose">
+      <span class="eyebrow">Colada</span>
+      <h2>Cómo lavar y secar la ropa en el Camino</h2>
+      <p>En el Camino se lava a mano cada tarde: así puedes ir con tres mudas en lugar de diez.</p>
+      <ol>
+        <li><strong>Lava al llegar,</strong> no por la noche: la ropa necesita toda la tarde para secarse.</li>
+        <li><strong>Jabón en pastilla en la pila</strong> del albergue; frota axilas, cuello y planta de los calcetines.</li>
+        <li><strong>Escurre enrollando la prenda en la toalla</strong> de microfibra y retorciendo: seca mucho antes.</li>
+        <li><strong>Tiende al sol o al aire</strong> y recoge antes de la noche si hay humedad.</li>
+        <li><strong>Si sigue húmeda por la mañana,</strong> sujétala con imperdibles por fuera de la mochila.</li>
+      </ol>
+      <p>Algunos albergues tienen lavadora y secadora de pago: compartir una carga con otros peregrinos es habitual. Toalla, cuerda y neceser están en el <a href="/kit-de-albergue/">kit de albergue</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="vestimenta-tradicional">
+    <div class="narrow prose">
+      <span class="eyebrow">Tradición</span>
+      <h2>La vestimenta tradicional del peregrino</h2>
+      <p>La vestimenta tradicional del peregrino a Santiago era la esclavina (una capa corta), el sombrero de ala ancha, el bordón o bastón, la calabaza para el agua y el zurrón, con la concha de vieira como símbolo.</p>
+      <p>Hoy de aquel atuendo queda sobre todo la concha, colgada de la mochila, y el bastón, convertido en bastones de trekking. Lo demás lo ha sustituido la ropa técnica, que pesa menos y seca antes.</p>
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow prose">
+      <span class="eyebrow">Errores comunes</span>
+      <h2>Errores comunes con la ropa del Camino y cómo evitarlos</h2>
+      <p>Estos son los fallos que más se repiten al preparar la ropa, y cómo evitarlos antes de salir.</p>
+      <ol>
+        <li><strong>Llevar algodón.</strong> Vaqueros, sudaderas y camisetas de algodón pesan, no secan y rozan. Elige tejido técnico o merino.</li>
+        <li><strong>Demasiadas mudas.</strong> Con tres basta; el resto es peso que cargas cada día.</li>
+        <li><strong>Estrenar ropa en el Camino.</strong> Camina con ella antes: las costuras que rozan se descubren en el primer entrenamiento largo.</li>
+        <li><strong>No llevar abrigo en verano.</strong> Las madrugadas y los altos pueden ser frescos; un polar ligero o una manga larga ocupan poco.</li>
+        <li><strong>Confiar en un impermeable sin probar.</strong> Pruébalo con la mochila puesta para ver que cubre y que la capucha no te tapa la vista.</li>
+        <li><strong>Olvidar la ropa de tarde.</strong> Una muda seca y cómoda para el albergue te deja descansar y lavar lo del día. Más en <a href="/kit-de-albergue/">el kit de albergue</a>.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="ropa-del-camino" withMochila />
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={ropaFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>

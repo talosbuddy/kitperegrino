@@ -3,6 +3,7 @@ const RULES: [RegExp, string][] = [
   [/bici|casco|cámara|bomba|alforja/i, 'bici'],
   [/niñ|infantil/i, 'ninos'],
   [/ampolla|botiqu|apósito|tirita|compeed|vaselina|crema|antinflam|dolor|músc|aguja|desinfect|venda|pies/i, 'botiquin'],
+  [/camiseta|pantal|bóxer|calzoncillo|ropa|capa base|merino de manga/i, 'ropa'],
   [/zapat|bota|calcet|sandalia|chancla|plantilla|cordon|calzado/i, 'calzado'],
   [/lluvia|poncho|funda|chubasq|impermeab|humed/i, 'lluvia'],
   [/\bsol\b|gorra|gafa|protector|insect|repelente|calor|verano/i, 'sol'],
