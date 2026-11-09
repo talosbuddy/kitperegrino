@@ -10,11 +10,11 @@ export const faqPage = (faqs: { q: string; a: string }[]) => ({
   mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 });
 
+/** Checklist as ItemList of ListItem (name + url). No Product type: we never show prices or invent ratings/reviews. */
 export const itemList = (name: string, groups: Group[]) => ({
   '@context': 'https://schema.org', '@type': 'ItemList', name,
   itemListElement: groups.flatMap(g => g.items).map((it, i) => ({
-    '@type': 'ListItem', position: i + 1,
-    item: { '@type': 'Product', name: it.name, sku: it.asin, description: it.what, url: amazon(it.asin) },
+    '@type': 'ListItem', position: i + 1, name: it.name, url: amazon(it.asin),
   })),
 });
 
