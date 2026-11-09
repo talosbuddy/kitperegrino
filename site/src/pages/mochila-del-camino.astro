@@ -14,10 +14,10 @@ const jsonLd = [faqPage(faqs), itemList('Checklist: Mochila del Camino', checkli
 const meta = pageMeta('/mochila-del-camino/');
 const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, calcetines, chanclas, poncho, riñonera) tienes que elegirlas tú en su ficha, porque cada uno usa una talla distinta.';
 ---
-<Base title="Mochila del Camino de Santiago: qué llevar, lista completa (2026)" description={`Checklist de la mochila del Camino de Santiago: ${total} imprescindibles, cuánto debe pesar, listas por perfil y qué dejar en casa. Kit en un clic.`} jsonLd={jsonLd} crumb="Mochila del Camino">
-  <Hero eyebrow="Mochila del Camino" title="Qué llevar en la mochila del Camino de Santiago: la lista que de verdad usarás" highlight="la lista que de verdad usarás" updated={meta.modified}>
-    <p>Si buscas qué llevar en la mochila del Camino, la regla es sencilla: <strong>lleva solo lo que vayas a usar cada día y que no pase del 10 % de tu peso corporal</strong>. Con 70 kg, unos 7 kg con agua incluida. Todo lo demás se compra por el camino o se queda en casa.</p>
-    <p>Hemos preparado una checklist corta para cualquier ruta de 5 a 30 etapas en primavera u otoño. Es la misma lista que te cabe en una mochila de 30-35 litros. Si vas en verano o en invierno, en bici o con niños, consulta las guías específicas que enlazamos más abajo.</p>
+<Base title="Mochila Camino de Santiago: litros, peso y qué llevar (2026)" description={`Mochila para el Camino de Santiago: cuántos litros (30-40 L), cuánto peso (10 %), cómo ajustarla y qué llevar: checklist de ${total} artículos y kit en un clic.`} jsonLd={jsonLd} crumb="Mochila del Camino">
+  <Hero eyebrow="Mochila del Camino" title="Mochila del Camino de Santiago: litros, peso, ajuste y qué llevar" highlight="litros, peso, ajuste y qué llevar" updated={meta.modified}>
+    <p>La mochila del Camino de Santiago ideal tiene <strong>30-40 litros, cinturón lumbar y espalda ventilada, y cargada no pasa del 10 % de tu peso corporal</strong>: con 70 kg, unos 7 kg con agua incluida. Lleva solo lo que vayas a usar cada día; todo lo demás se compra por el camino o se queda en casa.</p>
+    <p>Aquí tienes cuántos litros elegir, cuánto debe pesar, cómo ajustarla y una checklist corta para cualquier ruta de 5 a 30 etapas en primavera u otoño, que cabe en una mochila de 30-35 litros. Para la ropa, mira la <a href="/ropa-del-camino/">guía de ropa para el Camino</a>; si vas en verano o en invierno, en bici o con niños, consulta las guías que enlazamos más abajo.</p>
     <KitButton slot="side" url={CART_URL} title="Kit básico de mochila" note={note} />
   </Hero>
 
@@ -28,13 +28,37 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
       <ul class="facts">
         <li><strong>10 % de tu peso</strong>Es el objetivo (máximo 12 %), con agua y comida del día.</li>
         <li><strong>30-40 litros</strong>Esa es la capacidad. Si es más grande, acabarás llenándola.</li>
-        <li><strong>3 mudas como máximo</strong>Una puesta, otra secándose y otra de reserva.</li>
+        <li><strong>3 mudas como máximo</strong>Una puesta, otra secándose y otra de reserva. Cuáles, en <a href="/ropa-del-camino/">Ropa del Camino</a>.</li>
         <li><strong>Pésala antes de salir</strong>Cada cosa que lleves "por si acaso" te pesará durante 800 km.</li>
       </ul>
     </div>
   </section>
 
-  <section class="block alt" id="checklist">
+  <section class="block alt" id="elegir-mochila">
+    <div class="narrow prose">
+      <span class="eyebrow">Elegir y ajustar</span>
+      <h2>Cómo elegir la mochila del Camino de Santiago: litros, espalda y ajuste</h2>
+      <p>Para el Camino de Santiago elige una mochila de 30-35 litros de primavera a otoño, o de 35-40 litros en invierno o si llevas saco de dormir, con cinturón lumbar acolchado que cargue el peso en la cadera.</p>
+      <ul>
+        <li><strong>Litros:</strong> 30-35 L bastan si duermes en albergues y lavas cada tarde; más capacidad solo invita a llenarla.</li>
+        <li><strong>Cinturón lumbar:</strong> acolchado y que abrace los huesos de la cadera; es lo que de verdad quita peso a los hombros.</li>
+        <li><strong>Espalda ventilada:</strong> una rejilla o canales de aire hacen que la espalda llegue menos empapada a cada etapa.</li>
+        <li><strong>Talla de espalda:</strong> muchas mochilas se venden por talla o tienen el respaldo regulable; mide del hueso de la nuca a la altura de la cadera y compara con la ficha.</li>
+        <li><strong>Accesos y bolsillos:</strong> bolsillos en el cinturón para el móvil y la credencial, y laterales para la botella, evitan quitarte la mochila a cada rato.</li>
+      </ul>
+      <h3>Cómo ajustar la mochila, paso a paso</h3>
+      <ol>
+        <li>Afloja todas las correas y carga la mochila con el peso real, agua incluida.</li>
+        <li>Cierra el <strong>cinturón lumbar</strong> sobre los huesos de la cadera y apriétalo.</li>
+        <li>Tensa las <strong>hombreras</strong> hasta que apoyen sin cargar el peso.</li>
+        <li>Ajusta los <strong>tensores de carga</strong> (encima de los hombros) para acercar la mochila a la espalda.</li>
+        <li>Cierra la <strong>cinta de pecho</strong> a la altura de las axilas, sin que apriete al respirar.</li>
+        <li>Coloca lo pesado pegado a la espalda y a media altura, y lo que uses durante la etapa, arriba o en los bolsillos.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="checklist">
     <div class="wrap">
       <span class="eyebrow">Checklist curada</span>
       <h2>Checklist de la mochila del Camino ({total} artículos)</h2>
@@ -44,11 +68,11 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
     </div>
   </section>
 
-  <section class="block">
+  <section class="block alt">
     <div class="wrap"><KitButton url={CART_URL} variant="band" title="¿Lo tienes claro? Llévate el kit básico" note={note} /></div>
   </section>
 
-  <section class="block alt">
+  <section class="block">
     <div class="narrow prose">
       <span class="eyebrow">Peso muerto</span>
       <h2>Qué NO llevar en la mochila del Camino</h2>
@@ -60,7 +84,7 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
     </div>
   </section>
 
-  <section class="block">
+  <section class="block alt">
     <div class="wrap">
       <span class="eyebrow">Tabla de decisión</span>
       <h2>Cómo cambia la mochila según la época y la forma de viajar</h2>
@@ -78,7 +102,7 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
     </div>
   </section>
 
-  <section class="block alt" id="perfiles">
+  <section class="block" id="perfiles">
     <div class="narrow prose">
       <span class="eyebrow">Por perfil</span>
       <h2>Lista de la mochila según tu perfil de peregrino</h2>

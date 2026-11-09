@@ -1,0 +1,34 @@
+import type { Group } from './checklist';
+
+export const ropaChecklist: Group[] = [
+  { title: 'Capa base y ropa interior', items: [
+    { what: 'Camiseta térmica de merino de manga larga (capa base)', name: 'MERIWOOL camiseta 100 % lana merino, peso medio (modelo de mujer)', asin: 'B081QRG93N', why: 'la merino abriga aunque esté húmeda y retiene menos olor que el sintético, así que aguanta más de un día entre lavados. Es la capa base para mañanas frías, otoño e invierno, y sirve de pijama en albergues sin calefacción. Este modelo es de mujer: si eres hombre, busca una manga larga de merino de peso medio equivalente.', link: { pre: 'Para el frío de verdad, mira', href: '/camino-en-invierno/', text: 'Camino en invierno' } },
+    { what: 'Ropa interior técnica de secado rápido', name: 'ExOfficio Give-N-Go, bóxer de viaje (hombre)', asin: 'B0036ZA060', why: 'pensado para viajar: se lava en la pila del albergue y está seco a la mañana siguiente, así que con dos o tres te basta para todo el Camino. El algodón tarda más en secar y roza con el sudor en la ingle.' },
+  ]},
+  { title: 'Capa media y exterior', items: [
+    { what: 'Forro polar ligero con cremallera completa (capa media)', name: 'Columbia Fast Trek II', asin: 'B0052AXWX0', why: 'es la capa de abrigo que te pones al salir de madrugada o al parar, y te quitas en la primera cuesta. La cremallera completa deja regular el calor sin quitarte la mochila y el polar sigue abrigando con algo de humedad.' },
+    { what: 'Chaqueta impermeable con capucha (capa exterior)', name: 'Columbia Watertight II', asin: 'B0CN3VRSTG', why: 'corta la lluvia y el viento, que es lo que más enfría en Galicia y en los altos como O Cebreiro. Por encima del polar forma el sistema de tres capas y, sola, sirve de cortavientos en verano.', link: { pre: 'Si prefieres poncho, está en la', href: '/mochila-del-camino/', text: 'mochila del Camino' } },
+  ]},
+  { title: 'Pantalón y complementos', items: [
+    { what: 'Pantalón convertible (largo y corto)', name: 'Columbia Silver Ridge Utility Convertible (hombre)', asin: 'B0BQ7GGLMH', why: 'un solo pantalón hace de largo por la mañana y de corto al mediodía, y te ahorras llevar dos. El tejido técnico seca rápido tras la colada; los vaqueros pesan y no secan de un día para otro.' },
+    { what: 'Braga de cuello de merino', name: 'Buff Merino Lightweight', asin: 'B002PHHB62', why: 'hace de bufanda, gorro fino o cinta y pesa casi nada. En las salidas frías te calienta el cuello y en verano te protege la nuca del sol. Es de talla única, por eso entra en el kit.' },
+  ]},
+  { title: 'Colada y organización', items: [
+    { what: 'Jabón en pastilla para lavar a mano', name: 'Pardo jabón natural en pastilla (2 × 150 g)', asin: 'B0CXT78KJV', why: 'cada tarde lavas la ropa del día en la pila del albergue. Con un trozo de pastilla cortado en una bolsa tienes para semanas y no se derrama en la mochila como un bote de detergente.', link: { pre: 'Toalla, cuerda y neceser están en el', href: '/kit-de-albergue/', text: 'kit de albergue' } },
+    { what: 'Imperdibles para secar ropa en la mochila', name: 'KORBOND, 50 imperdibles', asin: 'B007MCRUT8', why: 'si los calcetines o la camiseta no se han secado por la noche, los sujetas por fuera de la mochila y se secan mientras caminas. Reparte el paquete con tus compañeros: con unos pocos tienes de sobra.' },
+    { what: 'Bolsas enrollables para la ropa', name: 'Amazon Basics, 12 bolsas con cremallera (6 pequeñas y 6 medianas)', asin: 'B0B298NWP1', why: 'separan la ropa limpia de la sucia y de la húmeda, sacan el aire al enrollarlas y te dejan encontrar la muda a oscuras sin vaciar la mochila.' },
+  ]},
+];
+
+export const ropaFaqs = [
+  { q: '¿Qué ropa llevar al Camino de Santiago?', a: 'Para el Camino de Santiago lleva ropa técnica por capas: dos o tres camisetas de secado rápido o merino, un forro polar ligero, una chaqueta impermeable con capucha, un pantalón convertible o de trekking, dos o tres mudas de ropa interior y de calcetines técnicos, y una muda de tarde para el albergue. Evita el algodón.' },
+  { q: '¿Cuántas mudas hay que llevar al Camino?', a: 'Lleva tres mudas como máximo: una puesta, otra secándose y otra de reserva. Se lava a mano cada tarde en el albergue, así que más ropa solo añade peso. Para recorridos cortos de una semana bastan dos mudas.' },
+  { q: '¿Es mejor la ropa de merino o la sintética para el Camino?', a: 'Las dos funcionan. La merino retiene menos olor y abriga aunque esté húmeda, pero tarda algo más en secar y es más delicada. La sintética seca antes, aguanta más roces y suele ser más barata. Muchos peregrinos combinan camisetas sintéticas con calcetines y capa base de merino.' },
+  { q: '¿Por qué no llevar ropa de algodón al Camino?', a: 'Porque el algodón absorbe el sudor y la lluvia, tarda mucho en secar y, mojado, enfría y roza la piel. En el Camino lavas la ropa por la tarde y la necesitas seca por la mañana, algo que el tejido técnico o la merino consiguen y el algodón no.' },
+  { q: '¿Pantalón corto o largo para el Camino?', a: 'Lo más práctico es un pantalón convertible: largo para las mañanas frescas, la lluvia o las zonas con maleza, y corto cuando aprieta el calor. En verano muchos peregrinos añaden un pantalón corto; en invierno, una malla térmica debajo del largo.' },
+  { q: '¿Necesito chaqueta impermeable si llevo poncho?', a: 'No hace falta llevar las dos cosas en verano: el poncho cubre a ti y a la mochila. De otoño a primavera, o si caminas por Galicia, una chaqueta impermeable con capucha abriga más contra el viento y combina mejor con el polar. Elige según la época y tu forma de caminar.' },
+  { q: '¿Cómo se lava la ropa en el Camino de Santiago?', a: 'La mayoría de los albergues tienen pila para lavar a mano y tendedero; algunos, lavadora y secadora de pago. Lava al llegar para que la ropa tenga toda la tarde para secarse, escúrrela enrollándola en la toalla y, si por la mañana sigue húmeda, sujétala con imperdibles por fuera de la mochila.' },
+  { q: '¿Qué ropa llevar para dormir en el albergue?', a: 'No hace falta un pijama aparte: la muda de tarde (camiseta y pantalón corto o malla) sirve para dormir. En invierno o en albergues sin calefacción, la capa base de manga larga de merino abriga mucho dentro del saco.' },
+  { q: '¿Cuál es la vestimenta tradicional del peregrino?', a: 'La vestimenta tradicional del peregrino a Santiago era la esclavina (una capa corta), el sombrero de ala ancha con la concha, el bordón o bastón, la calabaza para el agua y el zurrón o morral. Hoy la concha sigue colgada de la mochila, pero la ropa es técnica.' },
+  { q: '¿Qué ropa llevar al Camino en invierno?', a: 'En invierno usa las tres capas completas: base térmica de manga larga, polar o chaqueta de fibra y chaqueta impermeable, más guantes, gorro, braga de cuello y calcetines de merino. Lo tienes con detalle en nuestra guía del Camino en invierno.' },
+];

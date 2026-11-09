@@ -15,10 +15,10 @@ const jsonLd = [faqPage(biciNinosFaqs), itemList('Checklist: Camino de Santiago 
 const label = 'Añadir el kit de bici y niños al carrito de Amazon';
 const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con niños, o los de niños si vas solo en bici. La mochila infantil se elige por color y queda fuera.`;
 ---
-<Base title="Camino de Santiago en bici y con niños: guía y qué llevar (2026)" description="Camino de Santiago en bici (200 km, alforjas, normas DGT) y con niños (etapas, alojamiento, equipo), con tablas, FAQ y kit en un clic." jsonLd={jsonLd} crumb="Camino en bici y con niños">
-  <Hero eyebrow="Bici y niños" title="Camino de Santiago en bici y con niños: cómo organizarlo y qué llevar" highlight="cómo organizarlo y qué llevar" updated={meta.modified}>
+<Base title="Camino de Santiago en bicicleta y con niños: qué bici elegir" description="Qué bicicleta elegir para el Camino de Santiago (montaña, gravel o trekking), 200 km para la Compostela, normas DGT y cómo ir con niños. Kit en un clic." jsonLd={jsonLd} crumb="Camino en bici y con niños">
+  <Hero eyebrow="Bici y niños" title="Camino de Santiago en bicicleta y con niños: qué bici elegir y qué llevar" highlight="qué bici elegir y qué llevar" updated={meta.modified}>
     <p>El Camino de Santiago se puede hacer <strong>en bicicleta</strong>, con al menos 200 km para la Compostela, y <strong>con niños</strong>, con etapas cortas y alojamiento reservado; en ambos casos el equipo y la planificación cambian respecto a ir a pie solo.</p>
-    <p>Aquí tienes la comparativa bici vs a pie, qué bici y equipo llevar, cómo adaptar el Camino a los niños y una checklist ({total} artículos) con kit en un clic.</p>
+    <p>Aquí tienes la comparativa bici vs a pie, <a href="#que-bici">qué bicicleta elegir para el Camino</a> (montaña, gravel, trekking o eléctrica), el equipo, cómo adaptar el Camino a los niños y una checklist ({total} artículos) con kit en un clic.</p>
     <KitButton slot="side" url={CART_URL_BICI_NINOS} label={label} title="Kit de bici y familia" note={note} />
   </Hero>
 
@@ -44,22 +44,53 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block alt" id="bici">
+  <section class="block alt" id="que-bici">
+    <div class="wrap">
+      <span class="eyebrow">Qué bici elegir</span>
+      <h2>Qué bicicleta elegir para el Camino de Santiago</h2>
+      <p class="lead">La bicicleta más versátil para el Camino de Santiago es una de montaña rígida o una gravel con neumáticos anchos y portabultos, porque el trazado alterna pistas de tierra, piedra suelta, barro y asfalto, con subidas largas como O Cebreiro en el Francés.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Tipo de bici</th><th scope="col">Dónde rinde</th><th scope="col">A tener en cuenta</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Montaña rígida (sin suspensión trasera)</th><td>Por el trazado original, con pistas, piedra y barro</td><td>La opción más segura si quieres seguir las flechas; comprueba que admite portabultos.</td></tr>
+            <tr><th scope="row">Montaña doble suspensión</th><td>Tramos técnicos y bajadas con piedra</td><td>Pesa más y muchas no permiten portabultos: obliga a ir con bolsas de bikepacking.</td></tr>
+            <tr><th scope="row">Gravel</th><td>Pistas de tierra compacta y asfalto, a buen ritmo</td><td>Con cubiertas anchas va bien en casi todo; en senderos muy rotos o con barro, toma la variante por carretera.</td></tr>
+            <tr><th scope="row">Trekking o híbrida</th><td>Asfalto y pistas fáciles, con carga</td><td>Cómoda y con anclajes de portabultos de serie; en piedra suelta va peor que una de montaña.</td></tr>
+            <tr><th scope="row">Carretera</th><td>Solo asfalto</td><td>No sirve para el trazado de tierra: tendrás que ir siempre por carreteras paralelas.</td></tr>
+            <tr><th scope="row">Eléctrica (de montaña o trekking)</th><td>Ayuda en las subidas con alforjas</td><td>Planifica dónde cargar la batería cada noche y pregunta en el alojamiento; pesa más si se agota. Consulta en la Oficina del Peregrino las condiciones para la Compostela.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 style="margin-top:1.6rem">Checklist de la bici antes de salir</h3>
+      <ul>
+        <li><strong>Cubiertas anchas y con taco</strong> (o mixtas) en buen estado: son las que más sufren en la grava.</li>
+        <li><strong>Desarrollos cortos:</strong> con alforjas, un plato pequeño y piñones grandes hacen las subidas largas mucho más llevaderas.</li>
+        <li><strong>Frenos revisados;</strong> los de disco frenan mejor con lluvia y barro, algo habitual en Galicia.</li>
+        <li><strong>Anclajes para portabultos y guardabarros,</strong> o bolsas de bikepacking si tu cuadro no los tiene.</li>
+        <li><strong>Revisión en taller</strong> unas semanas antes y unos kilómetros de prueba con la bici cargada.</li>
+        <li><strong>¿Tu bici o de alquiler?</strong> Con la tuya ya conoces la talla y el ajuste; si alquilas, pide la talla correcta y confirma qué incluye (alforjas, herramientas, recogida al final).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="bici">
     <div class="narrow prose">
       <span class="eyebrow">En bici</span>
       <h2>Cómo hacer el Camino en bici: bici, equipo y etapas</h2>
       <p>Para hacer el Camino en bici necesitas una bici de montaña o gravel revisada, con portabultos y alforjas, más un kit básico de reparación, luces, candado y casco.</p>
       <ul>
-        <li><strong>Bici:</strong> de montaña o gravel con neumáticos anchos; revísala en un taller antes de salir.</li>
+        <li><strong>Bici:</strong> de montaña o gravel con neumáticos anchos; revísala en un taller antes de salir. Comparativa completa en <a href="#que-bici">qué bicicleta elegir</a>.</li>
         <li><strong>Casco:</strong> obligatorio en vías interurbanas desde el 1 de octubre de 2026; elígelo por talla. Ver <a href="#normas-dgt">normas de la DGT</a>.</li>
         <li><strong>Etapas:</strong> calcula según desnivel y firme, no solo kilómetros; deja margen para averías.</li>
+        <li><strong>Ropa:</strong> culote o malla con badana, una capa de abrigo y chaqueta impermeable; el sistema de capas está en la <a href="/ropa-del-camino/">guía de ropa para el Camino</a>.</li>
         <li><strong>Convivencia:</strong> avisa con el timbre y cede el paso a los peregrinos a pie en las sendas.</li>
         <li><strong>Ruta:</strong> el Portugués y el Francés admiten bici; compáralos en <a href="/frances-vs-portugues/">Francés vs Portugués</a>.</li>
       </ul>
     </div>
   </section>
 
-  <section class="block" id="ninos">
+  <section class="block alt" id="ninos">
     <div class="wrap">
       <span class="eyebrow">Con niños</span>
       <h2>Cómo hacer el Camino con niños</h2>
@@ -84,7 +115,7 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block alt" id="checklist">
+  <section class="block" id="checklist">
     <div class="wrap">
       <span class="eyebrow">Checklist curada</span>
       <h2>Qué llevar al Camino en bici y con niños: checklist ({total} artículos)</h2>
@@ -94,7 +125,7 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block" id="seguridad">
+  <section class="block alt" id="seguridad">
     <div class="narrow prose">
       <span class="eyebrow">Seguridad</span>
       <h2>Seguridad en bici y con niños</h2>
@@ -108,7 +139,7 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block alt" id="normas-dgt">
+  <section class="block" id="normas-dgt">
     <div class="narrow prose">
       <span class="eyebrow">Normas de tráfico</span>
       <h2>Normas de la DGT para ir en bici por el Camino</h2>
@@ -124,7 +155,7 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block">
+  <section class="block alt">
     <div class="narrow prose">
       <span class="eyebrow">Errores comunes</span>
       <h2>Errores comunes en el Camino en bici y con niños y cómo evitarlos</h2>
@@ -139,7 +170,7 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block alt" id="guias">
+  <section class="block" id="guias">
     <div class="wrap">
       <span class="eyebrow">Guías</span>
       <h2>Más guías para preparar tu Camino</h2>
@@ -147,7 +178,7 @@ const note = `Añade ${inKit} artículos. Quita los de bici si vas a pie con ni�
     </div>
   </section>
 
-  <section class="block">
+  <section class="block alt">
     <div class="narrow"><Faq faqs={biciNinosFaqs} /></div>
   </section>
 </Base>
