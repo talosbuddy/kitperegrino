@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+const meta = pageMeta('/sobre-kitperegrino/');
+---
+<Base title="Quién está detrás de KitPeregrino" description="Qué es KitPeregrino y cómo seleccionamos las recomendaciones de equipo para el Camino." crumb="Sobre KitPeregrino">
+  <Hero eyebrow="Quiénes somos" title="Quién está detrás de KitPeregrino" updated={meta.modified}>
+    <p>KitPeregrino reúne guías para preparar el equipo del Camino de Santiago.</p>
+  </Hero>
+  <section class="block">
+    <ProseArticle>
+      <p>El objetivo del proyecto es explicar qué necesitas según tu ruta, la época y el alojamiento, y qué puedes dejar en casa. Las recomendaciones se basan en criterios prácticos y en fichas comprobadas en Amazon.es, no en un relato personal inventado.</p>
+      <p>Puedes consultar cómo seleccionamos las recomendaciones en <a href="/como-seleccionamos/">Cómo seleccionamos el equipo</a>.</p>
+      <p>KitPeregrino publica checklists y guías de preparación. Algunas páginas incluyen enlaces de afiliado a Amazon.es; el aviso aparece en el pie de todas las páginas y junto a cada bloque de recomendaciones.</p>
+    </ProseArticle>
+  </section>
+</Base>

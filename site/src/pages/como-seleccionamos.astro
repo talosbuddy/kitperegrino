@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+const meta = pageMeta('/como-seleccionamos/');
+---
+<Base title="Cómo seleccionamos el equipo | KitPeregrino" description="Criterio editorial de KitPeregrino: qué necesidad cubre cada recomendación, limitaciones, alternativas y cómo comprobamos las fichas de Amazon.es." crumb="Cómo seleccionamos">
+  <Hero eyebrow="Metodología" title="Cómo seleccionamos el equipo" updated={meta.modified}>
+    <p>KitPeregrino ayuda a decidir qué llevar al Camino sin añadir equipo por inercia. Esta página resume el criterio editorial que aplicamos a las recomendaciones.</p>
+  </Hero>
+
+  <section class="block">
+    <ProseArticle>
+      <p>Cada recomendación debe explicar qué necesidad cubre, en qué situación tiene sentido y qué inconvenientes presenta.</p>
+      <p>Antes de recomendar una compra, consideramos si puedes resolver esa necesidad con algo que ya tienes. Una lista breve no sirve si deja fuera lo necesario para tu ruta o tu estación.</p>
+      <p>Cuando citamos características de un producto, indicamos la fuente que permite comprobarlas. Consultar una ficha no equivale a probar el producto. No presentamos una recomendación documental como experiencia personal ni llamamos «probado» a un equipo sin una prueba real documentada.</p>
+      <p>Las comparaciones deben explicar limitaciones y alternativas. Si un dato relevante no está confirmado, lo señalamos o lo retiramos. No inventamos valoraciones, ventas, prestaciones ni testimonios.</p>
+      <p>Las fechas de actualización corresponden a cambios revisados. Las condiciones de una ruta pueden cambiar y una guía de equipo no sustituye la previsión meteorológica ni los avisos oficiales.</p>
+
+      <h2>Cómo comprobamos los productos</h2>
+      <ul>
+        <li>Cada ASIN se verifica en su ficha de Amazon.es antes de publicarlo.</li>
+        <li>No mostramos precios: los fija Amazon y cambian.</li>
+        <li>No copiamos estrellas, reseñas ni cifras de ventas de Amazon.</li>
+        <li>Los enlaces comerciales son de afiliado y llevan la etiqueta «enlace de afiliado» o un aviso junto a la recomendación.</li>
+        <li>Conservamos el identificador provisional <code>XXXX-21</code> hasta disponer del identificador real de la cuenta.</li>
+      </ul>
+
+      <h2>Qué no prometemos</h2>
+      <ul>
+        <li>No prometemos ingresos, tráfico ni que un producto sea el «mejor» en absoluto.</li>
+        <li>No organizamos compras de favor para cumplir umbrales del programa de afiliados.</li>
+        <li>Una guía de equipo no sustituye el criterio médico ni los avisos oficiales de la ruta.</li>
+      </ul>
+
+      <p class="callout">Si detectas un error en una ficha o en una recomendación, revisa también la página <a href="/sobre-kitperegrino/">Quiénes somos</a>. Cuando haya un canal de contacto público, lo indicaremos allí.</p>
+    </ProseArticle>
+  </section>
+</Base>

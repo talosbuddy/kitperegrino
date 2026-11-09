@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Faq from '../components/Faq.astro';
+import ProseArticle from '../components/ProseArticle.astro';
+import { pageMeta } from '../data/site';
+import { faqPage } from '../data/schema';
+const meta = pageMeta('/ajustar-mochila-camino/');
+const faqs = [
+  { q: '¿Llevo el agua fuera o dentro?', a: 'Donde puedas acceder a ella y quede bien sujeta. Una botella lateral permite comprobar lo que queda, pero puede desequilibrar si concentra mucho peso en un solo lado. Una bolsa interior acerca la carga a la espalda, aunque conviene comprobar el cierre antes de guardarla. Evita que una fuga moje lo que necesitas mantener seco.' },
+  { q: '¿Tengo que comprar una mochila nueva si me duelen los hombros?', a: 'No necesariamente. Revisa carga, cinturón y longitud de espalda antes de decidir. Si el modelo no se adapta a tu cuerpo, cambiarlo puede tener sentido. Una mochila distinta no compensa llevar cosas que no necesitas.' },
+  { q: '¿El cubremochilas mantiene todo seco?', a: 'No lo des por hecho. El agua puede entrar por zonas sin cubrir o al abrir la mochila. Protege dentro las prendas de recambio, el saco y los documentos que deban permanecer secos.' },
+];
+const jsonLd = [faqPage(faqs)];
+---
+<Base title="Cómo ajustar la mochila para el Camino de Santiago" description="Ajusta el cinturón, los tirantes y la carga de tu mochila para el Camino. Pasos prácticos para repartir el peso y corregir molestias antes de salir." jsonLd={jsonLd} crumb="Ajustar la mochila">
+  <Hero eyebrow="Ajuste de mochila" title="Cómo ajustar y distribuir el peso de la mochila para el Camino" highlight="distribuir el peso" updated={meta.modified}>
+    <p>Una mochila que tira hacia atrás o te obliga a encoger los hombros merece una parada antes de seguir. Apretar todos los tirantes no suele resolverlo. Primero hay que ordenar la carga y después ajustar la mochila a tu cuerpo.</p>
+  </Hero>
+
+  <section class="block">
+    <ProseArticle>
+      <p>Haz la prueba con lo que vas a llevar de verdad, incluida el agua. Ajustarla vacía sirve de poco. Si todavía estás decidiendo el contenido, empieza por la <a href="/mochila-del-camino/">lista de mochila para el Camino</a>.</p>
+
+      <h2>Antes de ajustar, comprueba que la mochila te encaja</h2>
+      <p>La longitud de la espalda importa más que tu estatura por sí sola. Si el modelo permite regularla, sigue las instrucciones del fabricante. El cinturón lumbar debe poder asentarse sobre la parte alta de las caderas sin quedar suelto ni impedirte caminar.</p>
+      <p>Si, con el cinturón colocado, los tirantes no se adaptan a tus hombros o la mochila te empuja la cabeza, revisa la talla y el ajuste de espalda. No intentes corregir una talla inadecuada apretando más.</p>
+
+      <h2>Coloca la carga antes de tocar las correas</h2>
+      <p>Vacía la mochila y separa lo que usarás durante la etapa de lo que solo necesitas al llegar.</p>
+      <ul>
+        <li>Pon las piezas voluminosas y blandas que no necesitas en marcha en la zona baja. Pueden ser el saco o la ropa de dormir, según tu equipo.</li>
+        <li>Coloca los objetos más densos cerca de la espalda, centrados y sin aristas que se te claven. Evita concentrar todo el peso arriba.</li>
+        <li>Rellena los huecos con ropa para que la carga no se desplace.</li>
+        <li>Deja el impermeable, una capa de abrigo y la comida de la etapa accesibles. No entierres lo que necesitas cuando cambia el tiempo.</li>
+        <li>Reparte el agua sin crear un desequilibrio lateral. Si usas una bolsa de hidratación, colócala en el alojamiento previsto.</li>
+        <li>Protege por separado la ropa seca, la documentación y los dispositivos que no puedan mojarse.</li>
+      </ul>
+      <p>No cuelgues objetos pesados que golpeen la mochila a cada paso. Asegura también las correas sobrantes para que no se enganchen.</p>
+
+      <h2>Ajusta la mochila en este orden</h2>
+      <p>Estas indicaciones están pensadas para una mochila de senderismo con cinturón que ayuda a sostener la carga. No todos los modelos tienen las mismas correas.</p>
+
+      <h3>1. Afloja y coloca</h3>
+      <p>Afloja los tirantes y, si existen, los tensores superiores antes de ponértela. Para levantarla, apóyala en una superficie estable si lo necesitas. Evita dar un tirón brusco desde el suelo.</p>
+
+      <h3>2. Asienta el cinturón lumbar</h3>
+      <p>Sitúa el cinturón sobre la parte alta de las caderas. Ciérralo y tensa ambos lados sin comprimir el abdomen. La mochila debe quedar estable y permitirte respirar y mover las piernas.</p>
+      <p>Si baja al caminar, comprueba su posición y el ajuste de espalda. Un cinturón que ya está al máximo y sigue suelto puede no ser adecuado para tu cuerpo.</p>
+
+      <h3>3. Recoge los tirantes de hombro</h3>
+      <p>Tensa poco a poco y de forma equilibrada. Los tirantes deben acompañar los hombros, no dejar toda la mochila colgada de ellos. No levantes el cinturón de las caderas al apretarlos.</p>
+
+      <h3>4. Acerca la parte superior, si hay tensores</h3>
+      <p>Si tu mochila tiene correas que unen los tirantes con la zona alta de la carga, recógelas con suavidad. Busca que la mochila deje de tirar hacia atrás, sin forzar los hombros ni pegar la carga a la cabeza. La posición adecuada depende del diseño. No persigas un ángulo universal.</p>
+
+      <h3>5. Regula la correa del pecho</h3>
+      <p>Colócala a una altura cómoda, sin presión sobre el cuello. Ciérrala lo justo para que los tirantes no se abran. Debes poder respirar con normalidad.</p>
+
+      <h3>6. Estabiliza el contenido</h3>
+      <p>Recoge las correas de compresión laterales, si las hay. Su función es sujetar la carga, no deformar lo que llevas dentro. Comprueba que conservas acceso al agua.</p>
+
+      <h2>Camina antes de dar el ajuste por bueno</h2>
+      <p>Sal a probarla con el calzado y la ropa que usarás. Incluye alguna subida, bajada y escalera en un lugar seguro. Comprueba si puedes mirar alrededor, alzar los brazos y caminar sin que la carga rebote.</p>
+      <p>Al parar, cambia una cosa cada vez. Si modificas todas las correas a la vez, no sabrás qué ha mejorado. Revisa el equilibrio cuando consumas agua o retires una capa de ropa.</p>
+
+      <h2>Si molesta, busca la causa</h2>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Lo que notas</th><th>Qué revisar primero</th></tr></thead>
+          <tbody>
+            <tr><td>Presión en los hombros</td><td>Cinturón demasiado bajo o suelto, tirantes demasiado tensos, exceso de carga o talla de espalda incorrecta.</td></tr>
+            <tr><td>La mochila tira hacia atrás</td><td>Objetos densos alejados de la espalda, carga que se mueve o tensores superiores sin regular.</td></tr>
+            <tr><td>Te inclinas hacia un lado</td><td>Agua u objetos pesados concentrados en un lateral.</td></tr>
+            <tr><td>Roce en las caderas</td><td>Cinturón mal colocado, costuras de la ropa, pliegues o ajuste excesivo.</td></tr>
+            <tr><td>La carga rebota al bajar</td><td>Huecos en el interior, objetos colgantes o compresión insuficiente.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Si aparece dolor, hormigueo o pérdida de sensibilidad, para y quita la mochila. No sigas apretando para aguantar. Si la molestia persiste, busca valoración profesional.</p>
+
+      <h2>Quita peso antes de comprar otra mochila</h2>
+      <p>Extiende el equipo y revisa las duplicidades. Pregúntate cuándo utilizarás cada pieza y qué necesitas para la estación y los alojamientos elegidos. No elimines agua necesaria, medicación o protección frente al tiempo para alcanzar una cifra.</p>
+      <p>No hay un porcentaje del peso corporal que garantice comodidad para todo el mundo. Tu condición física, la mochila, el terreno y la duración de la etapa también cuentan. Pesa el conjunto listo para salir y haz una prueba progresiva antes del viaje.</p>
+      <p>La <a href="/kit-de-albergue/">guía de albergues y equipo para dormir</a> ayuda a revisar esa parte de la carga. Adapta también el contenido a <a href="/camino-en-verano/">verano</a> o <a href="/camino-en-invierno/">invierno</a>.</p>
+      <p class="callout">Para la checklist de productos y el kit en un clic, vuelve a la <a href="/mochila-del-camino/#checklist">guía de mochila del Camino</a>.</p>
+    </ProseArticle>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={faqs} /></div>
+  </section>
+</Base>
