@@ -14,37 +14,54 @@ const jsonLd = [faqPage(faqs), itemList('Checklist: Mochila del Camino', checkli
 const meta = pageMeta('/mochila-del-camino/');
 const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, calcetines, chanclas, poncho, riñonera) tienes que elegirlas tú en su ficha, porque cada uno usa una talla distinta.';
 ---
-<Base title="Mochila Camino de Santiago: litros, peso y qué llevar (2026)" description={`Mochila para el Camino de Santiago: cuántos litros (30-40 L), cuánto peso (10 %), cómo ajustarla y qué llevar: checklist de ${total} artículos y kit en un clic.`} jsonLd={jsonLd} crumb="Mochila del Camino">
-  <Hero eyebrow="Mochila del Camino" title="Mochila del Camino de Santiago: litros, peso, ajuste y qué llevar" highlight="litros, peso, ajuste y qué llevar" updated={meta.modified}>
-    <p>La mochila del Camino de Santiago ideal tiene <strong>30-40 litros, cinturón lumbar y espalda ventilada, y cargada no pasa del 10 % de tu peso corporal</strong>: con 70 kg, unos 7 kg con agua incluida. Lleva solo lo que vayas a usar cada día; todo lo demás se compra por el camino o se queda en casa.</p>
-    <p>Aquí tienes cuántos litros elegir, cuánto debe pesar, cómo ajustarla y una checklist corta para cualquier ruta de 5 a 30 etapas en primavera u otoño, que cabe en una mochila de 30-35 litros. Para la ropa, mira la <a href="/ropa-del-camino/">guía de ropa para el Camino</a>; si vas en verano o en invierno, en bici o con niños, consulta las guías que enlazamos más abajo.</p>
+<Base title="Mochila Camino de Santiago: litros, peso y cómo elegirla" description="Mochila para el Camino de Santiago: cuántos litros según la época y los días, la pauta del 10 % del peso y cómo elegirla. Checklist y kit en un clic." jsonLd={jsonLd} crumb="Mochila del Camino">
+  <Hero eyebrow="Mochila del Camino" title="Mochila para el Camino de Santiago: cuántos litros, cuánto peso y cómo elegirla" highlight="cuántos litros, cuánto peso y cómo elegirla" updated={meta.modified}>
+    <p>Para el Camino de Santiago, una mochila de <strong>30-40 litros, con cinturón lumbar y espalda ventilada</strong>, suele ser suficiente. Una pauta habitual es no pasar del 10 % de tu peso corporal, agua incluida: con 70 kg, unos 7 kg. No es una norma oficial, es una referencia para no sobrecargar espalda y rodillas.</p>
+    <p>Aquí tienes cuántos litros elegir según la época y los días, cómo elegir y ajustar la mochila, y una checklist corta que cabe en 30-35 litros en primavera u otoño. La ropa está en la <a href="/ropa-del-camino/">guía de ropa</a>; el ajuste, paso a paso, en <a href="/ajustar-mochila-camino/">cómo ajustar la mochila</a>. Si vas en bici, las alforjas sustituyen a la mochila: mira <a href="/bicicleta-camino-de-santiago/">qué bicicleta llevar</a>.</p>
     <KitButton slot="side" url={CART_URL} title="Kit básico de mochila" note={note} />
   </Hero>
 
-  <section class="block">
+  <section class="block" id="litros">
     <div class="wrap">
-      <span class="eyebrow">La regla del 10 %</span>
+      <span class="eyebrow">Capacidad</span>
+      <h2>Cuántos litros debe tener la mochila del Camino</h2>
+      <p class="lead">Entre 30 y 40 litros cubren casi todos los casos. El número de etapas apenas cambia la capacidad si lavas cada tarde: lo que más ocupa es el saco de dormir y la ropa de invierno, no los días de camino.</p>
+      <div class="tw"><table class="dt">
+        <thead><tr><th>Duración y época</th><th>Litros</th><th>Por qué</th></tr></thead>
+        <tbody>
+          <tr><td>5-7 etapas, primavera, verano u otoño</td><td>30-35 L</td><td>Bastan 2 mudas, saco sábana y una capa de lluvia. Más capacidad solo invita a llenarla.</td></tr>
+          <tr><td>Camino de varias semanas, primavera u otoño</td><td>30-35 L</td><td>Se lava cada tarde, así que no hace falta más ropa. Una capa media y el impermeable cubren los cambios de clima.</td></tr>
+          <tr><td>Invierno, o si llevas saco de dormir</td><td>35-40 L</td><td>Las capas térmicas, los guantes y un saco ligero ocupan más que el saco sábana.</td></tr>
+          <tr><td>Más de 40 L</td><td>Mejor evitarlo</td><td>Una mochila grande se acaba llenando y el peso se dispara. Si te sobra volumen, ciérralo y no lo uses.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="peso">
+    <div class="wrap">
+      <span class="eyebrow">Peso</span>
       <h2>Cuánto debe pesar la mochila del Camino</h2>
       <ul class="facts">
-        <li><strong>10 % de tu peso</strong>Es el objetivo (máximo 12 %), con agua y comida del día.</li>
-        <li><strong>30-40 litros</strong>Esa es la capacidad. Si es más grande, acabarás llenándola.</li>
+        <li><strong>Pauta del 10 %</strong>Es una referencia habitual, no una norma oficial ni una ley: apunta al 10 % de tu peso corporal, con agua y la comida del día, y procura no pasar del 12 %.</li>
+        <li><strong>Ejemplo</strong>Si pesas 70 kg, el objetivo son unos 7 kg; por encima de 8,5 kg conviene quitar cosas.</li>
         <li><strong>3 mudas como máximo</strong>Una puesta, otra secándose y otra de reserva. Cuáles, en <a href="/ropa-del-camino/">Ropa del Camino</a>.</li>
-        <li><strong>Pésala antes de salir</strong>Cada cosa que lleves "por si acaso" te pesará durante 800 km.</li>
+        <li><strong>Pésala antes de salir</strong>Cárgala como el primer día, agua incluida. Cada cosa que lleves «por si acaso» te pesará en todas las etapas.</li>
       </ul>
     </div>
   </section>
 
-  <section class="block alt" id="elegir-mochila">
+  <section class="block" id="elegir-mochila">
     <div class="narrow prose">
-      <span class="eyebrow">Elegir y ajustar</span>
-      <h2>Cómo elegir la mochila del Camino de Santiago: litros, espalda y ajuste</h2>
-      <p>Para el Camino de Santiago elige una mochila de 30-35 litros de primavera a otoño, o de 35-40 litros en invierno o si llevas saco de dormir, con cinturón lumbar acolchado que cargue el peso en la cadera.</p>
+      <span class="eyebrow">Cómo elegirla</span>
+      <h2>Cómo elegir la mochila del Camino de Santiago</h2>
+      <p>Más que la marca, importa que la mochila se ajuste a tu espalda y que el cinturón lumbar cargue el peso en la cadera. Con 30-35 litros de primavera a otoño, o 35-40 en invierno, tienes margen de sobra si no la llenas.</p>
       <ul>
-        <li><strong>Litros:</strong> 30-35 L bastan si duermes en albergues y lavas cada tarde; más capacidad solo invita a llenarla.</li>
         <li><strong>Cinturón lumbar:</strong> acolchado y que abrace los huesos de la cadera; es lo que de verdad quita peso a los hombros.</li>
         <li><strong>Espalda ventilada:</strong> una rejilla o canales de aire hacen que la espalda llegue menos empapada a cada etapa.</li>
         <li><strong>Talla de espalda:</strong> muchas mochilas se venden por talla o tienen el respaldo regulable; mide del hueso de la nuca a la altura de la cadera y compara con la ficha.</li>
         <li><strong>Accesos y bolsillos:</strong> bolsillos en el cinturón para el móvil y la credencial, y laterales para la botella, evitan quitarte la mochila a cada rato.</li>
+        <li><strong>Pruébala cargada</strong> antes de salir: el ajuste importa tanto como los litros. Si te duele al primer paseo, revisa talla y correas antes de comprar otra.</li>
       </ul>
       <h3>Cómo ajustar la mochila, paso a paso</h3>
       <ol>
@@ -97,7 +114,7 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
           <tr><td>Verano</td><td>30-35 L</td><td>Saco sábana</td><td>Más agua, gorra, protector solar</td><td><a href="/camino-en-verano/">Verano</a></td></tr>
           <tr><td>Invierno</td><td>35-40 L</td><td>Saco ligero</td><td>Capas térmicas, frontal, guantes</td><td><a href="/camino-en-invierno/">Invierno</a></td></tr>
           <tr><td>Albergues públicos</td><td>Igual</td><td>Saco sábana o ligero</td><td>Tapones, antifaz, candado</td><td><a href="/kit-de-albergue/">Albergue</a></td></tr>
-          <tr><td>En bici</td><td>Alforjas</td><td>Según época</td><td>Kit de reparación y luces</td><td><a href="/camino-en-bici-y-con-ninos/">Bici y niños</a></td></tr>
+          <tr><td>En bici</td><td>Alforjas</td><td>Según época</td><td>Kit de reparación y luces</td><td><a href="/bicicleta-camino-de-santiago/">Qué bicicleta llevar</a></td></tr>
         </tbody>
       </table></div>
     </div>
@@ -127,8 +144,8 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
       </ul>
       <h3>Con niños o en bici</h3>
       <ul>
-        <li>Con niños, el adulto suele cargar más peso; reparte y usa transporte de mochilas si hace falta.</li>
-        <li>En bici, las alforjas sustituyen a la mochila y se añade kit de reparación y luces. Todo en <a href="/camino-en-bici-y-con-ninos/">Camino en bici y con niños</a>.</li>
+        <li>Con niños, el adulto suele cargar más peso; reparte y usa transporte de mochilas si hace falta. Más en <a href="/camino-en-bici-y-con-ninos/">Camino con niños</a>.</li>
+        <li>En bici, las alforjas sustituyen a la mochila y se añade kit de reparación y luces. Todo en <a href="/bicicleta-camino-de-santiago/">qué bicicleta llevar al Camino</a>.</li>
       </ul>
     </div>
   </section>
