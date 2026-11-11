@@ -2,13 +2,13 @@ import type { Group } from './checklist';
 
 export const biciNinosChecklist: Group[] = [
   { title: 'Bici: reparación', items: [
-    { what: 'Kit de reparación de pinchazos', name: 'Muc-Off kit reparador de neumáticos', asin: 'B08257R87S', why: 'el pinchazo es la avería más común en las pistas de grava del Camino. Con parches y desmontables lo resuelves en el arcén sin esperar a un taller.' },
+    { what: 'Kit de parches para cámara, con desmontables', name: 'KOAREL kit de parches vulcanizados', asin: 'B0DMFKWQGK', why: 'el pinchazo es la avería más habitual en las pistas de grava del Camino. Este estuche lleva parches vulcanizados de varios tamaños, dos palancas para desmontar la cubierta y lija. Lleva también una cámara de recambio de tu medida y de tu válvula (no está en el kit: la talla no es única).' },
     { what: 'Minibomba', name: 'Lezyne Pocket Drive', asin: 'B082MQQXCX', why: 'sin bomba, el kit de pinchazos no sirve. Es pequeña, cabe en la bolsa del cuadro y vale para válvulas Presta y Schrader.' },
     { what: 'Multiherramienta', name: 'Crank Brothers Multi', asin: 'B0768NKHZ9', why: 'con llaves Allen y destornilladores ajustas sillín, frenos o portabultos con las vibraciones de cada día. Pesa poco y evita depender de un taller.' },
   ]},
   { title: 'Bici: carga y seguridad', items: [
     { what: 'Alforjas dobles', name: 'M-Wave Amsterdam Double', asin: 'B001J3NH2K', why: 'en bici el peso va en la bici, no en la espalda: las alforjas en el portabultos bajan el centro de gravedad y te dejan pedalear sin mochila. Comprueba que tu bici admite portabultos.' },
-    { what: 'Luces delantera y trasera recargables', name: 'Vinabo kit luces USB IPX6', asin: 'B0CKPLQ83G', why: 'compartes tramos con coches y sales temprano: las luces te hacen visible y se cargan por USB en el albergue. Son resistentes a la lluvia.' },
+    { what: 'Luces delantera y trasera recargables', name: 'REHKITTZ luces delantera y trasera recargables', asin: 'B09MKGPTVJ', why: 'en el Camino compartes tramos con coches y sales con poca luz: una luz blanca delante y una roja detrás te hacen visible. Se recargan; cárgalas en el alojamiento.' },
     { what: 'Candado de cable', name: 'GRIFEMA GA1204-12 candado con llave', asin: 'B0CKP5J77T', why: 'para dejar la bici atada mientras comes o visitas una iglesia. Un cable ligero disuade del robo oportunista; de noche guárdala en el albergue.' },
   ]},
   { title: 'Con niños', items: [
