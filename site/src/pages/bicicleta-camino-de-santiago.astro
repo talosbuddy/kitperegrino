@@ -1,0 +1,191 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { biciChecklist, biciFaqs } from '../data/bicicleta';
+import { CART_URL_BICI, cartAsins, pageMeta } from '../data/site';
+import { faqPage, itemList } from '../data/schema';
+const total = biciChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_BICI).length;
+const meta = pageMeta('/bicicleta-camino-de-santiago/');
+const jsonLd = [faqPage(biciFaqs), itemList('Checklist: bicicleta para el Camino de Santiago', biciChecklist)];
+const label = 'Añadir el kit de bici al carrito de Amazon';
+const note = `Añade ${inKit} artículos de talla única (alforjas, reparación, luces y candado). El casco, la cámara de recambio y la ropa de ciclismo se eligen por talla o medida y quedan fuera.`;
+---
+<Base title="Qué bicicleta llevar al Camino de Santiago: tipos y kit" description="Qué bicicleta llevar al Camino de Santiago: trekking, gravel o montaña, alquilar o llevar la tuya, alforjas y 200 km para la Compostela. Kit en un clic." jsonLd={jsonLd} crumb="Bicicleta para el Camino">
+  <Hero eyebrow="Bicicleta para el Camino" title="Qué bicicleta llevar al Camino de Santiago: tipo, alforjas y equipo" highlight="tipo, alforjas y equipo" updated={meta.modified}>
+    <p>La bicicleta más versátil para el Camino de Santiago es una <strong>de montaña rígida o una gravel con cubiertas anchas y portabultos</strong>: el trazado alterna pistas de tierra, piedra, barro y asfalto, con subidas largas como O Cebreiro en el Francés.</p>
+    <p>Aquí tienes qué tipo de bici elegir, si alquilar o llevar la tuya, cómo cargar las alforjas, las herramientas, las rutas y los <a href="#compostela-bici">200 km para la Compostela</a>, más una checklist ({total} artículos) con kit en un clic. Si vas con niños, pasa después a la guía del <a href="/camino-en-bici-y-con-ninos/">Camino con niños</a>.</p>
+    <KitButton slot="side" url={CART_URL_BICI} label={label} title="Kit de bicicleta" note={note} />
+  </Hero>
+
+  <section class="block" id="tipo-de-bici">
+    <div class="wrap">
+      <span class="eyebrow">Tipo de bicicleta</span>
+      <h2>Qué tipo de bicicleta llevar al Camino de Santiago</h2>
+      <p class="lead">No hace falta una bici nueva ni de gama alta: hace falta una que admita carga, tenga cubiertas a la altura del firme y desarrollos lo bastante cortos para las subidas con alforjas.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Tipo de bici</th><th scope="col">Dónde rinde</th><th scope="col">A tener en cuenta</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Trekking o híbrida</th><td>Asfalto y pistas fáciles, con carga</td><td>Cómoda y, casi siempre, con anclajes de portabultos de serie. En piedra suelta y barro va peor que una de montaña.</td></tr>
+            <tr><th scope="row">Gravel</th><td>Pistas de tierra compacta y asfalto, a buen ritmo</td><td>Con cubiertas anchas rinde en casi todo. En senderos muy rotos o con mucho barro, toma la variante por carretera.</td></tr>
+            <tr><th scope="row">Montaña rígida (sin suspensión trasera)</th><td>El trazado original, con pistas, piedra y barro</td><td>La opción más segura si quieres seguir las flechas. Comprueba que admite portabultos.</td></tr>
+            <tr><th scope="row">Montaña de doble suspensión</th><td>Tramos técnicos y bajadas con piedra</td><td>Pesa más y muchas no permiten portabultos: obliga a ir con bolsas de bikepacking.</td></tr>
+            <tr><th scope="row">Eléctrica (de montaña o trekking)</th><td>Ayuda en las subidas con alforjas</td><td>Planifica dónde cargar la batería cada noche y pregunta en el alojamiento. Pesa más si se agota. Si quieres la Compostela, consulta en la <a href="https://oficinadelperegrino.com/peregrinacion/la-compostela/" rel="noopener" target="_blank">Oficina del Peregrino</a> las condiciones: su página habla de bicicleta, sin detallar el caso de las eléctricas.</td></tr>
+            <tr><th scope="row">Carretera</th><td>Solo asfalto</td><td>No sirve para el trazado de tierra: tendrás que ir por carreteras paralelas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 style="margin-top:1.6rem">Qué comprobar en la bici antes de salir</h3>
+      <ul>
+        <li><strong>Cubiertas anchas y en buen estado</strong>, con algo de taco o mixtas: son las que más sufren en la grava.</li>
+        <li><strong>Desarrollos cortos:</strong> con alforjas, un plato pequeño y piñones grandes hacen las subidas largas mucho más llevaderas.</li>
+        <li><strong>Frenos revisados;</strong> los de disco frenan mejor con lluvia y barro, algo habitual en Galicia.</li>
+        <li><strong>Anclajes para portabultos y guardabarros,</strong> o bolsas de bikepacking si tu cuadro no los tiene.</li>
+        <li><strong>Revisión en un taller</strong> unas semanas antes y unos kilómetros de prueba con la bici ya cargada.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="alquilar-o-llevar">
+    <div class="narrow prose">
+      <span class="eyebrow">Alquilar o llevar la tuya</span>
+      <h2>¿Alquilar la bicicleta o llevar la tuya al Camino?</h2>
+      <p>Las dos opciones son válidas; la mejor es la que te deja salir con una bici de tu talla, revisada y lista para llevar carga.</p>
+      <ul>
+        <li><strong>Llevar la tuya</strong> tiene sentido si ya la conoces, está a punto y admite portabultos. El inconveniente es el traslado hasta el punto de inicio: algunos trenes y autobuses admiten bicis con reserva o en funda; en avión suele ir facturada en una caja rígida. Pregunta las condiciones antes de comprar el billete.</li>
+        <li><strong>Alquilar</strong> te evitas el transporte y, en muchos casos, incluye alforjas, candado y la recogida en Santiago. El día de la entrega, comprueba la talla, el ajuste del sillín, los frenos, las cubiertas, los desarrollos y qué cubre el seguro (robo, avería, asistencia). Pide por escrito qué incluye y dónde se devuelve.</li>
+      </ul>
+      <p>Tanto si es tuya como de alquiler, no estrenes la posición el primer día del Camino: haz al menos un par de salidas con la carga real.</p>
+    </div>
+  </section>
+
+  <section class="block" id="compostela-bici">
+    <div class="narrow prose">
+      <span class="eyebrow">Credencial y Compostela</span>
+      <h2>La Compostela en bicicleta: 200 km y la credencial</h2>
+      <p>Según la <a href="https://oficinadelperegrino.com/peregrinacion/la-compostela/" rel="noopener" target="_blank">Oficina del Peregrino</a>, la peregrinación en bicicleta exige haber recorrido <strong>200 km en las mismas condiciones que a pie</strong>: kilómetros continuos, en dirección a Santiago y por un mismo camino de los reconocidos por el Centro Internacional de Acogida al Peregrino.</p>
+      <ul>
+        <li><strong>No basta con Sarria ni con Tui</strong> si quieres la Compostela en bici: esos inicios cubren los últimos 100 km a pie. En el Francés, la <a href="https://www.caminodesantiago.gal/es/durante-el-camino/informacion-practica/la-credencial-del-peregrino" rel="noopener" target="_blank">web oficial de Turismo de Galicia</a> indica Ponferrada como punto de inicio para contabilizar esos 200 km. En el Portugués, un punto habitual es Oporto, que en nuestra <a href="/frances-vs-portugues/">comparativa de rutas</a> queda en torno a 240 km.</li>
+        <li><strong>Sellos:</strong> si solo haces la distancia mínima, sella al inicio y al final de cada etapa, con la fecha. La Oficina y las preguntas frecuentes recuerdan, además, al menos dos sellos al día en esos últimos 200 km.</li>
+        <li><strong>Una sola ruta</strong> y siempre hacia Santiago: no se pueden alternar ni mezclar caminos.</li>
+        <li><strong>En persona y gratis:</strong> se recoge en el Centro Internacional de Acogida al Peregrino (Rúa Carretas, 33), tras registrarte. La credencial no se vende en Amazon: consíguela en asociaciones de amigos del Camino, parroquias, albergues de salida o la propia Oficina.</li>
+      </ul>
+      <p class="muted">Los requisitos pueden actualizarse. Antes de salir, contrástalos en la Oficina del Peregrino. El resto de normas generales está en <a href="/#compostela">Credencial y Compostela</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="alforjas">
+    <div class="narrow prose">
+      <span class="eyebrow">Alforjas y peso</span>
+      <h2>Alforjas y peso: cómo cargar la bici del Camino</h2>
+      <p>En bicicleta el equipaje va en la bici, no a la espalda. Un par de alforjas traseras de unos 30 litros, con funda de lluvia, suele bastar si vas ligero; el saco, la ropa de más y el abrigo de invierno son lo que más sube el volumen, igual que en la <a href="/mochila-del-camino/">mochila del Camino</a>.</p>
+      <ul>
+        <li><strong>Reparte el peso</strong> entre las dos alforjas y coloca lo más pesado abajo, cerca del eje, para no desestabilizar la bici en las bajadas.</li>
+        <li><strong>No superes la carga máxima</strong> que indique el fabricante del portaequipajes ni el de las alforjas. Si tu cuadro no admite portabultos, usa bolsas de bikepacking, no improvises un soporte.</li>
+        <li><strong>Lo imprescindible va a mano:</strong> documentación, credencial, dinero, móvil, un cortavientos y el kit de reparación, no enterrados en el fondo.</li>
+        <li><strong>La ropa</strong> sigue el sistema de capas de la <a href="/ropa-del-camino/">guía de ropa</a>, con culote o malla con badana para pedalar. En Galicia, un impermeable o poncho sigue siendo necesario: compáralos en <a href="/poncho-o-chubasquero-camino/">poncho o chubasquero</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="herramientas">
+    <div class="narrow prose">
+      <span class="eyebrow">Herramientas y repuestos</span>
+      <h2>Qué herramientas y repuestos llevar</h2>
+      <p>Un pinchazo o un tornillo suelto lejos de un taller te puede costar la etapa. Lleva un kit mínimo y sabe usarlo antes de salir.</p>
+      <ul>
+        <li><strong>Parches y desmontables</strong> para cámaras, más una cámara de recambio de tu medida y de tu válvula (Presta o Schrader). Si ruedas tubeless, añade un kit de mechas; no sustituye al de parches si la bici de alquiler lleva cámara.</li>
+        <li><strong>Minibomba</strong> compatible con las dos válvulas.</li>
+        <li><strong>Multiherramienta</strong> con llaves Allen, destornilladores y, si cabe, tronzacadenas.</li>
+        <li><strong>Lubricante de cadena,</strong> mejor de condiciones húmedas si vas a cruzar Galicia. Aplícalo en seco, no a última hora bajo la lluvia. No incluimos uno en el kit: las fichas de lubricante «húmedo» que revisamos tenían poco stock o no encajaban.</li>
+        <li><strong>Bridas o un trozo de cinta</strong> para un apaño de un guardabarros o un portabultos hasta el siguiente taller.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="rutas">
+    <div class="wrap">
+      <span class="eyebrow">Rutas</span>
+      <h2>Rutas del Camino en bicicleta</h2>
+      <p class="lead">El Francés y el Portugués son las dos opciones con más servicios para ir en bici; en ambos hay tramos de senda estrecha donde conviene tomar la variante por carretera y ceder el paso a quien va a pie.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Ruta</th><th scope="col">Inicio habitual para la Compostela en bici</th><th scope="col">Qué te encuentras</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Camino Francés</th><td>Ponferrada (no Sarria)</td><td>Subida a O Cebreiro y, ya en Galicia, pistas y tramos de asfalto. Es la red de albergues más densa.</td></tr>
+            <tr><th scope="row">Camino Portugués</th><td>Oporto u otro punto que sume al menos 200 km (no Tui)</td><td>Menos desnivel que el Francés, más asfalto y adoquín, y buena red de servicios a partir de Tui.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Compara distancia, etapas y ambiente en <a href="/frances-vs-portugues/">Francés vs Portugués</a>. Si viajas en julio o agosto, lee el <a href="/camino-en-verano/">Camino en verano</a>; entre noviembre y marzo, el <a href="/camino-en-invierno/">Camino en invierno</a> (menos albergues abiertos y más lluvia o hielo). El casco, las luces y una prenda reflectante importan más cuando hay poca luz o nieve en los puertos.</p>
+    </div>
+  </section>
+
+  <section class="block" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Checklist curada</span>
+      <h2>Qué llevar en la bici del Camino: checklist ({total} artículos)</h2>
+      <p class="lead">Estos {total} artículos cubren la carga, la reparación y la visibilidad. El botón añade los {inKit} de talla única. La ropa, el saco y el aseo siguen estando en la <a href="/mochila-del-camino/">mochila del Camino</a> y en el <a href="/kit-de-albergue/">kit de albergue</a>; aquí el peso viaja en las alforjas.</p>
+      <Checklist checklist={biciChecklist} cartUrl={CART_URL_BICI} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_BICI} label={label} variant="band" title="El kit de bicicleta, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="normas-dgt">
+    <div class="narrow prose">
+      <span class="eyebrow">Normas de tráfico</span>
+      <h2>Normas de la DGT para ir en bici por el Camino</h2>
+      <p>Desde el 1 de octubre de 2026, el casco es obligatorio para todos los ciclistas en vías interurbanas, sin las excepciones que existían antes, según la reforma del Reglamento General de Circulación (Real Decreto 518/2026). Elígelo por talla; por eso no está en el kit.</p>
+      <ul>
+        <li><strong>Casco:</strong> obligatorio en carreteras fuera de poblado; los menores de 16 años también deben llevarlo en ciudad. Fuera de esos casos, la DGT lo recomienda siempre.</li>
+        <li><strong>Luces:</strong> luz blanca delante y luz roja con catadióptrico rojo no triangular detrás.</li>
+        <li><strong>Prenda reflectante:</strong> obligatoria en vías interurbanas cuando hay que usar alumbrado (de noche, en túneles o con poca visibilidad).</li>
+        <li><strong>Por dónde circular:</strong> por la vía ciclista si existe; si no, por el arcén derecho si es transitable.</li>
+        <li><strong>Convivencia:</strong> avisa con el timbre y cede el paso a los peregrinos a pie en las sendas.</li>
+      </ul>
+      <p class="muted">Fuentes: <a href="https://www.dgt.es/comunicacion/notas-de-prensa/20260930-reforma-del-reglamento-de-circulacion-usuarios-vulnerables/index.html" rel="noopener">DGT, entrada en vigor de la reforma (30/09/2026)</a> y <a href="https://www.dgt.es/muevete-con-seguridad/viaja-seguro/en-bicicleta" rel="noopener">DGT, «En bicicleta»</a>. En una emergencia, el 112.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="narrow prose">
+      <span class="eyebrow">Errores comunes</span>
+      <h2>Errores comunes al preparar la bici del Camino</h2>
+      <p>Estos son los fallos que más se repiten al salir en bicicleta, y cómo evitarlos antes del primer día.</p>
+      <ol>
+        <li><strong>Empezar en Sarria o en Tui pensando en la Compostela.</strong> Esos puntos cubren los 100 km a pie, no los 200 km en bici.</li>
+        <li><strong>No revisar la bici ni probarla cargada.</strong> Frenos, cubiertas, desarrollos y portabultos se comprueban en casa o el día de la entrega del alquiler.</li>
+        <li><strong>Ir sin kit de pinchazos ni bomba.</strong> Un pinchazo lejos de un pueblo, sin herramientas, te para el día.</li>
+        <li><strong>Cargar las alforjas de más o desequilibradas.</strong> El peso extra se nota en cada repecho y en las bajadas.</li>
+        <li><strong>Olvidar casco, luces o una prenda visible.</strong> En tramos de carretera no es un accesorio: es la norma y tu margen de seguridad.</li>
+        <li><strong>No reservar donde guardar la bici.</strong> En albergues públicos a veces hay prioridad para quien va a pie. Más sobre la noche en el <a href="/kit-de-albergue/">kit de albergue</a>.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block alt" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="bicicleta-camino-de-santiago" withMochila />
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="narrow"><Faq faqs={biciFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>

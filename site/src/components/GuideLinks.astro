@@ -2,7 +2,7 @@
 import { guides, PUBLISHED } from '../data/site';
 import { iconFor } from '../data/icons';
 import Icon from './Icon.astro';
-const ICON: Record<string,string> = { 'mochila-del-camino': 'mochila', calzado: 'calzado', 'botiquin-y-ampollas': 'botiquin', 'kit-de-albergue': 'albergue', 'camino-en-verano': 'sol', 'camino-en-invierno': 'frio', 'frances-vs-portugues': 'ruta', 'camino-en-bici-y-con-ninos': 'bici', 'ropa-del-camino': 'ropa' };
+const ICON: Record<string,string> = { 'mochila-del-camino': 'mochila', calzado: 'calzado', 'botiquin-y-ampollas': 'botiquin', 'kit-de-albergue': 'albergue', 'camino-en-verano': 'sol', 'camino-en-invierno': 'frio', 'frances-vs-portugues': 'ruta', 'bicicleta-camino-de-santiago': 'bici', 'camino-en-bici-y-con-ninos': 'bici', 'ropa-del-camino': 'ropa' };
 const { exclude, withMochila = false } = Astro.props as { exclude?: string; withMochila?: boolean };
 const list = [
   ...(withMochila ? [{ slug: 'mochila-del-camino', title: 'Mochila del Camino', desc: 'La checklist completa: 16 imprescindibles y el kit en un clic.' }] : []),

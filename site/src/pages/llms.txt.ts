@@ -25,7 +25,8 @@ ${PAGES.map(p => `- [${p.title}](${SITE}${p.path}): ${p.summary} (actualizada ${
 - Elegir ruta: ${SITE}/frances-vs-portugues/
 - Según la época: ${SITE}/camino-en-verano/ o ${SITE}/camino-en-invierno/
 - Qué ropa llevar (3 capas, mudas, merino o sintético): ${SITE}/ropa-del-camino/
-- Qué bicicleta elegir: ${SITE}/camino-en-bici-y-con-ninos/#que-bici
+- Qué bicicleta llevar: ${SITE}/bicicleta-camino-de-santiago/
+- Con niños: ${SITE}/camino-en-bici-y-con-ninos/
 - Glosario y requisitos de la Compostela: ${SITE}/#glosario y ${SITE}/#compostela
 
 ## Opcional

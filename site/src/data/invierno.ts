@@ -3,7 +3,7 @@ import type { Group } from './checklist';
 export const inviernoChecklist: Group[] = [
   { title: 'Luz y orientación', items: [
     { what: 'Linterna frontal recargable', name: 'Blukar Linterna Frontal LED recargable (2 uds.)', asin: 'B0BLVT2Y9N', why: 'en invierno amanece tarde y anochece pronto: saldrás o llegarás de noche muchos días. La frontal deja las manos libres para los bastones y se carga por USB en el albergue. El pack trae dos, una para tu compañero o de repuesto.' },
-    { what: 'Batería externa de 10.000 mAh', name: 'INIU Power Bank 10000 mAh', asin: 'B07PNL5STG', why: 'el frío vacía antes la batería del móvil, y el móvil es tu mapa, tu linterna de emergencia y tu teléfono para llamar al albergue. Una batería fina de 10.000 mAh da para varias cargas.' },
+    { what: 'Batería externa de 10.000 mAh', name: 'INIU Power Bank 10000 mAh 45W USB-C', asin: 'B0CB1DC7GS', why: 'el frío vacía antes la batería del móvil, y el móvil es tu mapa, tu linterna de emergencia y tu teléfono para llamar al albergue. Esta batería compacta de 10.000 mAh, con USB-C, da para varias cargas y, según el fabricante, cumple el límite habitual para llevarla en el avión.' },
   ]},
   { title: 'Calor', items: [
     { what: 'Braga de cuello cortavientos', name: 'Braga de cuello de lana con Windstopper', asin: 'B07WHGS5CZ', why: 'abriga cuello, orejas o cara según la subas o la bajes, y pesa mucho menos que una bufanda. Es la prenda que más pones y quitas en una etapa de invierno.' },
