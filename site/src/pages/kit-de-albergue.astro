@@ -15,7 +15,7 @@ const jsonLd = [faqPage(albergueFaqs), itemList('Checklist: kit de albergue del 
 const label = 'Añadir el kit de albergue al carrito de Amazon';
 const note = `Añade ${inKit} artículos de talla única. Chanclas y toalla se eligen por talla o color y quedan fuera.`;
 ---
-<Base title="Qué llevar al albergue del Camino para dormir mejor" description="Qué llevar al albergue del Camino de Santiago: saco sábana, tapones, chanclas, toalla y candado, más cómo reducir el riesgo de chinches. Kit en un clic." jsonLd={jsonLd} crumb="Kit de albergue">
+<Base title="Qué llevar al albergue del Camino para dormir mejor" description="Qué llevar al albergue del Camino: saco sábana o saco, normas de la Xunta, toalla, chanclas y cómo reducir el riesgo de chinches. Kit en un clic." jsonLd={jsonLd} crumb="Kit de albergue">
   <Hero eyebrow="Kit de albergue" title="Qué llevar al albergue del Camino de Santiago: kit para dormir bien y evitar chinches" highlight="dormir bien y evitar chinches" updated={meta.modified}>
     <p>Para dormir en los albergues del Camino de Santiago necesitas <strong>tu propia ropa de cama ligera, algo contra el ruido y la luz, lo básico para la ducha y la colada, y un candado</strong>: los albergues públicos dan cama, pero casi nunca toalla ni sábanas.</p>
     <p>Aquí tienes los tipos de albergue, la checklist ({total} artículos) con el porqué de cada cosa, cómo prevenir y actuar ante chinches y las normas que conviene conocer.</p>
@@ -51,11 +51,26 @@ const note = `Añade ${inKit} artículos de talla única. Chanclas y toalla se e
     </div>
   </section>
 
+
+  <section class="block" id="saco-o-sabana">
+    <div class="narrow prose">
+      <span class="eyebrow">Dormir</span>
+      <h2>Saco de dormir o saco sábana: qué llevar según la época</h2>
+      <p>El saco sábana y el saco de dormir no son lo mismo. El primero es una funda fina que te separa del colchón y pesa poco; el segundo abriga de verdad. En muchos albergues públicos solo hay una funda desechable, así que lleva al menos el saco sábana.</p>
+      <ul>
+        <li><strong>Verano (junio a agosto):</strong> suele bastar el saco sábana. En un dormitorio lleno, el calor es más habitual que el frío.</li>
+        <li><strong>De noviembre a marzo:</strong> lleva un saco de dormir. En la red de la Xunta hay ropa de cama desechable, no un edredón, y la calefacción puede ser limitada. Más en el <a href="/camino-en-invierno/">Camino en invierno</a>.</li>
+        <li><strong>Abril, mayo, octubre:</strong> un saco ligero da margen si encadenas albergues públicos; el saco sábana puedes usarlo dentro para ganar higiene y un poco de abrigo.</li>
+      </ul>
+      <p>No es una norma universal llevar saco, pero es la costumbre más sensata. Si vas en bicicleta, el saco viaja en las alforjas: mira <a href="/bicicleta-camino-de-santiago/">qué bicicleta llevar</a> y cómo repartir la carga.</p>
+    </div>
+  </section>
+
   <section class="block" id="chinches">
     <div class="narrow prose">
       <span class="eyebrow">Chinches</span>
       <h2>Chinches en albergues: cómo prevenirlas y qué hacer si te pican</h2>
-      <p>Para evitar las chinches en los albergues, revisa la cama antes de acostarte, no dejes la mochila sobre el colchón y duerme en tu propio saco sábana.</p>
+      <p>Para evitar las chinches en los albergues, revisa la cama antes de acostarte, no dejes la mochila sobre el colchón y duerme en tu propio saco sábana. El saco te separa del colchón; no impide por sí solo una infestación de la cama.</p>
       <h3>Prevención, cada noche</h3>
       <ol>
         <li><strong>Revisa costuras y esquinas</strong> del colchón y del somier con la linterna del móvil: busca puntos negros, manchas de sangre o insectos pequeños y marrones.</li>
@@ -78,12 +93,13 @@ const note = `Añade ${inKit} artículos de talla única. Chanclas y toalla se e
     <div class="narrow prose">
       <span class="eyebrow">Convivencia</span>
       <h2>Normas y horarios de los albergues</h2>
-      <p>Los albergues del Camino tienen horario de entrada, cierre nocturno y salida temprana, y en los públicos necesitas la credencial del peregrino para dormir.</p>
+      <p>Los albergues del Camino tienen horario de entrada, cierre nocturno y salida temprana, y en los públicos necesitas la credencial del peregrino para dormir. En la <a href="https://www.caminodesantiago.gal/es/descubre/el-camino-en-la-actualidad/la-red-de-albergues-publicos" rel="noopener" target="_blank">red pública de la Xunta</a>, en Galicia, las normas son fijas.</p>
       <ul>
         <li><strong>Credencial</strong>: la sellan al llegar y es obligatoria en los públicos.</li>
-        <li><strong>Horarios</strong>: abren a primera hora de la tarde, cierran la puerta por la noche y piden salir temprano; confírmalos al llegar.</li>
+        <li><strong>Red de la Xunta</strong>: 10 € por persona y día, sin reserva, una sola noche. Abren de 13:00 a 22:00, las luces se apagan a las 22:30 (salvo zonas comunes) y hay que salir antes de las 8:00. Tienen prioridad quienes tienen limitaciones físicas y, después, quien va a pie; la bicicleta entra más atrás.</li>
+        <li><strong>Otros albergues</strong>: el horario puede cambiar; confírmalo al llegar. En temporada alta, reserva el privado o llega pronto al público.</li>
         <li><strong>Botas fuera</strong>: casi todos piden dejar el calzado en la entrada; las chanclas son tu calzado de tarde. Ver la <a href="/calzado/">guía de calzado</a>.</li>
-        <li><strong>Madrugar en silencio</strong>: prepara la mochila la noche antes y usa luz roja o frontal baja.</li>
+        <li><strong>Madrugar en silencio</strong>: prepara la <a href="/mochila-del-camino/">mochila</a> la noche antes y usa luz roja o frontal baja.</li>
       </ul>
     </div>
   </section>
