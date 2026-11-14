@@ -15,7 +15,7 @@ const jsonLd = [faqPage(inviernoFaqs), itemList('Checklist: Camino de Santiago e
 const label = 'Añadir el kit de invierno al carrito de Amazon';
 const note = `Añade ${inKit} artículos de talla única. Guantes, gorro y funda de mochila se eligen por talla o color y quedan fuera.`;
 ---
-<Base title="Camino de Santiago en invierno: ropa, luz y albergues" description="Camino de Santiago en invierno: ropa por capas, luz, albergues abiertos y rutas recomendadas (noviembre a marzo). Checklist con kit en un clic." jsonLd={jsonLd} crumb="Camino en invierno">
+<Base title="Camino de Santiago en invierno: ropa, luz y albergues" description="Camino de Santiago en invierno: tiempo, ropa por capas, horas de luz, albergues abiertos y rutas de noviembre a marzo. Kit en un clic." jsonLd={jsonLd} crumb="Camino en invierno">
   <Hero eyebrow="Camino en invierno" title="Camino de Santiago en invierno: qué llevar, dónde dormir y qué ruta elegir" highlight="qué llevar, dónde dormir y qué ruta elegir" updated={meta.modified}>
     <p>Hacer el Camino de Santiago en invierno, de noviembre a marzo, es posible y muy tranquilo si te preparas para <strong>tres cosas: frío y lluvia, pocas horas de luz y menos albergues abiertos</strong>.</p>
     <p>Aquí tienes la ropa por capas, la checklist de invierno ({total} artículos), cómo planificar etapas y albergues, qué rutas convienen y un kit para añadir al carrito en un clic.</p>
@@ -39,7 +39,7 @@ const note = `Añade ${inKit} artículos de talla única. Guantes, gorro y funda
           </tbody>
         </table>
       </div>
-      <p style="margin-top:1.2rem">La ropa térmica se compra por talla y no la incluimos en el carrito; cuántas prendas llevar y merino o sintético, en la <a href="/ropa-del-camino/">guía de ropa para el Camino</a>. Para el calzado impermeable y los calcetines, consulta la <a href="/calzado/">guía de calzado para el Camino</a>.</p>
+      <p style="margin-top:1.2rem">La ropa térmica se compra por talla y no la incluimos en el carrito; cuántas prendas llevar y merino o sintético, en la <a href="/ropa-del-camino/">guía de ropa para el Camino</a>. El volumen sube en invierno: elige bien los litros en la <a href="/mochila-del-camino/">mochila del Camino</a>. Para el calzado impermeable y los calcetines, consulta la <a href="/calzado/">guía de calzado para el Camino</a>.</p>
     </div>
   </section>
 
@@ -50,6 +50,20 @@ const note = `Añade ${inKit} artículos de talla única. Guantes, gorro y funda
       <p class="lead">Al equipo básico de la <a href="/mochila-del-camino/">mochila del Camino</a> añade en invierno luz, calor y protección contra la lluvia; estos {total} artículos cubren lo que cambia respecto al verano.</p>
       <Checklist checklist={inviernoChecklist} cartUrl={CART_URL_INVIERNO} />
       <div style="margin-top:2rem"><KitButton url={CART_URL_INVIERNO} label={label} variant="band" title="El kit de invierno, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+
+  <section class="block alt" id="tiempo">
+    <div class="narrow prose">
+      <span class="eyebrow">Tiempo</span>
+      <h2>Qué tiempo hace en el Camino en invierno</h2>
+      <p>El invierno no es igual en toda la ruta: en Galicia es suave y muy húmedo; en la Meseta, más frío y con heladas. Los datos siguientes son valores normales de <a href="https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?k=gal&amp;l=1428" rel="noopener" target="_blank">AEMET</a> para el periodo 1981-2010.</p>
+      <ul>
+        <li><strong>Santiago (aeropuerto):</strong> en enero la temperatura media es de 7,7 °C (máxima media 11,2 °C, mínima media 4,1 °C). En diciembre caen 261 mm de lluvia, con 15,9 días de precipitación; en enero, 210 mm y 15,2 días. El problema habitual no es el hielo, sino caminar horas mojado.</li>
+        <li><strong>Burgos (aeropuerto), en la Meseta:</strong> en enero la media es de 3,1 °C y la mínima media, de -0,8 °C, con 18 días de helada y casi 5 de nieve. Consulta la ficha de <a href="https://www.aemet.es/es/serviciosclimaticos/datosclimatologicos/valoresclimatologicos?k=coo&amp;l=2331" rel="noopener" target="_blank">Burgos en AEMET</a> y la previsión de cada etapa.</li>
+        <li><strong>Diciembre y enero</strong> tienen menos luz y más lluvia en Galicia que febrero o marzo. El Camino no cierra ningún mes, pero pide más planificación.</li>
+      </ul>
     </div>
   </section>
 
@@ -71,7 +85,7 @@ const note = `Añade ${inKit} artículos de talla única. Guantes, gorro y funda
     <div class="wrap">
       <span class="eyebrow">Dónde dormir</span>
       <h2>Albergues abiertos en invierno</h2>
-      <p class="lead">En invierno hay albergues abiertos en las rutas principales, pero muchos privados cierran entre noviembre y marzo, así que confirma cada noche que el de la siguiente etapa está abierto.</p>
+      <p class="lead">En invierno hay albergues abiertos en las rutas principales, pero muchos privados cierran entre noviembre y marzo. La <a href="https://www.caminodesantiago.gal/es/descubre/el-camino-en-la-actualidad/la-red-de-albergues-publicos" rel="noopener" target="_blank">red pública de la Xunta</a>, en Galicia, funciona todo el año salvo cierres puntuales anunciados en la ficha de cada albergue: 10 €, sin reserva, de 13:00 a 22:00. Confirma siempre la noche siguiente.</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th scope="col">Tipo</th><th scope="col">En invierno</th><th scope="col">Qué hacer</th></tr></thead>
@@ -94,10 +108,10 @@ const note = `Añade ${inKit} artículos de talla única. Guantes, gorro y funda
       <ul>
         <li><strong>Francés desde Sarria o León</strong>: más servicios y compañía; vigila la nieve en O Cebreiro.</li>
         <li><strong>Portugués por la costa</strong>: clima más suave y llano, con lluvia frecuente.</li>
-        <li><strong>Saint-Jean-Pied-de-Port</strong>: la ruta de Napoleón está cerrada del 1 de noviembre al 31 de marzo; usa la variante de Valcarlos.</li>
+        <li><strong>Saint-Jean-Pied-de-Port</strong>: la variante Este por el collado de Lepoeder (ruta de Napoleón) se cierra cada invierno, del 1 de noviembre al 31 de marzo, por seguridad. En esas fechas se usa la variante Oeste, por Luzaide/Valcarlos. El <a href="https://www.caminodesantiagoennavarra.es/vwp/restriccion-de-paso-por-la-varianteeste-del-camino-de-santiago-frances/" rel="noopener" target="_blank">Gobierno de Navarra</a> publica las fechas de cada temporada.</li>
         <li><strong>Primitivo y Norte</strong>: más exigentes y con menos servicios en invierno; solo con experiencia.</li>
       </ul>
-      <p>Para comparar rutas, consulta <a href="/frances-vs-portugues/">Francés vs Portugués</a>. Si vas en bici, lee <a href="/bicicleta-camino-de-santiago/">qué bicicleta llevar</a>; si vas con niños, el <a href="/camino-en-bici-y-con-ninos/">Camino con niños</a>. En la temporada de calor, lee el <a href="/camino-en-verano/">Camino en verano</a>.</p>
+      <p>Para comparar rutas, consulta <a href="/frances-vs-portugues/">Francés vs Portugués</a>. Si vas en bicicleta, el frío, la lluvia y la falta de luz pedirán luces buenas y etapas más cortas: mira <a href="/bicicleta-camino-de-santiago/">qué bicicleta llevar al Camino</a>. Si vas con niños, el <a href="/camino-en-bici-y-con-ninos/">Camino con niños</a>. En la temporada de calor, lee el <a href="/camino-en-verano/">Camino en verano</a>.</p>
     </div>
   </section>
 
