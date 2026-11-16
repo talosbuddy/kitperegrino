@@ -14,7 +14,7 @@ const jsonLd = [faqPage(faqs), itemList('Checklist: Mochila del Camino', checkli
 const meta = pageMeta('/mochila-del-camino/');
 const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, calcetines, chanclas, poncho, riñonera) tienes que elegirlas tú en su ficha, porque cada uno usa una talla distinta.';
 ---
-<Base title="Mochila Camino de Santiago: litros, peso y cómo elegirla" description="Mochila para el Camino de Santiago: cuántos litros según la época y los días, la pauta del 10 % del peso y cómo elegirla. Checklist y kit en un clic." jsonLd={jsonLd} crumb="Mochila del Camino">
+<Base title="Mochila Camino de Santiago: qué llevar y cómo elegirla" description="Qué llevar en la mochila del Camino de Santiago y cómo elegirla: cuántos litros según la época, la pauta del 10 % del peso y checklist con kit en un clic." jsonLd={jsonLd} crumb="Mochila del Camino">
   <Hero eyebrow="Mochila del Camino" title="Mochila para el Camino de Santiago: cuántos litros, cuánto peso y cómo elegirla" highlight="cuántos litros, cuánto peso y cómo elegirla" updated={meta.modified}>
     <p>Para el Camino de Santiago, una mochila de <strong>30-40 litros, con cinturón lumbar y espalda ventilada</strong>, suele ser suficiente. Una pauta habitual es no pasar del 10 % de tu peso corporal, agua incluida: con 70 kg, unos 7 kg. No es una norma oficial, es una referencia para no sobrecargar espalda y rodillas.</p>
     <p>Aquí tienes cuántos litros elegir según la época y los días, cómo elegir y ajustar la mochila, y una checklist corta que cabe en 30-35 litros en primavera u otoño. La ropa está en la <a href="/ropa-del-camino/">guía de ropa</a>; el ajuste, paso a paso, en <a href="/ajustar-mochila-camino/">cómo ajustar la mochila</a>. Si vas en bici, las alforjas sustituyen a la mochila: mira <a href="/bicicleta-camino-de-santiago/">qué bicicleta llevar</a>.</p>
@@ -54,13 +54,14 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
   <section class="block" id="elegir-mochila">
     <div class="narrow prose">
       <span class="eyebrow">Cómo elegirla</span>
-      <h2>Cómo elegir la mochila del Camino de Santiago</h2>
+      <h2>Mejores mochilas para el Camino de Santiago: cómo elegir (litros y peso)</h2>
       <p>Más que la marca, importa que la mochila se ajuste a tu espalda y que el cinturón lumbar cargue el peso en la cadera. Con 30-35 litros de primavera a otoño, o 35-40 en invierno, tienes margen de sobra si no la llenas.</p>
       <ul>
         <li><strong>Cinturón lumbar:</strong> acolchado y que abrace los huesos de la cadera; es lo que de verdad quita peso a los hombros.</li>
         <li><strong>Espalda ventilada:</strong> una rejilla o canales de aire hacen que la espalda llegue menos empapada a cada etapa.</li>
         <li><strong>Talla de espalda:</strong> muchas mochilas se venden por talla o tienen el respaldo regulable; mide del hueso de la nuca a la altura de la cadera y compara con la ficha.</li>
         <li><strong>Accesos y bolsillos:</strong> bolsillos en el cinturón para el móvil y la credencial, y laterales para la botella, evitan quitarte la mochila a cada rato.</li>
+        <li><strong>Peso en vacío:</strong> cada gramo de la mochila se suma a lo que llevas dentro. Compara el peso que indica la ficha entre modelos de litros parecidos y evita las de trekking pesadas con armazón que no vas a necesitar.</li>
         <li><strong>Pruébala cargada</strong> antes de salir: el ajuste importa tanto como los litros. Si te duele al primer paseo, revisa talla y correas antes de comprar otra.</li>
       </ul>
       <h3>Cómo ajustar la mochila, paso a paso</h3>
@@ -79,8 +80,8 @@ const note = 'Añade 10 artículos básicos. Las prendas con talla (camiseta, ca
   <section class="block" id="checklist">
     <div class="wrap">
       <span class="eyebrow">Checklist curada</span>
-      <h2>Checklist de la mochila del Camino ({total} artículos)</h2>
-      <p class="lead">Cada artículo explica por qué está en la lista. Los marcados «Incluido en el kit» entran con el botón de un clic.</p>
+      <h2>Qué llevar en la mochila del Camino de Santiago: checklist ({total} artículos)</h2>
+      <p class="lead">Lo que de verdad hay que llevar, sin duplicados: cada artículo explica por qué está en la lista. Los marcados «Incluido en el kit» entran con el botón de un clic.</p>
       <Checklist checklist={checklist} cartUrl={CART_URL} />
       <p class="callout" style="margin-top:2rem">Todo lo demás para la noche (candado, pinzas, tapones de repuesto) está en <a href="/kit-de-albergue/">Kit de albergue</a>.</p>
     </div>
