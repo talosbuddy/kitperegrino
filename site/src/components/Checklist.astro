@@ -28,7 +28,7 @@ let n = 0;
           {item.alternative && <p class="alt"><span>Alternativa</span> {item.alternative}</p>}
           <div class="meta">
             <a class="see" href={amazon(item.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon · enlace de afiliado <span aria-hidden="true">↗</span></a>
-            <span class:list={['note', k ? 'in' : 'size']}>{k ? 'Incluido en el kit' : 'Elige talla o color'}</span>
+            {item.tag && !k ? <span class="note size">{item.tag}</span> : <span class:list={['note', k ? 'in' : 'size']}>{k ? 'Incluido en el kit' : 'Elige talla o color'}</span>}
           </div>
         </li>
       ); })}

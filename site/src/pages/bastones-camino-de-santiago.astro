@@ -1,0 +1,211 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { bastonesChecklist, bastonesFaqs } from '../data/bastones';
+import { CART_URL_BASTONES, cartAsins, pageMeta } from '../data/site';
+import { faqPage } from '../data/schema';
+const total = bastonesChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_BASTONES).length;
+const meta = pageMeta('/bastones-camino-de-santiago/');
+const jsonLd = [faqPage(bastonesFaqs)];
+const h1 = 'Bastones para el Camino de Santiago: si llevarlos, cuáles elegir y cómo usarlos';
+const label = 'Añadir el kit de bastones al carrito de Amazon';
+const note = `Añade ${inKit} artículos: un par de bastones plegables de aluminio y tacos de goma de repuesto. Los telescópicos y la funda son alternativas y se eligen aparte.`;
+const AENA = 'https://www.aena.es/es/pasajeros/equipajes-controles/equipaje-mano.html';
+const VUELING = 'https://help.vueling.com/hc/es/articles/20955280277521-Objetos-permitidos-como-equipaje-de-mano';
+---
+<Base title="Bastones para el Camino de Santiago: cuáles llevar (2026)" description="Bastones para el Camino de Santiago: si llevarlos, trekking o nórdicos, plegables o telescópicos, aluminio o carbono, altura, tacos de goma y cómo llevarlos en avión." jsonLd={jsonLd} crumb="Bastones para el Camino" h1={h1}>
+  <Hero eyebrow="Bastones para el Camino" title={h1} highlight="cuáles elegir y cómo usarlos" updated={meta.modified}>
+    <p>Para el Camino de Santiago lo más práctico es <strong>un par de bastones de trekking regulables, plegables si vas a volar, con tacos de goma para el asfalto</strong>. No son obligatorios, pero ayudan sobre todo en las bajadas largas y en el barro.</p>
+    <p>Aquí tienes si merece la pena llevarlos, trekking o nórdicos, plegables o telescópicos, aluminio o carbono, cómo ajustar la altura, cuándo usar los tacos, <a href="#avion">cómo llevarlos en avión</a> según AENA y cómo bajar con ellos, más una selección de {total} productos comprobados en Amazon.es. Si los llevas, cuentan en el peso de la <a href="/mochila-del-camino/">mochila del Camino</a>.</p>
+    <KitButton slot="side" url={CART_URL_BASTONES} label={label} title="Kit de bastones" note={note} />
+  </Hero>
+
+  <section class="block" id="si-o-no">
+    <div class="narrow prose">
+      <span class="eyebrow">¿Llevarlos o no?</span>
+      <h2>¿Merece la pena llevar bastones al Camino de Santiago?</h2>
+      <p>Para la mayoría de peregrinos, sí. Los bastones reparten parte del esfuerzo entre brazos y piernas, te dan dos apoyos más cuando el suelo resbala y ayudan a frenar en las bajadas, que es donde más sufren las rodillas: el Alto del Perdón, la bajada de la Cruz de Ferro a Molinaseca o la de O Cebreiro a Triacastela, en el Camino Francés.</p>
+      <ul>
+        <li><strong>Llévalos</strong> si tienes rodillas o tobillos delicados, si caminas en otoño o invierno (barro, hojas mojadas, hielo en los puertos: mira el <a href="/camino-en-invierno/">Camino en invierno</a>), si cargas con la mochila todo el día o si haces una ruta con mucho desnivel.</li>
+        <li><strong>Puedes prescindir</strong> si haces solo los últimos 100 km por pista y asfalto, envías la mochila entre etapas y nunca has caminado con ellos: aprender en ruta cansa más de lo que ayuda.</li>
+        <li><strong>Pruébalos antes:</strong> sal un par de veces con la mochila cargada y el mismo calzado del Camino (lo explicamos en la <a href="/calzado/">guía de calzado</a>). Si al tercer día siguen estorbando, déjalos en casa.</li>
+      </ul>
+      <p>Lleva <strong>dos bastones, no uno</strong>: con uno solo el apoyo es asimétrico y no frenas igual. El bordón de madera es el bastón tradicional del peregrino, pero para varias semanas funcionan mejor dos de trekking ligeros y regulables.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="trekking-o-nordicos">
+    <div class="wrap">
+      <span class="eyebrow">Tipos</span>
+      <h2>Bastones de trekking o de marcha nórdica</h2>
+      <p class="lead">Se parecen, pero no hacen lo mismo. Para el Camino, con mochila y bajadas, los de trekking son los más versátiles.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Trekking</th><th scope="col">Marcha nórdica</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Para qué están pensados</th><td>Apoyo y freno en terreno irregular, subidas y bajadas</td><td>Técnica de empuje hacia atrás en llano, como ejercicio</td></tr>
+            <tr><th scope="row">Longitud</th><td>Regulable (telescópicos o plegables)</td><td>Muchos son de longitud fija o con poco rango</td></tr>
+            <tr><th scope="row">Dragonera</th><td>Correa de muñeca que se suelta fácil</td><td>Tipo guante, que va enganchada a la mano</td></tr>
+            <tr><th scope="row">Punta</th><td>Metálica con taco de goma y roseta intercambiables</td><td>Taco de goma inclinado, tipo «zapatilla», para asfalto</td></tr>
+            <tr><th scope="row">En el Camino</th><td>La opción más práctica</td><td>Solo si ya practicas marcha nórdica y la ruta es llana</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="plegables-o-telescopicos">
+    <div class="wrap">
+      <span class="eyebrow">Plegables o telescópicos</span>
+      <h2>Bastones plegables o telescópicos: cuál elegir</h2>
+      <p class="lead">La diferencia está en cómo se recogen: los plegables se desmontan en tramos unidos por un cable interior, como una vara de tienda de campaña; los telescópicos meten un tramo dentro de otro.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Plegables</th><th scope="col">Telescópicos</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Recogidos</th><td>Unos 35-40 cm: caben dentro de la mochila</td><td>Unos 60-65 cm: van por fuera de la mochila</td></tr>
+            <tr><th scope="row">Avión</th><td>AENA los admite en el equipaje de mano, dentro de la maleta</td><td>Algunas aerolíneas, como Vueling, exigen facturarlos</td></tr>
+            <tr><th scope="row">Ajuste de altura</th><td>Rango más corto (20 cm en nuestra selección), en el tramo superior</td><td>Rango amplio: más fácil alargar en bajadas y acortar en subidas</td></tr>
+            <tr><th scope="row">Robustez</th><td>Más juntas, pero cada vez más sólidas</td><td>Muy robustos si los cierres son de palanca</td></tr>
+            <tr><th scope="row">Mejor para</th><td>Quien vuela con equipaje de mano o los guarda en tramos de asfalto</td><td>Quien llega en tren, autobús o coche, o factura</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Prefiere cierres de <strong>palanca</strong> a los de rosca: se ajustan con guantes y se aprietan sin herramientas si con el uso se aflojan. Las medidas exactas de cada modelo están en su ficha de Amazon.es; las de nuestra selección, en la <a href="#checklist">lista de productos</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="aluminio-o-carbono">
+    <div class="wrap">
+      <span class="eyebrow">Material</span>
+      <h2>Aluminio o carbono: qué material elegir</h2>
+      <p class="lead">Los dos sirven. El carbono gana en peso; el aluminio, en resistencia a los golpes y en precio.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Aluminio (7075 o similar)</th><th scope="col">Fibra de carbono</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Peso</th><td>En nuestra selección, unos 290 g por bastón</td><td>En nuestra selección, 215 g por bastón</td></tr>
+            <tr><th scope="row">Ante un golpe fuerte</th><td>Suele doblarse; a veces se puede enderezar y seguir</td><td>Puede partirse, sobre todo con golpes laterales</td></tr>
+            <tr><th scope="row">Vibración</th><td>Transmite algo más en asfalto</td><td>Amortigua mejor la vibración</td></tr>
+            <tr><th scope="row">Para quién</th><td>Primer Camino, terreno pedregoso, quien los trata sin miramientos</td><td>Quien cuida cada gramo y ya sabe usarlos</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">El <strong>mango</strong> importa tanto como el tubo: el corcho y la espuma EVA absorben el sudor y agarran mejor que el plástico duro en una etapa de calor, como las de la Meseta en el <a href="/camino-en-verano/">Camino en verano</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="altura">
+    <div class="narrow prose">
+      <span class="eyebrow">Altura y ajuste</span>
+      <h2>Cómo ajustar la altura de los bastones</h2>
+      <p>La regla práctica: <strong>con la punta en el suelo junto al pie y el brazo pegado al cuerpo, el codo debe quedar en ángulo recto (90°)</strong>. Ajusta los dos bastones a la misma medida usando las marcas del tubo.</p>
+      <ul>
+        <li><strong>En subidas largas,</strong> acórtalos unos centímetros para no levantar los hombros.</li>
+        <li><strong>En bajadas,</strong> alárgalos unos centímetros para llegar antes al suelo y no inclinarte hacia delante.</li>
+        <li><strong>En llano,</strong> vuelve a la medida base. Con telescópicos, el cambio se hace en segundos; con plegables, el rango es más corto.</li>
+        <li><strong>Dragonera:</strong> mete la mano por debajo de la correa y agarra el mango con correa incluida, para que la muñeca cargue parte del apoyo sin apretar el puño.</li>
+        <li><strong>Comprueba el rango antes de comprar:</strong> si mides más de 1,85 m o menos de 1,55 m, mira que la longitud máxima y mínima de la ficha te encaja.</li>
+      </ul>
+      <p>Si la mochila tira de los hombros al apoyarte, el problema suele ser el ajuste de la mochila más que el bastón: revisa <a href="/ajustar-mochila-camino/">cómo ajustar la mochila</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="tacos">
+    <div class="narrow prose">
+      <span class="eyebrow">Tacos de goma</span>
+      <h2>Tacos de goma: cuándo ponerlos y cuándo quitarlos</h2>
+      <p>Buena parte del Camino es asfalto, adoquín y piedra lisa, sobre todo al cruzar pueblos y en el Camino Portugués (compáralo en <a href="/frances-vs-portugues/">Francés vs Portugués</a>). Ahí la punta metálica resbala y hace ruido.</p>
+      <ul>
+        <li><strong>Con taco:</strong> asfalto, adoquín, losas, aceras y el interior de los pueblos a primera hora. Agarra más, protege la punta y evita el «clac-clac» que despierta a medio albergue cuando sales de madrugada.</li>
+        <li><strong>Sin taco:</strong> barro, hierba, nieve o piedra suelta. La punta metálica clava mejor; guarda el taco en el bolsillo del cinturón.</li>
+        <li><strong>Lleva repuestos:</strong> los tacos se quedan pegados en el barro y se pierden. Comprueba el diámetro interior: los de nuestra selección son de 11 mm, que según el fabricante encaja en la mayoría de bastones de trekking.</li>
+        <li><strong>Rosetas:</strong> la pequeña de verano sirve casi siempre; la de nieve solo si cruzas puertos nevados en invierno.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="avion">
+    <div class="narrow prose">
+      <span class="eyebrow">Avión</span>
+      <h2>Cómo llevar los bastones en avión</h2>
+      <p>Depende del tipo de bastón y de la compañía aérea. Esto es lo que dicen las fuentes oficiales, consultadas el 16 de noviembre de 2026:</p>
+      <ul>
+        <li><strong>AENA:</strong> en su página de <a href={AENA} rel="noopener" target="_blank">equipaje de mano</a> incluye entre los objetos que se pueden llevar los «bastones de senderismo plegables, que podrán mantenerse dentro de la maleta para su inspección con el escáner de rayos X».</li>
+        <li><strong>Vueling:</strong> en <a href={VUELING} rel="noopener" target="_blank">objetos permitidos como equipaje de mano</a> admite los palos de trekking plegables dentro o como equipaje de mano, y pide que los telescópicos vayan en el equipaje facturado. Además del equipaje de mano, permite un bastón de peregrino si no tiene punta afilada.</li>
+        <li><strong>Otras aerolíneas:</strong> cada una fija sus propias normas de equipaje. Consulta la tuya antes de comprar el billete, sobre todo si vuelas solo con equipaje de mano.</li>
+        <li><strong>El control de seguridad decide:</strong> AENA recuerda que su lista es orientativa y que el personal de seguridad puede denegar el acceso con un objeto que le suscite recelo. Si no quieres arriesgarte, factúralos.</li>
+      </ul>
+      <p>Para facturarlos, recógelos al mínimo, tapa las puntas con los tacos y únelos con cinta o en una funda. Si vuelas solo con mochila de cabina, unos plegables dentro de la mochila son la opción con menos problemas. Lo demás que no puede ir en cabina (líquidos de más de 100 ml del botiquín, por ejemplo) está en el <a href="/botiquin-y-ampollas/">botiquín del Camino</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="bajadas">
+    <div class="narrow prose">
+      <span class="eyebrow">Técnica</span>
+      <h2>Cómo usar los bastones en las bajadas (y en las subidas)</h2>
+      <p>Las bajadas son donde más rinden los bastones y donde más se nota usarlos mal.</p>
+      <ol>
+        <li><strong>Alárgalos</strong> unos centímetros antes de empezar a bajar.</li>
+        <li><strong>Planta los bastones por delante</strong> y un poco a los lados, y apoya después el pie: así frenan el cuerpo en lugar de empujarlo.</li>
+        <li><strong>Pasos cortos y rodillas ligeramente flexionadas;</strong> no bloquees las piernas.</li>
+        <li><strong>En tramos de piedra suelta o muy técnicos, saca la mano de la dragonera:</strong> si tropiezas, el bastón se suelta y la muñeca no se lleva el golpe.</li>
+        <li><strong>En las subidas,</strong> acórtalos y apóyalos a la altura del pie, sin estirar el brazo hacia delante.</li>
+        <li><strong>En llano,</strong> mueve brazo y pierna contrarios, como al caminar, con un apoyo suave.</li>
+      </ol>
+      <p>Los bastones descargan las rodillas, pero no hacen milagros con los pies: si en las bajadas te tocan los dedos la puntera, revisa la talla en la <a href="/calzado/">guía de calzado</a> y protege las zonas rojas con lo que llevas en el <a href="/botiquin-y-ampollas/">botiquín y ampollas</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Selección comprobada</span>
+      <h2>Qué bastones comprar para el Camino: {total} productos comprobados</h2>
+      <p class="lead">Un par recomendado (plegables de aluminio), dos alternativas telescópicas, tacos de repuesto y una funda. El botón añade los {inKit} del kit; los demás se eligen en su ficha según cómo vayas a viajar.</p>
+      <Checklist checklist={bastonesChecklist} cartUrl={CART_URL_BASTONES} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_BASTONES} label={label} variant="band" title="El kit de bastones, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="errores">
+    <div class="narrow prose">
+      <span class="eyebrow">Errores comunes</span>
+      <h2>Errores comunes con los bastones en el Camino</h2>
+      <ol>
+        <li><strong>Estrenarlos en la primera etapa.</strong> Practica antes con la mochila cargada.</li>
+        <li><strong>Llevarlos demasiado largos.</strong> Si los hombros se suben, acórtalos hasta el codo a 90°.</li>
+        <li><strong>No cambiar la altura en las bajadas.</strong> Alargarlos un poco es lo que de verdad alivia las rodillas.</li>
+        <li><strong>Ir con la punta metálica por el asfalto.</strong> Resbala y hace ruido: pon los tacos.</li>
+        <li><strong>Comprar telescópicos y volar solo con equipaje de mano.</strong> Comprueba antes la norma de tu aerolínea o elige plegables.</li>
+        <li><strong>Atarlos sueltos por fuera de la mochila en el albergue o el autobús.</strong> Guárdalos plegados con la mochila; en el albergue, déjalos donde indique el hospitalero. Más sobre la noche en el <a href="/kit-de-albergue/">kit de albergue</a>.</li>
+      </ol>
+      <p>Con lluvia, un poncho puede engancharse con los bastones: compara en <a href="/poncho-o-chubasquero-camino/">poncho o chubasquero</a>. Para el resto del equipo de caminar, mira la <a href="/ropa-del-camino/">ropa del Camino</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="bastones-camino-de-santiago" withMochila />
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={bastonesFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>
