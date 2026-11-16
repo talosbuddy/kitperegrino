@@ -1,4 +1,4 @@
-export interface Item { what: string; name: string; asin: string; why: string; drawback?: string; alternative?: string; link?: { href: string; text: string; pre: string } }
+export interface Item { what: string; name: string; asin: string; why: string; drawback?: string; alternative?: string; tag?: string; link?: { href: string; text: string; pre: string } }
 export interface Group { title: string; items: Item[] }
 
 export const checklist: Group[] = [
@@ -9,7 +9,7 @@ export const checklist: Group[] = [
     { what: 'Poncho de lluvia que cubre la mochila', name: 'Ferrino Trekker Poncho', asin: 'B07MQG63JB', why: 'os cubre a ti y a la mochila, ventila mejor que un chubasquero y cabe en un puño.' },
   ]},
   { title: 'Para caminar', items: [
-    { what: 'Bastones de trekking plegables', name: 'Anykuu, aluminio 7075', asin: 'B08RYQLK92', why: 'quitan carga a las rodillas en las bajadas (O Cebreiro, Alto del Perdón) y plegados caben en la mochila. Para volver en avión, factúralos.' },
+    { what: 'Bastones de trekking plegables', name: 'Anykuu, aluminio 7075', asin: 'B08RYQLK92', why: 'quitan carga a las rodillas en las bajadas (O Cebreiro, Alto del Perdón) y plegados caben en la mochila. AENA admite los bastones de senderismo plegables en el equipaje de mano, dentro de la maleta; los telescópicos, mejor facturados.', link: { pre: 'Altura, tacos y avión, en', href: '/bastones-camino-de-santiago/', text: 'la guía de bastones' } },
     { what: 'Calcetines de lana merino', name: 'Niorasen merino', asin: 'B0DMWC11BP', why: 'son la primera defensa contra las ampollas: regulan el sudor y apenas huelen tras varios días.', link: { pre: 'Más en', href: '/calzado/', text: 'Calzado para el Camino' } },
     { what: 'Apósitos para ampollas', name: 'Compeed Ampollas Medianas, 2×12', asin: 'B09RVQ5SXG', why: 'póntelo en cuanto notes el roce, antes de que salga la ampolla.', link: { pre: 'Completa el botiquín con nuestra guía de', href: '/botiquin-y-ampollas/', text: 'Botiquín y ampollas' } },
     { what: 'Camiseta técnica de secado rápido', name: 'Joma, manga corta', asin: 'B0B6P6CQ3K', why: 'la lavas a mano por la tarde y por la mañana está seca. El algodón no lo consigue. Lleva dos.', link: { pre: 'El resto de la ropa, por capas, en', href: '/ropa-del-camino/', text: 'Ropa para el Camino' } },

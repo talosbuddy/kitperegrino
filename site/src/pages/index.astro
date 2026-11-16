@@ -35,7 +35,7 @@ const all = [{ slug: 'mochila-del-camino', title: 'Mochila del Camino' }, ...gui
 const jsonLd = { '@context': 'https://schema.org', '@type': 'ItemList', name: 'Guías de KitPeregrino para el Camino de Santiago', itemListElement: all.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `${site}/${g.slug}/` })) };
 const ld = [jsonLd, website(), faqPage(homeFaqs)];
 const paths = [
-  { q: 'Es mi primer Camino', a: 'Empieza por la mochila y el calzado: son lo que más se nota en el cuerpo.', links: [['/mochila-del-camino/', 'Mochila'], ['/ajustar-mochila-camino/', 'Ajustar la mochila'], ['/calzado/', 'Calzado']] },
+  { q: 'Es mi primer Camino', a: 'Empieza por la mochila y el calzado: son lo que más se nota en el cuerpo.', links: [['/mochila-del-camino/', 'Mochila'], ['/ajustar-mochila-camino/', 'Ajustar la mochila'], ['/calzado/', 'Calzado'], ['/bastones-camino-de-santiago/', 'Bastones']] },
   { q: 'Aún no sé qué ruta hacer', a: 'Compara distancia, etapas y ambiente antes de comprar nada.', links: [['/frances-vs-portugues/', 'Francés vs Portugués']] },
   { q: 'Ya tengo fecha', a: 'La estación cambia la ropa, el agua y dónde dormir.', links: [['/camino-en-verano/', 'Verano'], ['/camino-en-invierno/', 'Invierno'], ['/ropa-del-camino/', 'Ropa'], ['/poncho-o-chubasquero-camino/', 'Poncho o chubasquero']] },
   { q: 'Dormiré en albergues', a: 'Saco sábana, tapones y cómo evitar chinches.', links: [['/kit-de-albergue/', 'Kit de albergue']] },

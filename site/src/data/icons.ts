@@ -1,5 +1,6 @@
 // Asigna un icono por palabras clave del artículo o grupo.
 const RULES: [RegExp, string][] = [
+  [/bastón|bastones|tacos|puntas de goma/i, 'bastones'],
   [/bici|casco|cámara|bomba|alforja/i, 'bici'],
   [/niñ|infantil/i, 'ninos'],
   [/ampolla|botiqu|apósito|tirita|compeed|vaselina|crema|antinflam|dolor|músc|aguja|desinfect|venda|pies/i, 'botiquin'],
@@ -12,7 +13,7 @@ const RULES: [RegExp, string][] = [
   [/saco|sábana|tapones|antifaz|almohada|dormir|albergue|chinche|candado|seguridad/i, 'albergue'],
   [/agua|botella|bidón|hidrata/i, 'agua'],
   [/toalla|ducha|colada|jabón|pinza|neceser|cuerda/i, 'ducha'],
-  [/mochila|bolsa|riñonera|bastón|bastones/i, 'mochila'],
+  [/mochila|bolsa|riñonera/i, 'mochila'],
   [/ruta|francés|portugués|etapa/i, 'ruta'],
 ];
 export const iconFor = (...texts: string[]) => { const t = texts.join(' '); return RULES.find(([r]) => r.test(t))?.[1] ?? 'concha'; };
