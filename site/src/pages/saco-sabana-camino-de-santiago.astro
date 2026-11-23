@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import KitButton from '../components/KitButton.astro';
+import Checklist from '../components/Checklist.astro';
+import Faq from '../components/Faq.astro';
+import GuideLinks from '../components/GuideLinks.astro';
+import { sacoChecklist, sacoFaqs } from '../data/saco';
+import { CART_URL_SACO, cartAsins, pageMeta } from '../data/site';
+import { faqPage } from '../data/schema';
+const total = sacoChecklist.reduce((s, g) => s + g.items.length, 0);
+const inKit = cartAsins(CART_URL_SACO).length;
+const meta = pageMeta('/saco-sabana-camino-de-santiago/');
+const jsonLd = [faqPage(sacoFaqs)];
+const h1 = 'Saco sábana o saco de dormir para el Camino de Santiago: cuál llevar según la época';
+const label = 'Añadir el kit de dormir al carrito de Amazon';
+const note = `Añade ${inKit} artículos: un saco sábana de microfibra y un saco de dormir ligero para primavera y otoño. El saco de invierno, las alternativas de algodón o seda y las bolsas estancas se eligen aparte.`;
+---
+<Base title="Saco sábana para el Camino de Santiago: cuál llevar (2026)" description="Saco sábana o saco de dormir para el Camino de Santiago: qué llevar en verano, primavera, otoño e invierno, qué dan los albergues, materiales, temperatura y peso." jsonLd={jsonLd} crumb="Saco sábana para el Camino" h1={h1}>
+  <Hero eyebrow="Saco sábana para el Camino" title={h1} highlight="cuál llevar según la época" updated={meta.modified}>
+    <p>Para el Camino de Santiago lo más práctico es <strong>un saco sábana ligero todo el año, y añadir un saco de dormir fino en primavera y otoño o uno de abrigo de noviembre a marzo</strong>. Los albergues públicos dan cama, pero muchas veces solo una funda desechable.</p>
+    <p>Aquí tienes qué dan los albergues, qué llevar en cada época, la diferencia entre saco sábana y saco de dormir, materiales, temperatura y peso, más una selección de {total} productos comprobados en Amazon.es. Todo lo demás para la noche está en el <a href="/kit-de-albergue/">kit de albergue</a>.</p>
+    <KitButton slot="side" url={CART_URL_SACO} label={label} title="Kit de dormir del peregrino" note={note} />
+  </Hero>
+
+  <section class="block" id="que-dan">
+    <div class="narrow prose">
+      <span class="eyebrow">Albergues</span>
+      <h2>¿Hace falta saco de dormir en el Camino? Lo que dan los albergues</h2>
+      <p>Depende de dónde duermas. En los <strong>albergues públicos</strong> tienes litera y colchón, pero muchas veces solo una funda desechable para el colchón y la almohada, sin sábanas de tela. Las mantas dependen de cada albergue y de la época, y no siempre hay para todos. En los <strong>privados</strong>, algunos incluyen ropa de cama o la alquilan; en <strong>hostales y pensiones</strong> la cama viene hecha.</p>
+      <ul>
+        <li><strong>Si duermes en albergues públicos:</strong> lleva al menos un saco sábana todo el año.</li>
+        <li><strong>Si combinas privados y pensiones:</strong> el saco sábana sigue siendo útil (pesa poco y te saca de un apuro), pero el saco de dormir puede sobrar fuera del invierno.</li>
+        <li><strong>Si solo duermes en hoteles o casas rurales:</strong> no necesitas ni uno ni otro.</li>
+      </ul>
+      <p>Las normas de los albergues de la Xunta y qué más llevar para la noche (tapones, antifaz, candado, chanclas) las tienes en el <a href="/kit-de-albergue/#saco-o-sabana">kit de albergue</a>.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="por-epoca">
+    <div class="wrap">
+      <span class="eyebrow">Según la época</span>
+      <h2>Qué llevar para dormir según la época del año</h2>
+      <p class="lead">La regla práctica: el saco sábana va siempre; lo que cambia con la estación es si añades un saco de dormir y cuánto abriga.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Época</th><th scope="col">Qué llevar</th><th scope="col">Por qué</th><th scope="col">Guía</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Junio a septiembre</th><td>Saco sábana</td><td>En un dormitorio lleno el problema suele ser el calor, no el frío. Si el albergue da manta, con eso basta.</td><td><a href="/camino-en-verano/">Camino en verano</a></td></tr>
+            <tr><th scope="row">Abril, mayo y octubre</th><td>Saco sábana + saco ligero (confort 10-15 °C)</td><td>Las noches refrescan, sobre todo en la meseta y en zonas altas, y no todos los albergues tienen mantas.</td><td><a href="/mochila-del-camino/">Mochila del Camino</a></td></tr>
+            <tr><th scope="row">Noviembre a marzo</th><td>Saco de dormir de abrigo (confort 0-5 °C), con el saco sábana dentro</td><td>Hay albergues con calefacción limitada o solo por la tarde, y menos albergues abiertos.</td><td><a href="/camino-en-invierno/">Camino en invierno</a></td></tr>
+            <tr><th scope="row">Si eres friolero</th><td>Sube un escalón</td><td>Mejor llevar un saco que abrigue un poco de más que pasar la noche en vela antes de una etapa de 25 km.</td><td><a href="/ropa-del-camino/">Ropa del Camino</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="diferencias">
+    <div class="narrow prose">
+      <span class="eyebrow">Saco sábana o saco</span>
+      <h2>Saco sábana o saco de dormir: diferencias</h2>
+      <p>Se confunden porque se parecen, pero cumplen funciones distintas.</p>
+      <ul>
+        <li><strong>Saco sábana:</strong> una funda fina con forma de saco. Te separa del colchón y de la almohada del albergue, es higiénico y se lava y seca en una tarde. <strong>No abriga</strong>: las fichas los recomiendan a temperatura ambiente de 15-25 °C.</li>
+        <li><strong>Saco de dormir:</strong> lleva relleno (fibra sintética o plumas) y sí abriga. Se elige por su temperatura de confort.</li>
+        <li><strong>Juntos:</strong> el saco sábana dentro del saco de dormir mantiene limpio el saco (que no lavarás en todo el Camino) y añade un poco de abrigo.</li>
+      </ul>
+      <h3>Cómo leer la temperatura de un saco de dormir</h3>
+      <p>Las fichas suelen dar tres cifras: <strong>confort</strong> (a esa temperatura duermes bien), <strong>límite</strong> (aguantas encogido) y <strong>extrema</strong> (solo supervivencia). Fíjate en la de confort. Dentro de un albergue, con techo y paredes, un saco de confort 10-15 °C sirve de primavera a otoño; en invierno, busca 0-5 °C.</p>
+      <h3>Plumas o fibra sintética</h3>
+      <p>Las plumas abrigan más por gramo y se comprimen mejor, pero son caras y pierden abrigo si se mojan. La fibra sintética pesa y abulta más, pero es barata y aguanta mejor la humedad. Para un primer Camino en invierno, un sintético bien protegido de la lluvia es suficiente.</p>
+    </div>
+  </section>
+
+  <section class="block alt" id="materiales">
+    <div class="wrap">
+      <span class="eyebrow">Materiales</span>
+      <h2>Saco sábana de microfibra, algodón o seda: cuál elegir</h2>
+      <p class="lead">Los tres sirven. La microfibra es la más práctica para la mayoría; el algodón, la más fresca; la seda, la más compacta.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Criterio</th><th scope="col">Microfibra</th><th scope="col">Algodón</th><th scope="col">Seda</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Peso</th><td>Ligero (unos 360-400 g en nuestra selección)</td><td>Algo más pesado</td><td>El más ligero</td></tr>
+            <tr><th scope="row">Secado</th><td>Rápido: se seca en una tarde</td><td>Lento si no hay sol</td><td>Rápido</td></tr>
+            <tr><th scope="row">Tacto y calor</th><td>Suave; puede dar calor en verano</td><td>Fresco, como las sábanas de casa</td><td>Fresco en verano, algo de abrigo dentro del saco</td></tr>
+            <tr><th scope="row">Cuidado</th><td>Lavadora</td><td>Lavadora</td><td>A mano o programa delicado</td></tr>
+            <tr><th scope="row">Para quién</th><td>Casi todos los peregrinos</td><td>Quien camina en verano y suda mucho</td><td>Quien cuida cada gramo y no le importa pagar más</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem">Busca que se abra con cremallera completa (en noches de calor lo usarás como sábana) y que tenga <strong>bolsillo para la almohada</strong>, para que la almohada del albergue no toque tu cara. Las medidas exactas de cada modelo están en la <a href="#checklist">lista de productos</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="peso">
+    <div class="narrow prose">
+      <span class="eyebrow">Peso y espacio</span>
+      <h2>Cuánto pesa y cuánto ocupa en la mochila</h2>
+      <p>El saco es, con la ropa de abrigo, lo que más volumen ocupa en la mochila. Por eso cambia los litros que necesitas más que el número de etapas.</p>
+      <ul>
+        <li><strong>Solo saco sábana:</strong> unos 300-500 g y el tamaño de una botella de agua. Cabe sin problema en una mochila de 30-35 L.</li>
+        <li><strong>Saco ligero de verano:</strong> unos 600-800 g. Sigue entrando en 30-35 L si no llevas más.</li>
+        <li><strong>Saco sintético de invierno:</strong> 1,2-1,6 kg y bastante volumen. Pide una mochila de 35-40 L; lo explicamos en <a href="/mochila-del-camino/">cuántos litros debe tener la mochila</a>.</li>
+        <li><strong>Colócalo abajo:</strong> es blando y no lo necesitas durante la etapa. Cómo repartir el peso, en <a href="/ajustar-mochila-camino/">cómo ajustar la mochila</a>.</li>
+        <li><strong>Siempre seco:</strong> métetelo en una bolsa estanca dentro de la mochila. La funda de lluvia sola no basta en un día entero de lluvia en Galicia; compara <a href="/poncho-o-chubasquero-camino/">poncho o chubasquero</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" id="higiene">
+    <div class="narrow prose">
+      <span class="eyebrow">Higiene</span>
+      <h2>Saco sábana, higiene y chinches</h2>
+      <p>El saco sábana te separa de un colchón que han usado cientos de peregrinos, y se lava fácil. No es un escudo contra las chinches, pero ayuda a controlar el problema si aparecen:</p>
+      <ol>
+        <li><strong>Revisa el colchón</strong> (costuras y somier) antes de sacar el saco.</li>
+        <li><strong>Deja la mochila fuera de la cama</strong>, en el suelo o donde indique el hospitalero.</li>
+        <li><strong>Saca el saco cada tarde</strong> y guárdalo enrollado en su bolsa por la mañana, no suelto en la mochila.</li>
+        <li><strong>Si ves chinches o te pican,</strong> avisa al hospitalero y lava el saco y la ropa a 60 °C o sécalos en secadora caliente.</li>
+      </ol>
+      <p>Qué hacer paso a paso si te pican, y el spray para tejidos, en el <a href="/kit-de-albergue/#chinches">kit de albergue</a>. Para el picor, mira el <a href="/botiquin-y-ampollas/">botiquín del Camino</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="checklist">
+    <div class="wrap">
+      <span class="eyebrow">Selección comprobada</span>
+      <h2>Qué saco sábana y saco de dormir comprar: {total} productos comprobados</h2>
+      <p class="lead">Un saco sábana recomendado y dos alternativas, un saco ligero para primavera y otoño, uno de invierno y bolsas estancas para guardarlo seco. El botón añade los {inKit} del kit; el resto se elige en su ficha según la época.</p>
+      <Checklist checklist={sacoChecklist} cartUrl={CART_URL_SACO} />
+      <div style="margin-top:2rem"><KitButton url={CART_URL_SACO} label={label} variant="band" title="El kit de dormir, en un clic" note={note} /></div>
+    </div>
+  </section>
+
+  <section class="block alt" id="errores">
+    <div class="narrow prose">
+      <span class="eyebrow">Errores comunes</span>
+      <h2>Errores comunes con el saco en el Camino</h2>
+      <ol>
+        <li><strong>Llevar un saco de plumas gordo en agosto.</strong> En verano basta el saco sábana; lo demás es peso.</li>
+        <li><strong>Ir solo con saco sábana en invierno.</strong> No abriga. De noviembre a marzo, lleva saco de dormir: lo explicamos en el <a href="/camino-en-invierno/">Camino en invierno</a>.</li>
+        <li><strong>Fiarse de la temperatura extrema.</strong> La que cuenta es la de confort.</li>
+        <li><strong>Guardarlo sin bolsa estanca.</strong> Un saco mojado no abriga ni se seca en una noche.</li>
+        <li><strong>Comprar uno demasiado corto.</strong> Si mides más de 1,85 m, mira la longitud en la ficha.</li>
+        <li><strong>No probarlo en casa.</strong> Duerme una noche con él antes de salir: sabrás si pasas frío o calor y si la cremallera se engancha.</li>
+      </ol>
+      <p>Con calor, el saco sábana abierto como sábana suele bastar: más trucos para dormir fresco en el <a href="/camino-en-verano/">Camino en verano</a>. Para el resto del equipo, vuelve a la <a href="/mochila-del-camino/">checklist de la mochila</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="guias">
+    <div class="wrap">
+      <span class="eyebrow">Guías</span>
+      <h2>Más guías para preparar tu Camino</h2>
+      <GuideLinks exclude="saco-sabana-camino-de-santiago" withMochila />
+    </div>
+  </section>
+
+  <section class="block alt">
+    <div class="narrow"><Faq faqs={sacoFaqs} /></div>
+  </section>
+</Base>
+<style>
+  .table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; min-width: 640px; }
+  th, td { text-align: left; vertical-align: top; padding: .85rem 1rem; border-bottom: 1px solid var(--line); }
+  thead th { background: var(--navy); color: #fff; font-weight: 700; font-size: .85rem; letter-spacing: .04em; }
+  tbody th { font-family: var(--serif); color: var(--navy-2); width: 24%; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: #fbf7ef; }
+</style>

@@ -27,6 +27,7 @@ ${PAGES.map(p => `- [${p.title}](${SITE}${p.path}): ${p.summary} (actualizada ${
 - Según la época: ${SITE}/camino-en-verano/ o ${SITE}/camino-en-invierno/
 - Qué ropa llevar (3 capas, mudas, merino o sintético): ${SITE}/ropa-del-camino/
 - Bastones (si llevarlos, plegables o telescópicos, altura, tacos, avión): ${SITE}/bastones-camino-de-santiago/
+- Saco sábana o saco de dormir según la época: ${SITE}/saco-sabana-camino-de-santiago/
 - Qué bicicleta llevar: ${SITE}/bicicleta-camino-de-santiago/
 - Con niños: ${SITE}/camino-en-bici-y-con-ninos/
 - Glosario y requisitos de la Compostela: ${SITE}/#glosario y ${SITE}/#compostela
